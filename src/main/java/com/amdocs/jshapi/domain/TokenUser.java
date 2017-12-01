@@ -1,17 +1,17 @@
 package com.amdocs.jshapi.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
 
 
-@Entity
-@Table(name = "TOKENUSER")
+//@Entity
+//@Table(name = "TOKENUSER")
 public class TokenUser {
 		
-	@Id
-	@Column(name = "ID_USER")
+	//@Id
+	//@Column(name = "ID_USER")
 	private String Id_user;
 	private String Name;
 	private String Password;

@@ -29,12 +29,15 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
 	private CustomPropertiesConfiguration properties;
 	
+	@Autowired
+	private AccountDetailsService accountDetailsService;
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 	   endpoints
 	       .tokenStore(this.tokenStore)
 	       .authenticationManager(this.authenticationManager)
-	       .userDetailsService(null); //TODO add real userDetailsService
+	       .userDetailsService(this.accountDetailsService); 
 	}
 	
 	@Override
