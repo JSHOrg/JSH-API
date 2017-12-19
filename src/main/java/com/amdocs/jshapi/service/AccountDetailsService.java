@@ -1,15 +1,14 @@
 package com.amdocs.jshapi.service;
 
-import java.util.ArrayList;
-
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.amdocs.jshapi.domain.AccountGrantedAuthority;
+import com.amdocs.jshapi.domain.Account;
+import com.amdocs.jshapi.repository.AccountRepository;
 
 /**
  * 
@@ -17,17 +16,25 @@ import com.amdocs.jshapi.domain.AccountGrantedAuthority;
  */
 @Service
 public class AccountDetailsService implements UserDetailsService{
+	
+	@Autowired
+	private AccountRepository repository;
 
-    @Override
-    public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
-      
-      ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-      grantedAuthorities.add(new AccountGrantedAuthority("USER"));
-      return new User( 
-    		"testuser", 
-    		"abc", //TODO encryption 
-    		true,true,true,true,
-    		grantedAuthorities
-    	);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Account account = repository.findByNickname(username);
+		if(account != null) {
+			return new User( 
+					account.getNickname(),
+					account.getPassword(),
+					account.getEnabled(),
+					account.getEnabled(),
+					account.getEnabled(),
+					account.getEnabled(),
+					account.getGrantedAuthorities()
+				);
+		} else {
+			throw new UsernameNotFoundException("User not found: '" + username + "'");
+		}
+	}
 }
