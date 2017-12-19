@@ -1,4 +1,4 @@
-package com.amdocs.jshapi.security;
+package com.amdocs.jshapi.service;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.amdocs.jshapi.domain.AccountGrantedAuthority;
+
+/**
+ * 
+ * @author Cuauhtemoc Herrera
+ */
 @Service
 public class AccountDetailsService implements UserDetailsService{
 
