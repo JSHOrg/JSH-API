@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.amdocs.jshapi.domain.Account;
-import com.amdocs.jshapi.domain.GenericResponse;
 import com.amdocs.jshapi.service.AccountDetailsService;
 
 @Controller
@@ -31,22 +30,7 @@ public class TokenController {
         return tokenId;
     }
     
-    @RequestMapping(value = "/user/resetPassword", method = RequestMethod.POST)
-    @ResponseBody
-    public GenericResponse resetPassword(HttpServletRequest request, 
-      @RequestParam("email") String userEmail) {
-        Account user = accountDetailsService.findByNickname(userEmail);
-        if (user == null) {
-            //Throw eerror
-        }
-        String token = UUID.randomUUID().toString();
-        userService.createPasswordResetTokenForUser(user, token);
-        mailSender.send(constructResetTokenEmail(getAppUrl(request), 
-          request.getLocale(), token, user));
-        return new GenericResponse(
-          messages.getMessage("message.resetPasswordEmail", null, 
-          request.getLocale()));
-    }
+    
 }
 
 
