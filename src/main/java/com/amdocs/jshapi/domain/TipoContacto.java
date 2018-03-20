@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author 
+ * @author GGABRIEL
  *
  */
 @Entity

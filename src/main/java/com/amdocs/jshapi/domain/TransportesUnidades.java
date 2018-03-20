@@ -22,6 +22,9 @@ public class TransportesUnidades {
 	@Column(length=30)
 	private String tipoUnidad;
 
+	public TransportesUnidades() {
+	}
+	
 	public TransportesUnidades(Long id, String tipoUnidad) {
 		this.id = id;
 		this.tipoUnidad = tipoUnidad;

@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
- * @author 
+ * @author GGABRIEL
  *
  */
 @Entity

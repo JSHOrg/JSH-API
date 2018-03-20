@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 /**
  * 
- * @author 
+ * @author GGABRIEL
  */
 @Entity
 public class BancoAlimentos {
@@ -60,6 +60,9 @@ public class BancoAlimentos {
     @JoinColumn(name="IDContacto")
 	private Contacto contacto;
 
+    public BancoAlimentos() {
+    }
+    
 	/**
 	 * @return the id
 	 */

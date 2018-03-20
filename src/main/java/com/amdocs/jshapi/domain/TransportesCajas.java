@@ -22,6 +22,10 @@ public class TransportesCajas {
 	@Column(length=30)
 	private String tipoCaja;
 
+	public TransportesCajas() {
+		
+	}
+	
 	public TransportesCajas(Long id, String tipoCaja) {
 		this.id = id;
 		this.tipoCaja = tipoCaja;

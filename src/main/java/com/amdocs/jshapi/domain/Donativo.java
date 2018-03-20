@@ -67,6 +67,9 @@ public class Donativo {
     @JoinColumn(name="IDTransportesUnidades")
 	private TransportesUnidades transportesUnidades;
 
+    public Donativo() {
+    }
+    
 	public Donativo(Long id, String remisionBA, Date fechaRegistro, Date fechaAcopio, String requerimientosDonador,
 			String condicionesTransporte, String coordinacionTransporte, int costoOperativo,
 			String distribucionRegional, String especificaciones, Donador donador, TransportesCajas transportesCajas,

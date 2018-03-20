@@ -52,6 +52,9 @@ public class Donador {
 	@Column
 	private boolean habilitado;
 
+	public Donador() {
+	}
+	
 	public Donador(String razonSocial, int reciboFiscal, String RFC, String folioAcuseConvenio, Date vigenciaConvenio,
 			String comentarios, String calificacion, Date fechaRegistro, boolean habilitado) {
 		this.razonSocial = razonSocial;

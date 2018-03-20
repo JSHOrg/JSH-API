@@ -23,6 +23,9 @@ public class Embalaje {
     @Column(length=30)
 	private String tipoEmbalaje;
 
+	public Embalaje() {
+	}
+
 	/**
 	 * @return the id
 	 */

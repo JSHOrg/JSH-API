@@ -72,4 +72,7 @@ public class Region {
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
 	}
+	
+	public Region() {
+	}
 }
