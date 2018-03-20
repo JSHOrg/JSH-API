@@ -14,5 +14,5 @@ import com.amdocs.jshapi.domain.BancoAlimentos;
  */
 public interface BancoAlimentosRepository extends PagingAndSortingRepository<BancoAlimentos, Long> {
 
-	public BancoAlimentos findByName(@Param("name") String name);
+	public BancoAlimentos findByNombre(@Param("nombre") String nombre);
 }

@@ -14,5 +14,5 @@ import com.amdocs.jshapi.domain.CentroComunitario;
  */
 public interface CentroComunitarioRepository extends PagingAndSortingRepository<CentroComunitario, Long> {
 
-	public CentroComunitario findCentroComunitarioByName(@Param("name") String name);
+	public CentroComunitario findCentroComunitarioByNombre(@Param("nombre") String nombre);
 }
