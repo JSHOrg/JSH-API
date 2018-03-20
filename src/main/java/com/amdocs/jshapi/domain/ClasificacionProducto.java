@@ -1,35 +1,30 @@
+/**
+ * ClasificacionProducto.java
+ */
 package com.amdocs.jshapi.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 /**
- * 
- * @author Luis Cruz
+ * @author Roberto Gutierrez Garcia
+ *
  */
 @Entity
-//@Table(name = "Region")
-public class Region {    
+public class ClasificacionProducto {
 
-	@Id
+    @Id
 	@GeneratedValue
-	@Column(name = "IDRegion")
+	@Column(name = "IDCentroComunitario")
 	private Long id;
-
-	@Column(length=50)
-	private String nombre;
-
-	@Column
-	private boolean habilitado;
-
-	public Region(Long id, String nombre, boolean habilitado) {
-		this.id = id;
-		this.nombre = nombre;
-		this.habilitado = habilitado;
-	}
+    
+    @Column(length=30)
+    private String nombre;
+    
+    @Column
+    private int valorNutrimental;
 
 	/**
 	 * @return the id
@@ -60,16 +55,16 @@ public class Region {
 	}
 
 	/**
-	 * @return the habilitado
+	 * @return the valorNutrimental
 	 */
-	public boolean isHabilitado() {
-		return habilitado;
+	public int getValorNutrimental() {
+		return valorNutrimental;
 	}
 
 	/**
-	 * @param habilitado the habilitado to set
+	 * @param valorNutrimental the valorNutrimental to set
 	 */
-	public void setHabilitado(boolean habilitado) {
-		this.habilitado = habilitado;
+	public void setValorNutrimental(int valorNutrimental) {
+		this.valorNutrimental = valorNutrimental;
 	}
 }

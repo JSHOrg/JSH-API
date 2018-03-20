@@ -1,5 +1,7 @@
 package com.amdocs.jshapi.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import java.util.Date;
-
 /**
  * 
- * @author Roberto Gutierrez
+ * @author Roberto Gutierrez Garcia
  */
 @Entity
 public class CentroComunitario {

@@ -1,38 +1,57 @@
-package JSH;
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
+package com.amdocs.jshapi.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 //import javax.persistence.Table;
+
 /**
  * 
  * @author Luis Cruz
  */
-//@Entity
-//@Table(name = "TransportesCajas")
+@Entity
+// @Table(name = "TransportesCajas")
 public class TransportesCajas {
-	//@Id
-	//@GeneratedValue
-	private int IDTransportesCajas;
-	private String TipoCaja;
-	
-	public int getIDTransportesCajas() {
-		return IDTransportesCajas;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "IDIDTransportesCajas")
+	private Long id;
+
+	@Column(length=30)
+	private String tipoCaja;
+
+	public TransportesCajas(Long id, String tipoCaja) {
+		this.id = id;
+		this.tipoCaja = tipoCaja;
 	}
-	public void setIDTransportesCajas(int iDTransportesCajas) {
-		this.IDTransportesCajas = iDTransportesCajas;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the tipoCaja
+	 */
 	public String getTipoCaja() {
-		return TipoCaja;
+		return tipoCaja;
 	}
+
+	/**
+	 * @param tipoCaja the tipoCaja to set
+	 */
 	public void setTipoCaja(String tipoCaja) {
-		this.TipoCaja = tipoCaja;
+		this.tipoCaja = tipoCaja;
 	}
-	
-	public TransportesCajas(int iDTransportesCajas, String tipoCaja) {
-		this.IDTransportesCajas = iDTransportesCajas;
-		this.TipoCaja = tipoCaja;
-	}
-	
-	
-	
 }

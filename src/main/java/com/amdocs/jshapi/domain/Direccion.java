@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 /**
  * 
- * @author Roberto Gutierrez
+ * @author Roberto Gutierrez Garcia
  */
 @Entity
 public class Direccion {

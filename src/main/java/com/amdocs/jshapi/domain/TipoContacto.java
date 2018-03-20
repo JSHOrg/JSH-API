@@ -1,35 +1,27 @@
+/**
+ * 
+ */
 package com.amdocs.jshapi.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 /**
- * 
- * @author Luis Cruz
+ * @author 
+ *
  */
 @Entity
-//@Table(name = "Region")
-public class Region {    
+public class TipoContacto {
 
-	@Id
+    @Id
 	@GeneratedValue
-	@Column(name = "IDRegion")
+	@Column(name = "IDCentroComunitario")
 	private Long id;
-
-	@Column(length=50)
+	
+	@Column(length=50, nullable=false)
 	private String nombre;
-
-	@Column
-	private boolean habilitado;
-
-	public Region(Long id, String nombre, boolean habilitado) {
-		this.id = id;
-		this.nombre = nombre;
-		this.habilitado = habilitado;
-	}
 
 	/**
 	 * @return the id
@@ -57,19 +49,5 @@ public class Region {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	/**
-	 * @return the habilitado
-	 */
-	public boolean isHabilitado() {
-		return habilitado;
-	}
-
-	/**
-	 * @param habilitado the habilitado to set
-	 */
-	public void setHabilitado(boolean habilitado) {
-		this.habilitado = habilitado;
 	}
 }
