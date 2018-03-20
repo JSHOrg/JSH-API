@@ -18,17 +18,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Contacto {
 
-    @Id
+	@Id
 	@GeneratedValue
 	@Column(name = "IDCentroComunitario")
 	private Long id;
-    
-    @Column(length=200, nullable=false)
-    private String valor;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDTipoContacto")
-    private TipoContacto tipoContacto;
+
+	@Column(length = 200, nullable = false)
+	private String valor;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDTipoContacto")
+	private TipoContacto tipoContacto;
 
 	/**
 	 * @return the id
@@ -38,7 +38,8 @@ public class Contacto {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -52,7 +53,8 @@ public class Contacto {
 	}
 
 	/**
-	 * @param valor the valor to set
+	 * @param valor
+	 *            the valor to set
 	 */
 	public void setValor(String valor) {
 		this.valor = valor;
@@ -66,7 +68,8 @@ public class Contacto {
 	}
 
 	/**
-	 * @param tipoContacto the tipoContacto to set
+	 * @param tipoContacto
+	 *            the tipoContacto to set
 	 */
 	public void setTipoContacto(TipoContacto tipoContacto) {
 		this.tipoContacto = tipoContacto;

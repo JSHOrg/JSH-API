@@ -15,12 +15,12 @@ import javax.persistence.Id;
 @Entity
 public class TipoContacto {
 
-    @Id
+	@Id
 	@GeneratedValue
 	@Column(name = "IDCentroComunitario")
 	private Long id;
-	
-	@Column(length=50, nullable=false)
+
+	@Column(length = 50, nullable = false)
 	private String nombre;
 
 	/**
@@ -31,7 +31,8 @@ public class TipoContacto {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -45,7 +46,8 @@ public class TipoContacto {
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * @param nombre
+	 *            the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

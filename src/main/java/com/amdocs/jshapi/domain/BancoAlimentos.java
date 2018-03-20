@@ -19,50 +19,50 @@ import javax.persistence.TemporalType;
 @Entity
 public class BancoAlimentos {
 
-    @Id
+	@Id
 	@GeneratedValue
 	@Column(name = "IDCentroComunitario")
 	private Long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDAdministrativo")
-    private Account administrativo;
-    
-    @Column(length=50)
-    private String nombre;
-    
-    @Column(length=150)
-    private String razonSocial;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDAdministrativo")
+	private Account administrativo;
 
-    @Column(length=3)
-    private String calificacion;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
-    private Date fechaAfiliacion;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
-    private Date fechaRegistro;
-    
-    @Column
-    private boolean habilitado;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdRegion")
-    private Region region;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDDireccion")
-    private Direccion direccion;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDContacto")
+	@Column(length = 50)
+	private String nombre;
+
+	@Column(length = 150)
+	private String razonSocial;
+
+	@Column(length = 3)
+	private String calificacion;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(columnDefinition = "DATETIME")
+	private Date fechaAfiliacion;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(columnDefinition = "DATETIME")
+	private Date fechaRegistro;
+
+	@Column
+	private boolean habilitado;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IdRegion")
+	private Region region;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDDireccion")
+	private Direccion direccion;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDContacto")
 	private Contacto contacto;
 
-    public BancoAlimentos() {
-    }
-    
+	public BancoAlimentos() {
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -71,7 +71,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -85,7 +86,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param administrativo the administrativo to set
+	 * @param administrativo
+	 *            the administrativo to set
 	 */
 	public void setAdministrativo(Account administrativo) {
 		this.administrativo = administrativo;
@@ -99,7 +101,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * @param nombre
+	 *            the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -113,7 +116,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param razonSocial the razonSocial to set
+	 * @param razonSocial
+	 *            the razonSocial to set
 	 */
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
@@ -127,7 +131,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param calificacion the calificacion to set
+	 * @param calificacion
+	 *            the calificacion to set
 	 */
 	public void setCalificacion(String calificacion) {
 		this.calificacion = calificacion;
@@ -141,7 +146,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param fechaAfiliacion the fechaAfiliacion to set
+	 * @param fechaAfiliacion
+	 *            the fechaAfiliacion to set
 	 */
 	public void setFechaAfiliacion(Date fechaAfiliacion) {
 		this.fechaAfiliacion = fechaAfiliacion;
@@ -155,7 +161,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param fechaRegistro the fechaRegistro to set
+	 * @param fechaRegistro
+	 *            the fechaRegistro to set
 	 */
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
@@ -169,7 +176,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param habilitado the habilitado to set
+	 * @param habilitado
+	 *            the habilitado to set
 	 */
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
@@ -183,7 +191,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param region the region to set
+	 * @param region
+	 *            the region to set
 	 */
 	public void setRegion(Region region) {
 		this.region = region;
@@ -197,7 +206,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param direccion the direccion to set
+	 * @param direccion
+	 *            the direccion to set
 	 */
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
@@ -211,7 +221,8 @@ public class BancoAlimentos {
 	}
 
 	/**
-	 * @param contacto the contacto to set
+	 * @param contacto
+	 *            the contacto to set
 	 */
 	public void setContacto(Contacto contacto) {
 		this.contacto = contacto;
