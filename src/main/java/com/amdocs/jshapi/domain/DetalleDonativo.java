@@ -22,7 +22,7 @@ public class DetalleDonativo {
 
     @Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "IDDetalleDonativo")
 	private Long id;
     
     @Column
@@ -101,6 +101,13 @@ public class DetalleDonativo {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 
+	
 	/**
 	 * @return the cantidadKg
 	 */
