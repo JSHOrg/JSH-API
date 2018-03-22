@@ -44,6 +44,13 @@ public class Contacto {
 	public void setId(Long id) {
 		this.id = id;
 	}
+   	
+	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 
 
 	/**
 	 * @return the valor
