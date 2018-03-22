@@ -49,7 +49,14 @@ public class CentroComunitario {
  	public Long getId() {
 		return id;
 	}
-
+	
+    /**
+     * @return the Identifier
+     */	
+	public Long getIdentifier(){
+		return this.id;
+	} 
+		
     /**
      * @param id the id to set
      */
