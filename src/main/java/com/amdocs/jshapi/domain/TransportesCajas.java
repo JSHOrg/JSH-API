@@ -16,7 +16,7 @@ public class TransportesCajas {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDIDTransportesCajas")
+	@Column(name = "IDTransportesCajas")
 	private Long id;
 
 	@Column(length=30)
@@ -45,6 +45,13 @@ public class TransportesCajas {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	}
+	
 	/**
 	 * @return the tipoCaja
 	 */
