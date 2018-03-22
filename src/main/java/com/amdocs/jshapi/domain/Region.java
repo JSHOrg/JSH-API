@@ -45,6 +45,13 @@ public class Region {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 	
+	
 	/**
 	 * @return the nombre
 	 */
