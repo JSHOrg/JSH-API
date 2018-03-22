@@ -20,7 +20,7 @@ public class Contacto {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "IDContacto")
 	private Long id;
 
 	@Column(length = 200, nullable = false)
