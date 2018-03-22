@@ -82,6 +82,13 @@ public class Donador {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 
+	
 	/**
 	 * @return the razonSocial
 	 */
