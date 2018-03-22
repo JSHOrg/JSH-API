@@ -53,6 +53,13 @@ public class Direccion {
 	}
 
     /**
+     * @return the Identifier
+     */	
+	public Long getIdentifier(){
+		return this.id;
+	} 	
+	
+    /**
      * @return the calle
      */
 	public String getCalle() {
