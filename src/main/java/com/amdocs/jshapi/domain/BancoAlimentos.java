@@ -21,7 +21,7 @@ public class BancoAlimentos {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "IDBancoAlimentos")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
