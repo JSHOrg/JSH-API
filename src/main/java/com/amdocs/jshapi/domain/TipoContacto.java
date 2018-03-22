@@ -17,7 +17,7 @@ public class TipoContacto {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "IDTipoContacto")
 	private Long id;
 
 	@Column(length = 50, nullable = false)
@@ -38,6 +38,13 @@ public class TipoContacto {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 	
+	
 	/**
 	 * @return the nombre
 	 */
