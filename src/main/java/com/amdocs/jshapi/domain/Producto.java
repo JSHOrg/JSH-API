@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author Roberto Gutierrez Garcia
@@ -26,8 +26,11 @@ public class Producto {
     @Column(length=50, nullable=false)
 	private String nombre;
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdClasificacionProducto")
+    @Column(length=1)
+    private String perecedero;
+    
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(referencedColumnName="IdClasificacionProducto")
     private ClasificacionProducto clasificacion;
 
 	/**
@@ -63,5 +66,33 @@ public class Producto {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the perecedero
+	 */
+	public String getPerecedero() {
+		return perecedero;
+	}
+
+	/**
+	 * @param perecedero the perecedero to set
+	 */
+	public void setPerecedero(String perecedero) {
+		this.perecedero = perecedero;
+	}
+
+	/**
+	 * @return the clasificacion
+	 */
+	public ClasificacionProducto getClasificacion() {
+		return clasificacion;
+	}
+
+	/**
+	 * @param clasificacion the clasificacion to set
+	 */
+	public void setClasificacion(ClasificacionProducto clasificacion) {
+		this.clasificacion = clasificacion;
 	}
 }

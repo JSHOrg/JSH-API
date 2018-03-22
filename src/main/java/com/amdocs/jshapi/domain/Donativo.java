@@ -9,16 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * 
  * @author Luis Cruz
  */
 @Entity
-//@Table(name = "Donativo")
 public class Donativo {
 
 	@Id
@@ -29,11 +25,9 @@ public class Donativo {
 	@Column(length=15)
 	private String remisionBA;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition="DATETIME")
 	private Date fechaRegistro;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition="DATETIME")
 	private Date fechaAcopio;
 

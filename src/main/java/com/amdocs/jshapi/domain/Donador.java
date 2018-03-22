@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,7 +14,6 @@ import javax.persistence.TemporalType;
  * @author Luis Cruz
  */
 @Entity
-//@Table(name = "Donador")
 public class Donador {
 
 	@Id
@@ -35,8 +33,6 @@ public class Donador {
 	@Column(length=15)
 	private String folioAcuseConvenio;
 
-	@Temporal(TemporalType.DATE)
-	@Column(columnDefinition="DATE")
 	private Date vigenciaConvenio;
 
 	@Column
@@ -45,8 +41,6 @@ public class Donador {
 	@Column(length=3)
 	private String calificacion;
 
-	@Temporal(TemporalType.DATE)
-	@Column(columnDefinition="DATE")
 	private Date fechaRegistro;
 
 	@Column

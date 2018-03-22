@@ -11,8 +11,8 @@ insert into ClasificacionProducto values (4, 'Vitaminas', 133);
 insert into ClasificacionProducto values (5, 'Minerales', 244);
 insert into ClasificacionProducto values (6, 'Agua', 0);
 
-insert into Producto values (1, 'Agua embotellada', 0, 6);
-insert into Producto values (2, 'Donas', 1, 1);
+insert into Producto values (1, 'Agua embotellada', '0', 6);
+insert into Producto values (2, 'Donas', 1', 1);
 
 insert into Embalaje values (1, 'Bandeja');
 insert into Embalaje values (2, 'Caja dispensadore de líquidos');
@@ -41,10 +41,10 @@ insert into TransportesCajas values (3, 'Troquel');
 insert into TransportesUnidades values (1, 'Tráiler');
 insert into TransportesUnidades values (2, 'Van');
 
-insert into Donador values (1, 'NUEVA WAL MART DE MEXICO S DE RL DE C V.', 0, 'NWM-970924-4W4', 'FolioAcuse', NOW(), 'SIN COMENTARIOS', '6', NOW(), 1)
+insert into Donador (IDDonador, razonSocial, reciboFiscal, RFC, folioAcuseConvenio, vigenciaConvenio, comentarios, calificacion, fechaRegistro, habilitado) values (1, 'NUEVA WAL MART DE MEXICO S DE RL DE C V.', 0, 'NWM-970924-4W4', 'FolioAcuse', current_date, 'SIN COMENTARIOS', '6', current_date, 1);
 
-insert into Donativo values (1, 'RemisionBA', now(), now(), 'RequerimientosDonador', 'CondicionesTransporte', 'CoordinacionTransporte', 1024, 'DR', 'Especificaciones', 1, 1, 1);
+insert into Donativo values (1, 'RemisionBA', '2018-03-20 00:00:00', '2018-03-22 00:00:00', 'RequerimientosDonador', 'CondicionesTransporte', 'CoordinacionTransporte', 1024, 'DR', 'Especificaciones', 1, 1, 1);
 
-insert into DetalleDonativo values (1, 14, 32, now(), 1, 700, 14, 1, now(), now(), now(), '14 cajas', '2 cajas :/', 'costo op', 'comentarios', '4', 1, 1, 1);
+insert into DetalleDonativo values (1, 14, 32, now(), 1, 700, 14, 1, '2018-03-20 00:00:00', '2018-03-22 00:00:00', '2018-03-22 00:00:00', '14 cajas', '2 cajas', 'costo op', 'comentarios', '4', 1, 1, 1);
 
-insert into EntradaAlmacen values (1, 1, 5, 4, 'SeccionAlmacenamiento', now(), 1, 1, 1);
+insert into EntradaAlmacen values (1, 1, 5, 4, 'SeccionAlmacenamiento', '2018-03-22 00:00:00', 1, 1, 1);
