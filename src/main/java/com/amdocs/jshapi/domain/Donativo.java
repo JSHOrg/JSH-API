@@ -103,6 +103,13 @@ public class Donativo {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 	
+	
 	/**
 	 * @return the remisionBA
 	 */
