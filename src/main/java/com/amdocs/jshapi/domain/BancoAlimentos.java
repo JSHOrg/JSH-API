@@ -69,13 +69,6 @@ public class BancoAlimentos {
 	public Long getId() {
 		return id;
 	}
-
-	/**
-	 * @return the Identifier
-	 */	
-	public Long getIdentifier(){
-		return this.id;
-	} 
 	
 	/**
 	 * @param id
@@ -85,6 +78,13 @@ public class BancoAlimentos {
 		this.id = id;
 	}
 
+	/**
+	 * @return the Identifier
+	 */	
+	public Long getIdentifier(){
+		return this.id;
+	} 	
+	
 	/**
 	 * @return the administrativo
 	 */
