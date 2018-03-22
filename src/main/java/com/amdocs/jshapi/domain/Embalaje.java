@@ -17,7 +17,7 @@ public class Embalaje {
 
     @Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "IDEmbalaje")
 	private Long id;
     
     @Column(length=30)
@@ -40,6 +40,13 @@ public class Embalaje {
 		this.id = id;
 	}
 
+  	/**
+     	* @return the Identifier
+     	*/	
+	public Long getIdentifier(){
+		return this.id;
+	} 		
+	
 	/**
 	 * @return the tipoEmbalaje
 	 */
