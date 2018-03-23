@@ -48,3 +48,15 @@ insert into Donativo (remision_b_a, fecha_registro, fecha_acopio, requerimientos
 insert into Detalle_Donativo (cantidad_kg, cantidad_pza, fecha_consumo_limite, cosecha, pago_cosecha, cantidad_embalaje, status, fecha_solicitud, fecha_confirmacion, fecha_recepcion, cantidad_recibida, cantidad_recibida_buen_estado, costo_operativo_acopio, comentarios, calificacion, donativo, producto, embalaje) values (14, 32, now(), 1, 700, 14, 1, '2018-03-20 00:00:00', '2018-03-22 00:00:00', '2018-03-22 00:00:00', '14 cajas', '2 cajas', 'costo op', 'comentarios', '4', 1, 1, 1);
 
 insert into Entrada_Almacen ( folio_interno, cantidad_original, cantidad_actual, seccion_almacenamiento, fecha_entrada, status, detalle_Donativo) values ( 1, 5, 4, 'SeccionAlmacenamiento', '2018-03-22 00:00:00', 1, 1);
+
+insert into Direccion (calle, numero, cp, ciudad, estado, latitud, longitud) values ('calle', 'num', '45020', 'ciudad', 'Jalisco', '12.123434', '41.081347');
+
+insert into Tipo_contacto (nombre) values ('tipo contacto');
+
+insert into contacto (valor, tipo_contacto) values ('valor', 1);
+
+insert into Region (nombre, habilitado) values ('Región', 1);
+
+insert into Banco_Alimentos (administrativo, nombre, Razon_Social, Calificacion, fecha_afiliacion, fecha_registro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
+
+insert into Centro_Comunitario (nombre, fecha_registro, habilitado, direccion, banco_alimentos) values ('Centro comunitario', '2018-03-20 00:00:00', 1, 1, 1);

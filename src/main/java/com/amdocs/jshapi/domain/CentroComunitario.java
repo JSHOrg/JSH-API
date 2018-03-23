@@ -8,10 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * 
@@ -34,11 +31,11 @@ public class CentroComunitario {
     private boolean habilitado;
     
     @OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDDireccion", unique=true, nullable=false, updatable=false)
+    @JoinColumn(referencedColumnName="IDDireccion", name="direccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
   
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDBancoAlimentos")
+    @JoinColumn(referencedColumnName="IDBancoAlimentos", name="bancoAlimentos")
 	private BancoAlimentos bancoAlimentos;//IDBancoAlimentosPerteneciente
 
     /**

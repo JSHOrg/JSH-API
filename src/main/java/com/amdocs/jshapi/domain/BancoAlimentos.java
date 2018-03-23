@@ -8,10 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * 
@@ -26,7 +23,7 @@ public class BancoAlimentos {
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id", name="administrativo")
 	private Account administrativo;
 
 	@Column(length = 50)
@@ -46,15 +43,15 @@ public class BancoAlimentos {
 	private boolean habilitado;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IdRegion")
+	@JoinColumn(referencedColumnName = "IdRegion", name="region")
 	private Region region;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDDireccion")
+	@JoinColumn(referencedColumnName = "IDDireccion", name="direccion")
 	private Direccion direccion;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDContacto")
+	@JoinColumn(referencedColumnName = "IDContacto", name="contacto")
 	private Contacto contacto;
 
 	public BancoAlimentos() {
