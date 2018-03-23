@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,8 +25,8 @@ public class BancoAlimentos {
 	@Column(name = "IDBancoAlimentos")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDAdministrativo")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "id")
 	private Account administrativo;
 
 	@Column(length = 50)
@@ -37,27 +38,23 @@ public class BancoAlimentos {
 	@Column(length = 3)
 	private String calificacion;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition = "DATETIME")
 	private Date fechaAfiliacion;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition = "DATETIME")
 	private Date fechaRegistro;
 
 	@Column
 	private boolean habilitado;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IdRegion")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "IdRegion")
 	private Region region;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDDireccion")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "IDDireccion")
 	private Direccion direccion;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDContacto")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "IDContacto")
 	private Contacto contacto;
 
 	public BancoAlimentos() {

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author GGABRIEL
@@ -26,8 +27,8 @@ public class Contacto {
 	@Column(length = 200, nullable = false)
 	private String valor;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDTipoContacto")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "IDTipoContacto")
 	private TipoContacto tipoContacto;
 
 	/**

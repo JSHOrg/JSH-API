@@ -29,7 +29,7 @@ public class Producto {
     @Column(length=1)
     private String perecedero;
     
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="IdClasificacionProducto")
     private ClasificacionProducto clasificacion;
 

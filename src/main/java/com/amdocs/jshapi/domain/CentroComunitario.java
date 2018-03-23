@@ -28,19 +28,17 @@ public class CentroComunitario {
 	@Column(length=50, nullable=false)
 	private String nombre;
 	
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
 	private Date fechaRegistro;
 
     @Column
     private boolean habilitado;
     
-    @OneToOne(optional=false)
-    @JoinColumn(name="IDDireccion", unique=true, nullable=false, updatable=false)
+    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDDireccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
   
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDBancoAlimentos")
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDBancoAlimentos")
 	private BancoAlimentos bancoAlimentos;//IDBancoAlimentosPerteneciente
 
     /**

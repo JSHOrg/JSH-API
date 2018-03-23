@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,8 +30,6 @@ public class DetalleDonativo {
     @Column
     private String cantidadPza;
     
-    @Temporal(TemporalType.DATE)
-	@Column(columnDefinition="DATE")
     private Date fechaConsumoLimite;
     
     @Column
@@ -47,16 +44,10 @@ public class DetalleDonativo {
     @Column
     private boolean status;
     
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
     private Date fechaSolicitud;
     
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
     private Date fechaConfirmacion;
     
-    @Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
     private Date fechaRecepcion;
     
     @Column(length=12)
