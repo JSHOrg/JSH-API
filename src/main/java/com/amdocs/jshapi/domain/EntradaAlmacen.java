@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -39,15 +40,13 @@ public class EntradaAlmacen {
 	@Column(length=25)
 	private String seccionAlmacenamiento;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(columnDefinition="DATETIME")
 	private Date fechaEntrada;
 
 	@Column
 	private boolean status;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDDetalleDonativo")
+	@OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="detalle_donativo",referencedColumnName="IDDetalleDonativo")
 	private DetalleDonativo detalleDonativo;
 
 	/**

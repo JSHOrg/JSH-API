@@ -22,13 +22,11 @@ public class Donativo {
 	@Column(name = "idDonativo")
 	private Long id;
 
-	@Column(length=15)
+	@Column(length=15, name = "remision_b_a")
 	private String remisionBA;
 
-	@Column(columnDefinition="DATETIME")
 	private Date fechaRegistro;
 
-	@Column(columnDefinition="DATETIME")
 	private Date fechaAcopio;
 
 	@Column
@@ -49,16 +47,16 @@ public class Donativo {
 	@Column
 	private String especificaciones;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDDonador")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDDonador", name="donador")
 	private Donador donador;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDTransportesCajas")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDTransportesCajas", name="transportes_cajas")
 	private TransportesCajas transportesCajas;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDTransportesUnidades")
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDTransportesUnidades", name="transportes_unidades")
 	private TransportesUnidades transportesUnidades;
 
     public Donativo() {

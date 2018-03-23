@@ -74,17 +74,17 @@ public class DetalleDonativo {
     @Column(length=3)
     private String calificacion;
     
-    @OneToOne(optional=false)
-    @JoinColumn(name="idDonativo", unique=true, nullable=false, updatable=false)
+    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idDonativo", name="donativo", unique=true, nullable=false, updatable=false)
     private Donativo donativo;
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDProducto")
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDProducto", name="producto")
     private Producto producto;
 
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDEmbalaje")
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="IDEmbalaje", name="embalaje") 
     private Embalaje embalaje;
 
 	/**
