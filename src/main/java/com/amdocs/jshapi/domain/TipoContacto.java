@@ -17,7 +17,7 @@ public class TipoContacto {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDTipoContacto")
+	@Column(name = "idtipocontacto")
 	private Long id;
 
 	@Column(length = 50, nullable = false)

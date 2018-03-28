@@ -53,7 +53,7 @@ insert into Direccion (calle, numero, cp, ciudad, estado, latitud, longitud) val
 
 insert into Tipo_contacto (nombre) values ('tipo contacto');
 
-insert into contacto (valor, tipo_contacto) values ('valor', 1);
+insert into Contacto (valor, tipoContacto, nombre, apellido, telefono, extension, celular, email, password, grupo, ultimoLogin,fechaRegistro,habilitado,datosExtra) values ('valor', 1, 'nombre', 'apellido', '5555800301', 227, '5585616164', 'plebe@gmail.com', 'pwd', 401, current_date, current_date, 1, '{"id": 1,"name": "A green onion"');
 
 insert into Region (nombre, habilitado) values ('Región', 1);
 
