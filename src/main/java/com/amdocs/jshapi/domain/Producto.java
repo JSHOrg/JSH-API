@@ -15,12 +15,12 @@ import javax.persistence.OneToOne;
  * @author Roberto Gutierrez Garcia
  *
  */
-@Entity
+@Entity(name="producto")
 public class Producto {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDProducto")
+	@Column(name = "idproducto")
 	private Long id;
     
     @Column(length=50, nullable=false)
@@ -30,7 +30,7 @@ public class Producto {
     private String perecedero;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IdClasificacionProducto")
+    @JoinColumn(referencedColumnName="idclasificacionproducto")
     private ClasificacionProducto clasificacion;
 
 	/**

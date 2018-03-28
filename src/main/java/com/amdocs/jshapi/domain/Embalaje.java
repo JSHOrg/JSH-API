@@ -12,15 +12,15 @@ import javax.persistence.Id;
  * @author Roberto Gutierrez Garcia
  *
  */
-@Entity
+@Entity(name="embalaje")
 public class Embalaje {
 
     @Id
 	@GeneratedValue
-	@Column(name = "IDEmbalaje")
+	@Column(name = "idembalaje")
 	private Long id;
     
-    @Column(length=30)
+    @Column(length=30, name="tipoembalaje")
 	private String tipoEmbalaje;
 
 	public Embalaje() {

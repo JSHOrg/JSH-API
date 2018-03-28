@@ -4,22 +4,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 /**
  * 
  * @author Luis Cruz
  */
-@Entity
-// @Table(name = "TransportesCajas")
+@Entity(name = "transportescajas")
 public class TransportesCajas {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDTransportesCajas")
+	@Column(name = "idtransportescajas")
 	private Long id;
 
-	@Column(length=30)
+	@Column(length=30, name="tipocaja")
 	private String tipoCaja;
 
 	public TransportesCajas() {

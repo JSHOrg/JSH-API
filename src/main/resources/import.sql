@@ -4,12 +4,12 @@ INSERT INTO ACCOUNT (ID, NICKNAME, ENABLED, EMAIL, PASSWORD) VALUES(1, 'jshuser'
 
 INSERT INTO ACCOUNT_GRANTED_AUTHORITIES (ACCOUNT, AUTHORITY) VALUES(1,1);
 
-insert into Clasificacion_Producto values (1, 'Carbohidratos', 15);
-insert into Clasificacion_Producto values (2, 'Lípidos', 14);
-insert into Clasificacion_Producto values (3, 'Proteínas', 23);
-insert into Clasificacion_Producto values (4, 'Vitaminas', 133);
-insert into Clasificacion_Producto values (5, 'Minerales', 244);
-insert into Clasificacion_Producto values (6, 'Agua', 0);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Carbohidratos', 15);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Lípidos', 14);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Proteínas', 23);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Vitaminas', 133);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Minerales', 244);
+insert into ClasificacionProducto (nombre, valorNutrimental) values ('Agua', 0);
 
 insert into Producto values (1, 'Agua embotellada', '0', 6);
 insert into Producto values (2, 'Donas', '1', 1);
@@ -34,12 +34,12 @@ insert into Embalaje values (17, 'Plástico de burbujas');
 insert into Embalaje values (18, 'Plató agrícola');
 insert into Embalaje values (19, 'Saco de papel');
 
-insert into Transportes_Cajas values (1, 'Caja de solapas');
-insert into Transportes_Cajas values (2, 'Caja troquelada automontable');
-insert into Transportes_Cajas values (3, 'Troquel');
+insert into TransportesCajas values (1, 'Caja de solapas');
+insert into TransportesCajas values (2, 'Caja troquelada automontable');
+insert into TransportesCajas values (3, 'Troquel');
 
-insert into Transportes_Unidades values (1, 'Tráiler');
-insert into Transportes_Unidades values (2, 'Van');
+insert into TransportesUnidades values (1, 'Tráiler');
+insert into TransportesUnidades values (2, 'Van');
 
 insert into Donador (razon_social, recibo_fiscal, rfc, folio_acuse_convenio, vigencia_convenio, comentarios, calificacion, fecha_registro, habilitado ) values ('NUEVA WAL MART DE MEXICO S DE RL DE C V.', 0, 'NWM-970924-4W4', 'FolioAcuse', current_date, 'SIN COMENTARIOS', '6', current_date, 1);
 

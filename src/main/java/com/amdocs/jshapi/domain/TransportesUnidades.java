@@ -4,22 +4,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 /**
  * 
  * @author Luis Cruz
  */
-@Entity
-//@Table(name = "TransportesUnidades")
+@Entity(name = "transportesunidades")
 public class TransportesUnidades {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDTransportesUnidades")
+	@Column(name = "idtransportesunidades")
 	private Long id;
 
-	@Column(length=30)
+	@Column(length=30, name="tipounidad")
 	private String tipoUnidad;
 
 	public TransportesUnidades() {

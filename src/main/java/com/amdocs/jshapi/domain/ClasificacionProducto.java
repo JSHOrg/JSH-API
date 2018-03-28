@@ -12,18 +12,18 @@ import javax.persistence.Id;
  * @author Roberto Gutierrez Garcia
  *
  */
-@Entity
+@Entity(name="clasificacionproducto")
 public class ClasificacionProducto {
 
     @Id
 	@GeneratedValue
-	@Column(name = "idClasificacionProducto")
+	@Column(name = "idclasificacionproducto")
 	private Long id;
     
     @Column(length=30)
     private String nombre;
     
-    @Column
+    @Column(name="valornutrimental", columnDefinition = "SMALLINT")
     private int valorNutrimental;
 
 	/**
