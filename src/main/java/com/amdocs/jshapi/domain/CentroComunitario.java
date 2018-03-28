@@ -1,5 +1,8 @@
 package com.amdocs.jshapi.domain;
 
+/**
+ * TipoContacto.java
+ */
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,29 +17,30 @@ import javax.persistence.OneToOne;
  * 
  * @author Roberto Gutierrez Garcia
  */
-@Entity
+@Entity(name="centrocomunitario")
 public class CentroComunitario {
 
     @Id
 	@GeneratedValue
-	@Column(name = "IDCentroComunitario")
+	@Column(name = "idcentrocomunitario")
 	private Long id;
 	
 	@Column(length=50, nullable=false)
 	private String nombre;
 	
+	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
     @Column
     private boolean habilitado;
     
     @OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDDireccion", name="direccion", unique=true, nullable=false, updatable=false)
+    @JoinColumn(referencedColumnName="iddireccion", name="direccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
   
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDBancoAlimentos", name="bancoAlimentos")
-	private BancoAlimentos bancoAlimentos;//IDBancoAlimentosPerteneciente
+    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentosperteneciente")
+	private BancoAlimentos bancoAlimentos;
 
     /**
      * @return the id

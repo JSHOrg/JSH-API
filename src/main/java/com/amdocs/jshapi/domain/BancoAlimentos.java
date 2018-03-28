@@ -14,12 +14,12 @@ import javax.persistence.OneToOne;
  * 
  * @author GGABRIEL
  */
-@Entity
+@Entity(name="bancoalimentos")
 public class BancoAlimentos {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDBancoAlimentos")
+	@Column(name = "idbancoalimentos")
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
@@ -29,14 +29,16 @@ public class BancoAlimentos {
 	@Column(length = 50)
 	private String nombre;
 
-	@Column(length = 150)
+	@Column(name="razonsocial", length = 150)
 	private String razonSocial;
 
 	@Column(length = 3)
 	private String calificacion;
 
+	@Column(name="fechaafiliacion")
 	private Date fechaAfiliacion;
 
+	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
 	@Column

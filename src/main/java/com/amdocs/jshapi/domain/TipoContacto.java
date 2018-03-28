@@ -1,5 +1,5 @@
 /**
- * 
+ * TipoContacto.java
  */
 package com.amdocs.jshapi.domain;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
  * @author GGABRIEL
  *
  */
-@Entity
+@Entity(name="tipocontacto")
 public class TipoContacto {
 
 	@Id

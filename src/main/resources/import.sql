@@ -51,12 +51,12 @@ insert into Entrada_Almacen ( folio_interno, cantidad_original, cantidad_actual,
 
 insert into Direccion (calle, numero, cp, ciudad, estado, latitud, longitud) values ('calle', 'num', '45020', 'ciudad', 'Jalisco', '12.123434', '41.081347');
 
-insert into Tipo_contacto (nombre) values ('tipo contacto');
+insert into TipoContacto (nombre) values ('tipo contacto');
 
 insert into Contacto (valor, tipoContacto, nombre, apellido, telefono, extension, celular, email, password, grupo, ultimoLogin,fechaRegistro,habilitado,datosExtra) values ('valor', 1, 'nombre', 'apellido', '5555800301', 227, '5585616164', 'plebe@gmail.com', 'pwd', 401, current_date, current_date, 1, '{"id": 1,"name": "A green onion"');
 
 insert into Region (nombre, habilitado) values ('Región', 1);
 
-insert into Banco_Alimentos (administrativo, nombre, Razon_Social, Calificacion, fecha_afiliacion, fecha_registro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
+insert into BancoAlimentos (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
 
-insert into Centro_Comunitario (nombre, fecha_registro, habilitado, direccion, banco_alimentos) values ('Centro comunitario', '2018-03-20 00:00:00', 1, 1, 1);
+insert into CentroComunitario (nombre, fechaRegistro, habilitado, direccion, idBancoAlimentosPerteneciente) values ('Centro comunitario', '2018-03-20 00:00:00', 1, 1, 1);

@@ -4,19 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 /**
  * 
  * @author Luis Cruz
  */
-@Entity
-//@Table(name = "Region")
+@Entity(name="region")
 public class Region {    
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDRegion")
+	@Column(name = "idregion")
 	private Long id;
 
 	@Column(length=50)
