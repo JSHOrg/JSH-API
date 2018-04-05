@@ -14,7 +14,7 @@ public class Direccion {
 
     @Id
 	@GeneratedValue
-	@Column(name = "iddireccion")
+	@Column(name = "IDDireccion")
 	private Long id;
 	
 	@Column(length=200, nullable=false)

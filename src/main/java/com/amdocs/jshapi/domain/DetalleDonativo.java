@@ -14,51 +14,47 @@ import javax.persistence.OneToOne;
  * 
  * @author Roberto Gutierrez Garcia
  */
-@Entity(name="detalledonativo")
+@Entity
 public class DetalleDonativo {
 
     @Id
 	@GeneratedValue
-	@Column(name = "iddetalledonativo")
+	@Column(name = "IDDetalleDonativo")
 	private Long id;
     
-    @Column(name="cantidadkg")
+    @Column
     private String cantidadKg;
     
-    @Column(name="cantidadpza")
+    @Column
     private String cantidadPza;
     
-    @Column(name="fechaconsumolimite")
     private Date fechaConsumoLimite;
     
     @Column
     private boolean cosecha;
     
-    @Column(name="pagocosecha")
+    @Column
     private int pagoCosecha;
     
-    @Column(name="cantidadembalaje")
+    @Column
     private int cantidadEmbalaje;
     
     @Column
     private boolean status;
     
-    @Column(name="fechasolicitud")
     private Date fechaSolicitud;
     
-    @Column(name="fechaconfirmacion")
     private Date fechaConfirmacion;
     
-    @Column(name="fecharecepcion")
     private Date fechaRecepcion;
     
-    @Column(name="cantidadrecibida", length=12)
+    @Column(length=12)
     private String cantidadRecibida;
     
-    @Column(name="cantidadrecibidabuenestado", length=12)
+    @Column(length=12)
     private String cantidadRecibidaBuenEstado;
     
-    @Column(name="costooperativoacopio", length=10)
+    @Column(length=10)
     private String costoOperativoAcopio;
     
     @Column
@@ -68,16 +64,16 @@ public class DetalleDonativo {
     private String calificacion;
     
     @OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="iddonativo", name="donativo", unique=true, nullable=false, updatable=false)
+    @JoinColumn(referencedColumnName="idDonativo", name="donativo", unique=true, nullable=false, updatable=false)
     private Donativo donativo;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idproducto", name="producto")
+    @JoinColumn(referencedColumnName="IDProducto", name="producto")
     private Producto producto;
 
 
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idembalaje", name="embalaje") 
+    @JoinColumn(referencedColumnName="IDEmbalaje", name="embalaje") 
     private Embalaje embalaje;
 
 	/**

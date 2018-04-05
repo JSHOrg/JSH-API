@@ -16,22 +16,21 @@ public class Donador {
 
 	@Id
 	@GeneratedValue
-	@Column(name="iddonador")
+	@Column(name="IDDonador")
 	private Long id;
 
-	@Column(name="razonsocial", length=100, nullable=false)
+	@Column(length=100, nullable=false)
 	private String razonSocial;
 
-	@Column(name="recibofiscal")
+	@Column
 	private int reciboFiscal;
 
-	@Column(name="rfc", length=15)
+	@Column(length=15)
 	private String RFC;
 
-	@Column(name="folioacuseconvenio", length=15)
+	@Column(length=15)
 	private String folioAcuseConvenio;
 
-	@Column(name="vigenciaconvenio")
 	private Date vigenciaConvenio;
 
 	@Column
@@ -40,13 +39,13 @@ public class Donador {
 	@Column(length=3)
 	private String calificacion;
 
-	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
 	@Column
 	private boolean habilitado;
 
-	public Donador() {}
+	public Donador() {
+	}
 	
 	public Donador(String razonSocial, int reciboFiscal, String RFC, String folioAcuseConvenio, Date vigenciaConvenio,
 			String comentarios, String calificacion, Date fechaRegistro, boolean habilitado) {
