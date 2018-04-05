@@ -41,13 +41,13 @@ insert into TransportesCajas values (3, 'Troquel');
 insert into TransportesUnidades values (1, 'Tráiler');
 insert into TransportesUnidades values (2, 'Van');
 
-insert into Donador (razon_social, recibo_fiscal, rfc, folio_acuse_convenio, vigencia_convenio, comentarios, calificacion, fecha_registro, habilitado ) values ('NUEVA WAL MART DE MEXICO S DE RL DE C V.', 0, 'NWM-970924-4W4', 'FolioAcuse', current_date, 'SIN COMENTARIOS', '6', current_date, 1);
+insert into Donador (razonsocial, recibofiscal, rfc, folioacuseconvenio, vigenciaconvenio, comentarios, calificacion, fecharegistro, habilitado ) values ('NUEVA WAL MART DE MEXICO S DE RL DE C V.', 0, 'NWM-970924-4W4', 'FolioAcuse', current_date, 'SIN COMENTARIOS', '6', current_date, 1);
 
-insert into Donativo (remision_b_a, fecha_registro, fecha_acopio, requerimientos_donador, condiciones_transporte, coordinacion_transporte, costo_operativo, distribucion_regional, especificaciones, donador, transportes_cajas, transportes_unidades) values ('RemisionBA', current_date, current_date, 'RequerimientosDonador', 'CondicionesTransporte', 'CoordinacionTransporte', 1024, 'DR', 'Especificaciones', 1, 1, 1);
+insert into Donativo (remisionba, fecharegistro, fechaacopio, requerimientosdonador, condicionestransporte, coordinaciontransporte, costooperativo, distribucionregional, especificaciones, donador, transportescajas, transportesunidades) values ('RemisionBA', current_date, current_date, 'RequerimientosDonador', 'CondicionesTransporte', 'CoordinacionTransporte', 1024, 'DR', 'Especificaciones', 1, 1, 1);
 
-insert into Detalle_Donativo (cantidad_kg, cantidad_pza, fecha_consumo_limite, cosecha, pago_cosecha, cantidad_embalaje, status, fecha_solicitud, fecha_confirmacion, fecha_recepcion, cantidad_recibida, cantidad_recibida_buen_estado, costo_operativo_acopio, comentarios, calificacion, donativo, producto, embalaje) values (14, 32, now(), 1, 700, 14, 1, '2018-03-20 00:00:00', '2018-03-22 00:00:00', '2018-03-22 00:00:00', '14 cajas', '2 cajas', 'costo op', 'comentarios', '4', 1, 1, 1);
+insert into DetalleDonativo (cantidadkg, cantidadpza, fechaconsumolimite, cosecha, pagocosecha, cantidadembalaje, status, fechasolicitud, fechaconfirmacion, fecharecepcion, cantidadrecibida, cantidadrecibidabuenestado, costooperativoacopio, comentarios, calificacion, donativo, producto, embalaje) values (14, 32, now(), 1, 700, 14, 1, '2018-03-20 00:00:00', '2018-03-22 00:00:00', '2018-03-22 00:00:00', '14 cajas', '2 cajas', 'costo op', 'comentarios', '4', 1, 1, 1);
 
-insert into Entrada_Almacen ( folio_interno, cantidad_original, cantidad_actual, seccion_almacenamiento, fecha_entrada, status, detalle_Donativo) values ( 1, 5, 4, 'SeccionAlmacenamiento', '2018-03-22 00:00:00', 1, 1);
+insert into EntradaAlmacen ( foliointerno, cantidadoriginal, cantidadactual, seccionalmacenamiento, fechaentrada, status, detalleDonativo) values ( 1, 5, 4, 'SeccionAlmacenamiento', '2018-03-22 00:00:00', 1, 1);
 
 insert into Direccion (calle, numero, cp, ciudad, estado, latitud, longitud) values ('calle', 'num', '45020', 'ciudad', 'Jalisco', '12.123434', '41.081347');
 
