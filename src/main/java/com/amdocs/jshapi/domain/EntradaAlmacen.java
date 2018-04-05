@@ -19,33 +19,34 @@ import javax.persistence.OneToOne;
  * TODO add correct naming matching database 
  *
  */
-@Entity
+@Entity(name="entradaalmacen")
 public class EntradaAlmacen {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "IDEntradaAlmacen")
+	@Column(name = "identradaalmacen")
 	private Long id;
 	
-	@Column(length=15)
+	@Column(name="foliointerno", length=15)
 	private String folioInterno;
 
-	@Column(length=10)
+	@Column(name="cantidadoriginal", length=10)
 	private String cantidadOriginal;
 
-	@Column(length=10)
+	@Column(name="cantidadactual", length=10)
 	private String cantidadActual;
 
-	@Column(length=25)
+	@Column(name="seccionalmacenamiento", length=25)
 	private String seccionAlmacenamiento;
 
+	@Column(name="fechaentrada")
 	private Date fechaEntrada;
 
 	@Column
 	private boolean status;
 
 	@OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="detalle_donativo",referencedColumnName="IDDetalleDonativo")
+    @JoinColumn(name="detalledonativo",referencedColumnName="iddetalledonativo")
 	private DetalleDonativo detalleDonativo;
 
 	/**

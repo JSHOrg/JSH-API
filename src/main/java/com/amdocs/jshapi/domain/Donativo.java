@@ -19,44 +19,46 @@ public class Donativo {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idDonativo")
+	@Column(name = "iddonativo")
 	private Long id;
 
-	@Column(length=15, name = "remision_b_a")
+	@Column(length=15, name = "remisionba")
 	private String remisionBA;
 
+	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
+	@Column(name="fechaacopio")
 	private Date fechaAcopio;
 
-	@Column
+	@Column(name="requerimientosdonador")
 	private String requerimientosDonador;
 
-	@Column
+	@Column(name="condicionestransporte")
 	private String condicionesTransporte;
 
-	@Column(length=30)
+	@Column(name="coordinaciontransporte", length=30)
 	private String coordinacionTransporte;
 
-	@Column
+	@Column(name="costooperativo")
 	private int costoOperativo;
 
-	@Column(length=2)
+	@Column(name="distribucionregional", length=2)
 	private String distribucionRegional;
 
-	@Column
+	@Column(name="especificaciones")
 	private String especificaciones;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDDonador", name="donador")
+    @JoinColumn(referencedColumnName="iddonador", name="donador")
 	private Donador donador;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDTransportesCajas", name="transportes_cajas")
+    @JoinColumn(referencedColumnName="idtransportescajas", name="transportescajas")
 	private TransportesCajas transportesCajas;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="IDTransportesUnidades", name="transportes_unidades")
+    @JoinColumn(referencedColumnName="idtransportesunidades", name="transportesunidades")
 	private TransportesUnidades transportesUnidades;
 
     public Donativo() {
