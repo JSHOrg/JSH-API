@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * @author Luis Cruz
  */
 @Entity(name = "transportescajas")
-public class TransportesCajas {
+public class Caja {
 
 	@Id
 	@GeneratedValue
@@ -20,11 +20,11 @@ public class TransportesCajas {
 	@Column(length=30, name="tipocaja")
 	private String tipoCaja;
 
-	public TransportesCajas() {
+	public Caja() {
 		
 	}
 	
-	public TransportesCajas(Long id, String tipoCaja) {
+	public Caja(Long id, String tipoCaja) {
 		this.id = id;
 		this.tipoCaja = tipoCaja;
 	}

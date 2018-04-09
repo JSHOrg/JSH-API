@@ -55,18 +55,18 @@ public class Donativo {
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idtransportescajas", name="transportescajas")
-	private TransportesCajas transportesCajas;
+	private Caja transportesCajas;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idtransportesunidades", name="transportesunidades")
-	private TransportesUnidades transportesUnidades;
+	private Transporte transportesUnidades;
 
     public Donativo() {}
     
 	public Donativo(Long id, String remisionBA, Date fechaRegistro, Date fechaAcopio, String requerimientosDonador,
 			String condicionesTransporte, String coordinacionTransporte, int costoOperativo,
-			String distribucionRegional, String especificaciones, Donador donador, TransportesCajas transportesCajas,
-			TransportesUnidades transportesUnidades) {
+			String distribucionRegional, String especificaciones, Donador donador, Caja transportesCajas,
+			Transporte transportesUnidades) {
 		this.id = id;
 		this.remisionBA = remisionBA;
 		this.fechaRegistro = fechaRegistro;
@@ -246,28 +246,28 @@ public class Donativo {
 	/**
 	 * @return the transportesCajas
 	 */
-	public TransportesCajas getTransportesCajas() {
+	public Caja getTransportesCajas() {
 		return transportesCajas;
 	}
 
 	/**
 	 * @param transportesCajas the transportesCajas to set
 	 */
-	public void setTransportesCajas(TransportesCajas transportesCajas) {
+	public void setTransportesCajas(Caja transportesCajas) {
 		this.transportesCajas = transportesCajas;
 	}
 
 	/**
 	 * @return the transportesUnidades
 	 */
-	public TransportesUnidades getTransportesUnidades() {
+	public Transporte getTransportesUnidades() {
 		return transportesUnidades;
 	}
 
 	/**
 	 * @param transportesUnidades the transportesUnidades to set
 	 */
-	public void setTransportesUnidades(TransportesUnidades transportesUnidades) {
+	public void setTransportesUnidades(Transporte transportesUnidades) {
 		this.transportesUnidades = transportesUnidades;
 	}
 }

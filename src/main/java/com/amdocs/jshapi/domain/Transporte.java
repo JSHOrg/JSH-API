@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * @author Luis Cruz
  */
 @Entity(name = "transportesunidades")
-public class TransportesUnidades {
+public class Transporte {
 
 	@Id
 	@GeneratedValue
@@ -20,10 +20,10 @@ public class TransportesUnidades {
 	@Column(length=30, name="tipounidad")
 	private String tipoUnidad;
 
-	public TransportesUnidades() {
+	public Transporte() {
 	}
 	
-	public TransportesUnidades(Long id, String tipoUnidad) {
+	public Transporte(Long id, String tipoUnidad) {
 		this.id = id;
 		this.tipoUnidad = tipoUnidad;
 	}
