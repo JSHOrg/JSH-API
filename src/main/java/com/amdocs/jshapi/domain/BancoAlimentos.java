@@ -9,30 +9,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * 
  * @author GGABRIEL
  */
-@Entity(name="bancoalimentos")
+@Entity
+@Table(name="bancoalimentos")
 public class BancoAlimentos {
 
 	@Id
-	@GeneratedValue
 	@Column(name = "idbancoalimentos")
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "id", name="administrativo")
+	@JoinColumn(referencedColumnName = "id", name="idadministrativo")
 	private Account administrativo;
 
-	@Column(length = 50)
+	@Column
 	private String nombre;
 
-	@Column(name="razonsocial", length = 150)
+	@Column(name="razonsocial")
 	private String razonSocial;
 
-	@Column(length = 3)
+	@Column
 	private String calificacion;
 
 	@Column(name="fechaafiliacion")
@@ -45,15 +46,15 @@ public class BancoAlimentos {
 	private boolean habilitado;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IdRegion", name="region")
+	@JoinColumn(referencedColumnName = "IdRegion", name="IdRegion")
 	private Region region;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDDireccion", name="direccion")
+	@JoinColumn(referencedColumnName = "IDDireccion", name="IDDireccion")
 	private Direccion direccion;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDContacto", name="contacto")
+	@JoinColumn(referencedColumnName = "IDContacto", name="IDContacto")
 	private Contacto contacto;
 
 	public BancoAlimentos() {
