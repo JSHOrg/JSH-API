@@ -10,12 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * @author Roberto Gutierrez Garcia
  *
  */
-@Entity(name="producto")
+@Entity
+@Table(name="producto")
 public class Producto {
 
 	@Id
@@ -30,7 +32,7 @@ public class Producto {
     private String perecedero;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idclasificacionproducto")
+    @JoinColumn(referencedColumnName="idclasificacionproducto", name="idclasificacionproducto")
     private ClasificacionProducto clasificacion;
 
 	/**

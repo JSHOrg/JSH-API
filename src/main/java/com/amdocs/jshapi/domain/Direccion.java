@@ -4,12 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 
  * @author Roberto Gutierrez Garcia
  */
 @Entity
+@Table(name="direccion")
 public class Direccion {
 
     @Id

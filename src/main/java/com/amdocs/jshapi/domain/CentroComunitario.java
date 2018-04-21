@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * 
  * @author Roberto Gutierrez Garcia
  */
-@Entity(name="centrocomunitario")
+@Entity
+@Table(name="centrocomunitario")
 public class CentroComunitario {
 
     @Id
@@ -31,11 +33,14 @@ public class CentroComunitario {
 	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
-    @Column
+	@Column(name="indicemarginacion", length=10)
+	private String indiceMarginacion;
+
+	@Column
     private boolean habilitado;
     
     @OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="iddireccion", name="direccion", unique=true, nullable=false, updatable=false)
+    @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
   
     @OneToOne(fetch=FetchType.EAGER)
@@ -92,6 +97,20 @@ public class CentroComunitario {
 	}
 
     /**
+	 * @return the indiceMarginacion
+	 */
+	public String getIndiceMarginacion() {
+		return indiceMarginacion;
+	}
+
+	/**
+	 * @param indiceMarginacion the indiceMarginacion to set
+	 */
+	public void setIndiceMarginacion(String indiceMarginacion) {
+		this.indiceMarginacion = indiceMarginacion;
+	}
+
+	/**
      * @return the habilitado
      */
 	public boolean isHabilitado() {

@@ -4,12 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 
  * @author Luis Cruz
  */
-@Entity(name = "transportesunidades")
+@Entity
+@Table(name = "transportesunidades")
 public class Transporte {
 
 	@Id

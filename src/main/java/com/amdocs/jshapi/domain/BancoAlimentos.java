@@ -46,7 +46,7 @@ public class BancoAlimentos {
 	private boolean habilitado;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IdRegion", name="IdRegion")
+	@JoinColumn(referencedColumnName = "idregion", name="idregion")
 	private Region region;
 
 	@OneToOne(fetch = FetchType.EAGER)

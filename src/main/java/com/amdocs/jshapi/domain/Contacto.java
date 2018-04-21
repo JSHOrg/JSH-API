@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * @author GGABRIEL
  *
  */
 @Entity
+@Table(name="contacto")
 public class Contacto {
 
 	@Id
@@ -29,7 +31,7 @@ public class Contacto {
 	private String valor;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtipocontacto", name = "tipocontacto")
+	@JoinColumn(referencedColumnName = "idtipocontacto", name = "idtipocontacto")
 	private TipoContacto tipoContacto;
 
 	@Column(length = 50)

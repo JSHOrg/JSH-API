@@ -7,12 +7,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Roberto Gutierrez Garcia
  *
  */
-@Entity(name="embalaje")
+@Entity
+@Table(name="embalaje")
 public class Embalaje {
 
     @Id

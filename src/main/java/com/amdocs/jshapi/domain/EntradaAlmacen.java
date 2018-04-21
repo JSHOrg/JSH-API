@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 /**
@@ -19,7 +20,8 @@ import javax.persistence.OneToOne;
  * TODO add correct naming matching database 
  *
  */
-@Entity(name="entradaalmacen")
+@Entity
+@Table(name="entradaalmacen")
 public class EntradaAlmacen {
 
 	@Id
@@ -46,7 +48,7 @@ public class EntradaAlmacen {
 	private boolean status;
 
 	@OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="detalledonativo",referencedColumnName="iddetalledonativo")
+    @JoinColumn(name="iddetalledonativo",referencedColumnName="iddetalledonativo")
 	private DetalleDonativo detalleDonativo;
 
 	/**

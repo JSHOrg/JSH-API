@@ -9,12 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * 
  * @author Roberto Gutierrez Garcia
  */
-@Entity(name="detalledonativo")
+@Entity
+@Table(name="detalledonativo")
 public class DetalleDonativo {
 
     @Id
