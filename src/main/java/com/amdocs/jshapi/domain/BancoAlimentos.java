@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class BancoAlimentos {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "idbancoalimentos")
 	private Long id;
 
