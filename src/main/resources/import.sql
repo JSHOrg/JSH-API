@@ -1,3 +1,10 @@
+/*
+CREATE TABLE ACCOUNT_GRANTED_AUTHORITY (ID INTEGER PRIMARY KEY, AUTHORITY VARCHAR(100) NOT NULL );
+CREATE TABLE ACCOUNT (ID INTEGER, NICKNAME VARCHAR(100) NOT NULL , ENABLED TINYINT, EMAIL VARCHAR(100) NOT NULL , PASSWORD VARCHAR(100) NOT NULL );
+CREATE TABLE ACCOUNT_GRANTED_AUTHORITIES (ACCOUNT INTEGER NOT NULL , AUTHORITY INTEGER NOT NULL );
+*/
+
+
 INSERT INTO ACCOUNT_GRANTED_AUTHORITY (ID, AUTHORITY) VALUES(1, 'ADMIN');
 
 INSERT INTO ACCOUNT (ID, NICKNAME, ENABLED, EMAIL, PASSWORD) VALUES(1, 'jshuser', true, 'user@jsh.gob.mx', 'testpasswd');
@@ -57,6 +64,6 @@ insert into Contacto (valor, tipoContacto, nombre, apellido, telefono, extension
 
 insert into Region (nombre, habilitado) values ('Región', 1);
 
-insert into BancoAlimentos (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
+insert into  (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
 
 insert into CentroComunitario (nombre, fechaRegistro, indicemarginacion, habilitado, direccion, idBancoAlimentosPerteneciente) values ('Centro comunitario', '2018-03-20 00:00:00', 37.2, 1, 1, 1);

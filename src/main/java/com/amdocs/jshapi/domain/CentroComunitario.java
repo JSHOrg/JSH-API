@@ -33,9 +33,6 @@ public class CentroComunitario {
 	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
-	@Column(name="indicemarginacion", length=10)
-	private String indiceMarginacion;
-
 	@Column
     private boolean habilitado;
     
@@ -94,20 +91,6 @@ public class CentroComunitario {
      */
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
-	}
-
-    /**
-	 * @return the indiceMarginacion
-	 */
-	public String getIndiceMarginacion() {
-		return indiceMarginacion;
-	}
-
-	/**
-	 * @param indiceMarginacion the indiceMarginacion to set
-	 */
-	public void setIndiceMarginacion(String indiceMarginacion) {
-		this.indiceMarginacion = indiceMarginacion;
 	}
 
 	/**
