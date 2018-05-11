@@ -24,9 +24,9 @@ public class BancoAlimentos {
 	@Column(name = "idbancoalimentos")
 	private Long id;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	/*@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "id", name="idadministrativo")
-	private Account administrativo;
+	private Account administrativo;*/
 
 	@Column
 	private String nombre;
@@ -86,17 +86,17 @@ public class BancoAlimentos {
 	/**
 	 * @return the administrativo
 	 */
-	public Account getAdministrativo() {
+	/*public Account getAdministrativo() {
 		return administrativo;
-	}
+	}*/
 
 	/**
 	 * @param administrativo
 	 *            the administrativo to set
 	 */
-	public void setAdministrativo(Account administrativo) {
+	/*public void setAdministrativo(Account administrativo) {
 		this.administrativo = administrativo;
-	}
+	}*/
 
 	/**
 	 * @return the nombre
