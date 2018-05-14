@@ -22,15 +22,15 @@ public class AccountDetailsService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Account account = repository.findByNickname(username);
+		Account account = repository.findByNombre(username);
 		if(account != null) {
 			return new User( 
-					account.getNickname(),
+					account.getNombre(),
 					account.getPassword(),
-					account.getEnabled(),
-					account.getEnabled(),
-					account.getEnabled(),
-					account.getEnabled(),
+					account.getHabilitado(),
+					account.getHabilitado(),
+					account.getHabilitado(),
+					account.getHabilitado(),
 					account.getGrantedAuthorities()
 				);
 		} else {

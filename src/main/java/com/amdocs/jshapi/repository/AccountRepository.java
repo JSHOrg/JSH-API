@@ -9,5 +9,5 @@ import com.amdocs.jshapi.domain.Account;
 @RepositoryRestResource(path = "usuarios", collectionResourceRel = "usuarios")
 public interface AccountRepository extends PagingAndSortingRepository<Account, Long>{
 	
-	public Account findByNickname(@Param("nickname") String nickname);
+	public Account findByNombre(@Param("nombre") String nombre);
 }
