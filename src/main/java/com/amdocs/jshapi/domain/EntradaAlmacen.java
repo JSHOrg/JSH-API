@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -51,6 +52,10 @@ public class EntradaAlmacen {
     @JoinColumn(name="iddetalledonativo",referencedColumnName="iddetalledonativo")
 	private DetalleDonativo detalleDonativo;
 
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idusuario", name="idusuario")
+	private Account usuario;
+	
 	/**
 	 * @return the id
 	 */
@@ -168,5 +173,19 @@ public class EntradaAlmacen {
 	 */
 	public void setDetalleDonativo(DetalleDonativo detalleDonativo) {
 		this.detalleDonativo = detalleDonativo;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Account getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Account usuario) {
+		this.usuario = usuario;
 	}
 }

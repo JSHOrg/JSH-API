@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -82,6 +83,14 @@ public class DetalleDonativo {
     @JoinColumn(referencedColumnName="idembalaje", name="embalaje") 
     private Embalaje embalaje;
 
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentos") 
+    private BancoAlimentos bancoAlimentos;
+    
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idusuario", name="idusuario")
+	private Account usuario;
+    
 	/**
 	 * @return the id
 	 */
@@ -353,5 +362,33 @@ public class DetalleDonativo {
 	 */
 	public void setEmbalaje(Embalaje embalaje) {
 		this.embalaje = embalaje;
+	}
+
+	/**
+	 * @return the bancoAlimentos
+	 */
+	public BancoAlimentos getBancoAlimentos() {
+		return bancoAlimentos;
+	}
+
+	/**
+	 * @param bancoAlimentos the bancoAlimentos to set
+	 */
+	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
+		this.bancoAlimentos = bancoAlimentos;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Account getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Account usuario) {
+		this.usuario = usuario;
 	}
 }

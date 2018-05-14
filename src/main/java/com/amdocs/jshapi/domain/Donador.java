@@ -4,8 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -13,56 +16,45 @@ import javax.persistence.Table;
  * @author Luis Cruz
  */
 @Entity
-@Table(name="donador")
+@Table(name = "donador")
 public class Donador {
 
 	@Id
 	@GeneratedValue
-	@Column(name="iddonador")
+	@Column(name = "iddonador")
 	private Long id;
 
-	@Column(name="razonsocial", length=100, nullable=false)
+	@Column(name = "razonsocial", length = 100, nullable = false)
 	private String razonSocial;
 
-	@Column(name="recibofiscal")
+	@Column(name = "recibofiscal")
 	private int reciboFiscal;
 
-	@Column(length=15)
+	@Column(length = 15)
 	private String RFC;
-
-	@Column(name="folioacuseconvenio", length=15)
-	private String folioAcuseConvenio;
-
-	@Column(name="vigenciaconvenio")
-	private Date vigenciaConvenio;
 
 	@Column
 	private String comentarios;
 
-	@Column(length=3)
+	@Column(length = 3)
 	private String calificacion;
 
-	@Column(name="fecharegistro")
+	@Column(name = "fecharegistro")
 	private Date fechaRegistro;
 
 	@Column
 	private boolean habilitado;
 
-	public Donador() {}
-	
-	public Donador(String razonSocial, int reciboFiscal, String RFC, String folioAcuseConvenio, Date vigenciaConvenio,
-			String comentarios, String calificacion, Date fechaRegistro, boolean habilitado) {
-		this.razonSocial = razonSocial;
-		this.reciboFiscal = reciboFiscal;
-		this.RFC = RFC;
-		this.folioAcuseConvenio = folioAcuseConvenio;
-		this.vigenciaConvenio = vigenciaConvenio;
-		this.comentarios = comentarios;
-		this.calificacion = calificacion;
-		this.fechaRegistro = fechaRegistro;
-		this.habilitado = habilitado;
-	}
-	
+	@Column
+	private String telefono;
+
+	@Column
+	private String email;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "idbancoalimentos", name = "idbancoalimentosperteneciente")
+	private BancoAlimentos bancoAlimentos;
+
 	/**
 	 * @return the id
 	 */
@@ -71,19 +63,20 @@ public class Donador {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-  	/**
-     	* @return the Identifier
-     	*/	
-	public Long getIdentifier(){
+	/**
+	 * @return the Identifier
+	 */
+	public Long getIdentifier() {
 		return this.id;
-	} 
-	
+	}
+
 	/**
 	 * @return the razonSocial
 	 */
@@ -92,7 +85,8 @@ public class Donador {
 	}
 
 	/**
-	 * @param razonSocial the razonSocial to set
+	 * @param razonSocial
+	 *            the razonSocial to set
 	 */
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
@@ -106,7 +100,8 @@ public class Donador {
 	}
 
 	/**
-	 * @param reciboFiscal the reciboFiscal to set
+	 * @param reciboFiscal
+	 *            the reciboFiscal to set
 	 */
 	public void setReciboFiscal(int reciboFiscal) {
 		this.reciboFiscal = reciboFiscal;
@@ -120,38 +115,11 @@ public class Donador {
 	}
 
 	/**
-	 * @param rFC the rFC to set
+	 * @param rFC
+	 *            the rFC to set
 	 */
 	public void setRFC(String rFC) {
 		RFC = rFC;
-	}
-
-	/**
-	 * @return the folioAcuseConvenio
-	 */
-	public String getFolioAcuseConvenio() {
-		return folioAcuseConvenio;
-	}
-
-	/**
-	 * @param folioAcuseConvenio the folioAcuseConvenio to set
-	 */
-	public void setFolioAcuseConvenio(String folioAcuseConvenio) {
-		this.folioAcuseConvenio = folioAcuseConvenio;
-	}
-
-	/**
-	 * @return the vigenciaConvenio
-	 */
-	public Date getVigenciaConvenio() {
-		return vigenciaConvenio;
-	}
-
-	/**
-	 * @param vigenciaConvenio the vigenciaConvenio to set
-	 */
-	public void setVigenciaConvenio(Date vigenciaConvenio) {
-		this.vigenciaConvenio = vigenciaConvenio;
 	}
 
 	/**
@@ -162,7 +130,8 @@ public class Donador {
 	}
 
 	/**
-	 * @param comentarios the comentarios to set
+	 * @param comentarios
+	 *            the comentarios to set
 	 */
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
@@ -176,7 +145,8 @@ public class Donador {
 	}
 
 	/**
-	 * @param calificacion the calificacion to set
+	 * @param calificacion
+	 *            the calificacion to set
 	 */
 	public void setCalificacion(String calificacion) {
 		this.calificacion = calificacion;
@@ -190,7 +160,8 @@ public class Donador {
 	}
 
 	/**
-	 * @param fechaRegistro the fechaRegistro to set
+	 * @param fechaRegistro
+	 *            the fechaRegistro to set
 	 */
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
@@ -204,9 +175,55 @@ public class Donador {
 	}
 
 	/**
-	 * @param habilitado the habilitado to set
+	 * @param habilitado
+	 *            the habilitado to set
 	 */
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
+	}
+
+	/**
+	 * @return the telefono
+	 */
+	public String getTelefono() {
+		return telefono;
+	}
+
+	/**
+	 * @param telefono
+	 *            the telefono to set
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email
+	 *            the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return the bancoAlimentos
+	 */
+	public BancoAlimentos getBancoAlimentos() {
+		return bancoAlimentos;
+	}
+
+	/**
+	 * @param bancoAlimentos
+	 *            the bancoAlimentos to set
+	 */
+	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
+		this.bancoAlimentos = bancoAlimentos;
 	}
 }

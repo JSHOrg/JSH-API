@@ -45,21 +45,24 @@ public class BancoAlimentos {
 
 	@Column
 	private boolean habilitado;
+	
+	@Column
+	private String telefono;
+	
+	@Column
+	private String email;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idregion", name="idregion")
 	private Region region;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDDireccion", name="IDDireccion")
+	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
 	private Direccion direccion;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "IDContacto", name="IDContacto")
+	@JoinColumn(referencedColumnName = "idcontacto", name="idcContacto")
 	private Contacto contacto;
-
-	public BancoAlimentos() {
-	}
 
 	/**
 	 * @return the id
@@ -186,6 +189,34 @@ public class BancoAlimentos {
 	 */
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
+	}
+
+	/**
+	 * @return the telefono
+	 */
+	public String getTelefono() {
+		return telefono;
+	}
+
+	/**
+	 * @param telefono the telefono to set
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**

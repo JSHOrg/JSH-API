@@ -40,6 +40,9 @@ public class Direccion {
     @Column(length=12)
     private String longitud;
     
+    @Column(length=50)
+    private String colonia;
+    
     /**
      * @return the id
      */
@@ -157,5 +160,19 @@ public class Direccion {
      */
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
+	}
+
+	/**
+	 * @return the colonia
+	 */
+	public String getColonia() {
+		return colonia;
+	}
+
+	/**
+	 * @param colonia the colonia to set
+	 */
+	public void setColonia(String colonia) {
+		this.colonia = colonia;
 	}
 }

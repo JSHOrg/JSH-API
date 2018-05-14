@@ -36,17 +36,8 @@ public class Donativo {
 	@Column(name="requerimientosdonador")
 	private String requerimientosDonador;
 
-	@Column(name="condicionestransporte")
-	private String condicionesTransporte;
-
-	@Column(name="coordinaciontransporte", length=30)
-	private String coordinacionTransporte;
-
 	@Column(name="costooperativo")
 	private int costoOperativo;
-
-	@Column(name="distribucionregional", length=2)
-	private String distribucionRegional;
 
 	@Column
 	private String especificaciones;
@@ -63,27 +54,26 @@ public class Donativo {
     @JoinColumn(referencedColumnName="idtransportesunidades", name="transportesunidades")
 	private Transporte transportesUnidades;
 
-    public Donativo() {}
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentosofertante")
+	private BancoAlimentos bancoAlimentosOfertante;
     
-	public Donativo(Long id, String remisionBA, Date fechaRegistro, Date fechaAcopio, String requerimientosDonador,
-			String condicionesTransporte, String coordinacionTransporte, int costoOperativo,
-			String distribucionRegional, String especificaciones, Donador donador, Caja transportesCajas,
-			Transporte transportesUnidades) {
-		this.id = id;
-		this.remisionBA = remisionBA;
-		this.fechaRegistro = fechaRegistro;
-		this.fechaAcopio = fechaAcopio;
-		this.requerimientosDonador = requerimientosDonador;
-		this.condicionesTransporte = condicionesTransporte;
-		this.coordinacionTransporte = coordinacionTransporte;
-		this.costoOperativo = costoOperativo;
-		this.distribucionRegional = distribucionRegional;
-		this.especificaciones = especificaciones;
-		this.donador = donador;
-		this.transportesCajas = transportesCajas;
-		this.transportesUnidades = transportesUnidades;
-	}
-
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idcontacto", name="idcontactodonador")
+	private Contacto contactoDonador;
+    
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentospropietario")
+	private BancoAlimentos bancoAlimentosPropietario;
+    
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idusuario", name="idusuario")
+	private Account usuario;
+    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="iddireccion", name="iddireccionacopio")
+	private Direccion direccionAcopio;
+   
 	/**
 	 * @return the id
 	 */
@@ -162,34 +152,6 @@ public class Donativo {
 	}
 
 	/**
-	 * @return the condicionesTransporte
-	 */
-	public String getCondicionesTransporte() {
-		return condicionesTransporte;
-	}
-
-	/**
-	 * @param condicionesTransporte the condicionesTransporte to set
-	 */
-	public void setCondicionesTransporte(String condicionesTransporte) {
-		this.condicionesTransporte = condicionesTransporte;
-	}
-
-	/**
-	 * @return the coordinacionTransporte
-	 */
-	public String getCoordinacionTransporte() {
-		return coordinacionTransporte;
-	}
-
-	/**
-	 * @param coordinacionTransporte the coordinacionTransporte to set
-	 */
-	public void setCoordinacionTransporte(String coordinacionTransporte) {
-		this.coordinacionTransporte = coordinacionTransporte;
-	}
-
-	/**
 	 * @return the costoOperativo
 	 */
 	public int getCostoOperativo() {
@@ -201,20 +163,6 @@ public class Donativo {
 	 */
 	public void setCostoOperativo(int costoOperativo) {
 		this.costoOperativo = costoOperativo;
-	}
-
-	/**
-	 * @return the distribucionRegional
-	 */
-	public String getDistribucionRegional() {
-		return distribucionRegional;
-	}
-
-	/**
-	 * @param distribucionRegional the distribucionRegional to set
-	 */
-	public void setDistribucionRegional(String distribucionRegional) {
-		this.distribucionRegional = distribucionRegional;
 	}
 
 	/**
@@ -271,5 +219,75 @@ public class Donativo {
 	 */
 	public void setTransportesUnidades(Transporte transportesUnidades) {
 		this.transportesUnidades = transportesUnidades;
+	}
+
+	/**
+	 * @return the bancoAlimentosOfertante
+	 */
+	public BancoAlimentos getBancoAlimentosOfertante() {
+		return bancoAlimentosOfertante;
+	}
+
+	/**
+	 * @param bancoAlimentosOfertante the bancoAlimentosOfertante to set
+	 */
+	public void setBancoAlimentosOfertante(BancoAlimentos bancoAlimentosOfertante) {
+		this.bancoAlimentosOfertante = bancoAlimentosOfertante;
+	}
+
+	/**
+	 * @return the contactoDonador
+	 */
+	public Contacto getContactoDonador() {
+		return contactoDonador;
+	}
+
+	/**
+	 * @param contactoDonador the contactoDonador to set
+	 */
+	public void setContactoDonador(Contacto contactoDonador) {
+		this.contactoDonador = contactoDonador;
+	}
+
+	/**
+	 * @return the bancoAlimentosPropietario
+	 */
+	public BancoAlimentos getBancoAlimentosPropietario() {
+		return bancoAlimentosPropietario;
+	}
+
+	/**
+	 * @param bancoAlimentosPropietario the bancoAlimentosPropietario to set
+	 */
+	public void setBancoAlimentosPropietario(BancoAlimentos bancoAlimentosPropietario) {
+		this.bancoAlimentosPropietario = bancoAlimentosPropietario;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Account getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Account usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the direccionAcopio
+	 */
+	public Direccion getDireccionAcopio() {
+		return direccionAcopio;
+	}
+
+	/**
+	 * @param direccionAcopio the direccionAcopio to set
+	 */
+	public void setDireccionAcopio(Direccion direccionAcopio) {
+		this.direccionAcopio = direccionAcopio;
 	}
 }
