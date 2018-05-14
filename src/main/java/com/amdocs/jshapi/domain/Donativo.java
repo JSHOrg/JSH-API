@@ -43,7 +43,7 @@ public class Donativo {
 	private String especificaciones;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="iddonador", name="donador")
+    @JoinColumn(referencedColumnName="iddonador", name="iddonador")
 	private Donador donador;
 
     @ManyToOne(fetch=FetchType.EAGER)

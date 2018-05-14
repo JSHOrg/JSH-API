@@ -61,7 +61,7 @@ public class BancoAlimentos {
 	private Direccion direccion;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idcontacto", name="idcContacto")
+	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
 	private Contacto contacto;
 
 	/**
