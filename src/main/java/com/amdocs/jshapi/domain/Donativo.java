@@ -47,11 +47,11 @@ public class Donativo {
 	private Donador donador;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idtransportescajas", name="transportescajas")
+    @JoinColumn(referencedColumnName="idtransportescajas", name="idtransportescajas")
 	private Caja transportesCajas;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idtransportesunidades", name="transportesunidades")
+    @JoinColumn(referencedColumnName="idtransportesunidades", name="idtransportesunidades")
 	private Transporte transportesUnidades;
 
     @ManyToOne(fetch=FetchType.EAGER)
