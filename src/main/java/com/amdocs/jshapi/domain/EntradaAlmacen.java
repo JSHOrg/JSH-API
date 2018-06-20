@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 /**
  * @author Roberto Gutierrez Garcia
- * TODO add correct naming matching database 
  *
  */
 @Entity
