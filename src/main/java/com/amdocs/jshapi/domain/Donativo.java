@@ -48,11 +48,11 @@ public class Donativo {
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idtransportescajas", name="idtransportescajas")
-	private Caja transportesCajas;
+	private TransporteCaja transportesCajas;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idtransportesunidades", name="idtransportesunidades")
-	private Transporte transportesUnidades;
+	private TransporteUnidades transportesUnidades;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentosofertante")
@@ -196,28 +196,28 @@ public class Donativo {
 	/**
 	 * @return the transportesCajas
 	 */
-	public Caja getTransportesCajas() {
+	public TransporteCaja getTransportesCajas() {
 		return transportesCajas;
 	}
 
 	/**
 	 * @param transportesCajas the transportesCajas to set
 	 */
-	public void setTransportesCajas(Caja transportesCajas) {
+	public void setTransportesCajas(TransporteCaja transportesCajas) {
 		this.transportesCajas = transportesCajas;
 	}
 
 	/**
 	 * @return the transportesUnidades
 	 */
-	public Transporte getTransportesUnidades() {
+	public TransporteUnidades getTransportesUnidades() {
 		return transportesUnidades;
 	}
 
 	/**
 	 * @param transportesUnidades the transportesUnidades to set
 	 */
-	public void setTransportesUnidades(Transporte transportesUnidades) {
+	public void setTransportesUnidades(TransporteUnidades transportesUnidades) {
 		this.transportesUnidades = transportesUnidades;
 	}
 
