@@ -38,13 +38,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	
 	@Autowired
 	private AccountDetailsService userDetailsService;
-	
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients ) throws Exception {
 		clients
 			.inMemory()
 			.withClient(properties.getClientId())
-				.authorizedGrantTypes("password")
+				.authorizedGrantTypes("password", "refresh_token")
 				.authorities("ADMIN")
 				.scopes("read", "write")
 				.resourceIds("restapi")
