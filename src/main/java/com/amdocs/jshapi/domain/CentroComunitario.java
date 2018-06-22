@@ -44,6 +44,9 @@ public class CentroComunitario {
     @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentosperteneciente")
 	private BancoAlimentos bancoAlimentos;
 
+	@OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idcontacto", name="idcontacto")
+    private Contacto contacto;
     /**
      * @return the id
      */
@@ -133,5 +136,19 @@ public class CentroComunitario {
      */
 	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
 		this.bancoAlimentos = bancoAlimentos;
+	}
+
+	/**
+     * @return the bancoAlimentos
+     */
+	public Contacto getContacto() {
+		return contacto;
+	}
+
+    /**
+     * @param contacto the bancoAlimentos to set
+     */
+	public void setContacto(Contacto contacto) {
+		this.contacto = contacto;
 	}
 }
