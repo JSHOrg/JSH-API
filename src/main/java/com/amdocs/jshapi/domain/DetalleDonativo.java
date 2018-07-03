@@ -70,7 +70,7 @@ public class DetalleDonativo {
     @Column(length=3)
     private String calificacion;
     
-    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="iddonativo", name="donativo", unique=true, nullable=false, updatable=false)
     private Donativo donativo;
     

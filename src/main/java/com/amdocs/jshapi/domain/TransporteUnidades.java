@@ -11,24 +11,23 @@ import javax.persistence.Table;
  * @author Luis Cruz
  */
 @Entity
-@Table(name = "transportescajas")
-public class Caja {
+@Table(name = "transportesunidades")
+public class TransporteUnidades {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idtransportescajas")
+	@Column(name = "idtransportesunidades")
 	private Long id;
 
-	@Column(length=30, name="tipocaja")
-	private String tipoCaja;
+	@Column(length=30, name="tipounidad")
+	private String tipoUnidad;
 
-	public Caja() {
-		
+	public TransporteUnidades() {
 	}
 	
-	public Caja(Long id, String tipoCaja) {
+	public TransporteUnidades(Long id, String tipoUnidad) {
 		this.id = id;
-		this.tipoCaja = tipoCaja;
+		this.tipoUnidad = tipoUnidad;
 	}
 
 	/**
@@ -50,19 +49,19 @@ public class Caja {
      	*/	
 	public Long getIdentifier(){
 		return this.id;
-	}
+	}	
 	
 	/**
-	 * @return the tipoCaja
+	 * @return the tipoUnidad
 	 */
-	public String getTipoCaja() {
-		return tipoCaja;
+	public String getTipoUnidad() {
+		return tipoUnidad;
 	}
 
 	/**
-	 * @param tipoCaja the tipoCaja to set
+	 * @param tipoUnidad the tipoUnidad to set
 	 */
-	public void setTipoCaja(String tipoCaja) {
-		this.tipoCaja = tipoCaja;
+	public void setTipoUnidad(String tipoUnidad) {
+		this.tipoUnidad = tipoUnidad;
 	}
 }

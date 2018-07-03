@@ -50,6 +50,12 @@ public class Donador {
 
 	@Column
 	private String email;
+	
+	@Column(length = 40)
+	private String tipo;
+	
+	@Column
+	private String descripcion;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idbancoalimentos", name = "idbancoalimentosperteneciente")

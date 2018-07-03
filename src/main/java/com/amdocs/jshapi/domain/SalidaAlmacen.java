@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="salidalmacen")
+@Table(name="salidaalmacen")
 public class SalidaAlmacen {
 
 	@Id
@@ -27,7 +27,7 @@ public class SalidaAlmacen {
 	@Column
 	private String motivo;
 	
-	@Column
+	@Column(name="tiposalida")
 	private boolean tipoSalida;
 	
 	@Column(name="fechasalida")
