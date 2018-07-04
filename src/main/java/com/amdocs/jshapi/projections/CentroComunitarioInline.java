@@ -12,7 +12,7 @@ public interface CentroComunitarioInline {
     String getNombre();
     Date getFechaRegistro();
     boolean isHabilitado();
+    String getIndiceMarginacion();
     Direccion getDireccion();
-    Contacto getContacto();
     BancoAlimentos getBancoAlimentos();
 }

@@ -61,6 +61,11 @@ public class Donador {
 	@JoinColumn(referencedColumnName = "idbancoalimentos", name = "idbancoalimentosperteneciente")
 	private BancoAlimentos bancoAlimentos;
 
+	//TODO: check db definition
+    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
+    private Direccion domicilio;
+	
 	/**
 	 * @return the id
 	 */
@@ -219,6 +224,34 @@ public class Donador {
 	}
 
 	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	/**
 	 * @return the bancoAlimentos
 	 */
 	public BancoAlimentos getBancoAlimentos() {
@@ -231,5 +264,19 @@ public class Donador {
 	 */
 	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
 		this.bancoAlimentos = bancoAlimentos;
+	}
+
+	/**
+	 * @return the domicilio
+	 */
+	public Direccion getDomicilio() {
+		return domicilio;
+	}
+
+	/**
+	 * @param domicilio the domicilio to set
+	 */
+	public void setDomicilio(Direccion domicilio) {
+		this.domicilio = domicilio;
 	}
 }

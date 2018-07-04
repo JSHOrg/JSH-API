@@ -12,7 +12,7 @@ import com.amdocs.jshapi.domain.ClasificacionProducto;
  * @author Alejandro Alberto Aguilar Morales
  *
  */
-@RepositoryRestResource(path = "calisificacionproducto", collectionResourceRel = "calisificacionproducto")
+@RepositoryRestResource(path = "clasificacionproducto", collectionResourceRel = "clasificacionproducto")
 public interface ClasificacionProductoRepository extends PagingAndSortingRepository<ClasificacionProducto, Long> {
 
 }

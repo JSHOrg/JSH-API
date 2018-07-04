@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.amdocs.jshapi.domain.Almacen;
 import com.amdocs.jshapi.domain.BancoAlimentos;
+import com.amdocs.jshapi.domain.Direccion;
 
 @Projection(name = "donadorInline", types = Almacen.class)
 public interface DonadorInline {
@@ -19,4 +20,5 @@ public interface DonadorInline {
     String getTelefono();
     String getEmail();
     BancoAlimentos getBancoAlimentos();
+    Direccion getDomicilio();
 }

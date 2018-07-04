@@ -1,7 +1,7 @@
 package com.amdocs.jshapi.domain;
 
 /**
- * TipoContacto.java
+ * CentroComunitario.java
  */
 import java.util.Date;
 
@@ -35,6 +35,9 @@ public class CentroComunitario {
 
 	@Column
     private boolean habilitado;
+	
+	@Column(name = "indicemarginacion", length = 10)
+	private String indiceMarginacion;
     
     @OneToOne(optional=false, fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
@@ -108,6 +111,20 @@ public class CentroComunitario {
 	}
 
     /**
+	 * @return the indiceMarginacion
+	 */
+	public String getIndiceMarginacion() {
+		return indiceMarginacion;
+	}
+
+	/**
+	 * @param indiceMarginacion the indiceMarginacion to set
+	 */
+	public void setIndiceMarginacion(String indiceMarginacion) {
+		this.indiceMarginacion = indiceMarginacion;
+	}
+
+	/**
      * @return the direccion
      */
 	public Direccion getDireccion() {
