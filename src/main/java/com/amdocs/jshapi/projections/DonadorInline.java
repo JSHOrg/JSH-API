@@ -18,5 +18,7 @@ public interface DonadorInline {
     boolean isHabilitado();
     String getTelefono();
     String getEmail();
+    String getTipo();
+    String getDescripcion();
     BancoAlimentos getBancoAlimentos();
 }
