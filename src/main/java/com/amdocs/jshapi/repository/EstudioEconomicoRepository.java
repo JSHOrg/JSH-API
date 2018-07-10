@@ -12,7 +12,7 @@ import com.amdocs.jshapi.domain.EstudioEconomico;
  * @author Alejandro Alberto Aguilar Morales
  *
  */
-@RepositoryRestResource(path = "estudioeconomico", collectionResourceRel = "estudioeconomico")
+@RepositoryRestResource(path = "estudioseconomicos", collectionResourceRel = "estudioseconomicos")
 public interface EstudioEconomicoRepository extends PagingAndSortingRepository<EstudioEconomico, Long> {
 
 }

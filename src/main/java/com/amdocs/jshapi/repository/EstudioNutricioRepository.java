@@ -12,7 +12,7 @@ import com.amdocs.jshapi.domain.EstudioNutricio;;
  * @author Alejandro Alberto Aguilar Morales
  *
  */
-@RepositoryRestResource(path = "estudionutricio", collectionResourceRel = "estudionutricio")
+@RepositoryRestResource(path = "estudiosnutricios", collectionResourceRel = "estudiosnutricios")
 public interface EstudioNutricioRepository extends PagingAndSortingRepository<EstudioNutricio, Long> {
 
 }

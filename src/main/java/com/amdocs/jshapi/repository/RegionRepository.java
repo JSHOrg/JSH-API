@@ -6,6 +6,10 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.amdocs.jshapi.domain.Region;
 
+/**
+ * @author Alejandro Alberto Aguilar Morales
+ *
+ */
 @RepositoryRestResource(path = "regiones", collectionResourceRel = "regiones")
 public interface RegionRepository extends PagingAndSortingRepository<Region, Long> {
 

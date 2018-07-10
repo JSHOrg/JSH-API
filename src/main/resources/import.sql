@@ -64,6 +64,6 @@ insert into Contacto (valor, tipoContacto, nombre, apellido, telefono, extension
 
 insert into Region (nombre, habilitado) values ('Región', 1);
 
-insert into  (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
+insert into BancoAlimentos (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
 
 insert into CentroComunitario (nombre, fechaRegistro, indicemarginacion, habilitado, direccion, idBancoAlimentosPerteneciente) values ('Centro comunitario', '2018-03-20 00:00:00', 37.2, 1, 1, 1);

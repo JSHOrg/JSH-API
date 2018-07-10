@@ -65,8 +65,7 @@ public class Contacto {
 
 	private boolean habilitado;
 
-	// TODO: check JSON type for MySQL, defined in schema
-	@Column(columnDefinition = "VARCHAR(500)", name="datosextra")
+	@Column(name="datosextra")
 	private String datosExtra;
 
 	/**
