@@ -29,9 +29,9 @@ public class SolicitudesRecoleccion {
 	@Column(name = "idsolicitudrecoleccion")
 	private Long id;
     
-    @OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "iddonativo", name = "iddonativo")
-    private Donativo donativo;
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="iddetalledonativo", referencedColumnName="iddetalledonativo")
+	private DetalleDonativo detalleDonativo;
 
     @OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idproveedor", name = "idproveedor")
@@ -65,17 +65,17 @@ public class SolicitudesRecoleccion {
     }
 
     /**
-     * @return the donativo
+     * @return the detalledonativo
      */
-    public Donativo getDonativo() {
-        return donativo;
+    public DetalleDonativo getDetalledonativo() {
+        return detalleDonativo;
     }
 
     /**
-     * @param donativo the donativo to set
+     * @param detalledonativo the detalledonativo to set
      */
-    public void setDonativo(Donativo donativo) {
-        this.donativo = donativo;
+    public void setDetalledonativo(DetalleDonativo detalledonativo) {
+        this.detalleDonativo = detalledonativo;
     }
 
     /**

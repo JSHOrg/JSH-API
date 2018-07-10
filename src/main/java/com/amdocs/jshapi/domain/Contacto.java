@@ -27,7 +27,7 @@ public class Contacto {
 	@Column(name = "idcontacto")
 	private Long id;
 
-	@Column(length = 200, nullable = false)
+	@Column(length = 200)
 	private String valor;
 
 	@OneToOne(fetch = FetchType.EAGER)
@@ -43,6 +43,7 @@ public class Contacto {
 	@Column(length = 15)
 	private String telefono;
 
+	@Column(name = "extension")
 	private int extension;
 
 	@Column(length = 10)
@@ -63,9 +64,10 @@ public class Contacto {
 	@Column(name = "fecharegistro")
 	private Date fechaRegistro;
 
+	@Column(name = "habilitado")
 	private boolean habilitado;
 
-	@Column(name="datosextra")
+	@Column(name = "datosextra")
 	private String datosExtra;
 
 	/**

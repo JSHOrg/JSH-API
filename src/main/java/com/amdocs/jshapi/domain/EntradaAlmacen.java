@@ -48,6 +48,10 @@ public class EntradaAlmacen {
 	private boolean status;
 
 	@OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="idbancoalimentos",referencedColumnName="idbancoalimentos")
+	private BancoAlimentos bancoAlimentos;
+
+	@OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="iddetalledonativo",referencedColumnName="iddetalledonativo")
 	private DetalleDonativo detalleDonativo;
 
@@ -165,6 +169,20 @@ public class EntradaAlmacen {
 	 */
 	public DetalleDonativo getDetalleDonativo() {
 		return detalleDonativo;
+	}
+
+	/**
+	 * @return the bancoAlimentos
+	 */
+	public BancoAlimentos getBancoAlimentos() {
+		return bancoAlimentos;
+	}
+
+	/**
+	 * @param bancoAlimentos the bancoAlimentos to set
+	 */
+	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
+		this.bancoAlimentos = bancoAlimentos;
 	}
 
 	/**

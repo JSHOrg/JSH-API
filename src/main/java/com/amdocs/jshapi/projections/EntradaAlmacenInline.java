@@ -5,6 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 import java.util.Date;
 
 import com.amdocs.jshapi.domain.Account;
+import com.amdocs.jshapi.domain.BancoAlimentos;
 import com.amdocs.jshapi.domain.DetalleDonativo;
 import com.amdocs.jshapi.domain.EntradaAlmacen;
 
@@ -17,5 +18,6 @@ public interface EntradaAlmacenInline {
     Date getFechaEntrada();
     boolean isStatus();
     DetalleDonativo getDetalleDonativo();
+    BancoAlimentos getBancoAlimentos();
     Account getUsuario();
 }
