@@ -71,16 +71,16 @@ public class DetalleDonativo {
     private String calificacion;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="iddonativo", name="donativo", unique=true, nullable=false, updatable=false)
+    @JoinColumn(referencedColumnName="iddonativo", name="iddonativo", unique=true, nullable=false, updatable=false)
     private Donativo donativo;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idproducto", name="producto")
+    @JoinColumn(referencedColumnName="idproducto", name="idproducto")
     private Producto producto;
 
 
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idembalaje", name="embalaje") 
+    @JoinColumn(referencedColumnName="idembalaje", name="idembalaje") 
     private Embalaje embalaje;
 
     @OneToOne(fetch=FetchType.EAGER)
