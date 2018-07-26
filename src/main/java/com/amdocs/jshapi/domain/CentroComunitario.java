@@ -30,12 +30,21 @@ public class CentroComunitario {
 	@Column(length=50, nullable=false)
 	private String nombre;
 	
+	@Column(name="centrocomunitario", length=50)
+	private String centroComunitario;
+	
 	@Column(name="fecharegistro")
 	private Date fechaRegistro;
 
 	@Column
     private boolean habilitado;
     
+	@Column(name="numerofamilias")
+	private int numeroFamilias;
+	
+	@Column(name="indicemarginacion", length=12)
+	private String indiceMarginacion;
+	
     @OneToOne(optional=false, fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
@@ -47,7 +56,8 @@ public class CentroComunitario {
 	@OneToOne(optional=false, fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idcontacto", name="idcontacto")
     private Contacto contacto;
-    /**
+
+	/**
      * @return the id
      */
  	public Long getId() {
@@ -83,6 +93,20 @@ public class CentroComunitario {
 	}
 
     /**
+	 * @return the centroComunitario
+	 */
+	public String getCentroComunitario() {
+		return centroComunitario;
+	}
+
+	/**
+	 * @param centroComunitario the centroComunitario to set
+	 */
+	public void setCentroComunitario(String centroComunitario) {
+		this.centroComunitario = centroComunitario;
+	}
+
+	/**
      * @return the fechaRegistro
      */
 	public Date getFechaRegistro() {
@@ -108,6 +132,34 @@ public class CentroComunitario {
      */
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
+	}
+
+	/**
+	 * @return the numeroFamilias
+	 */
+	public int getNumeroFamilias() {
+		return numeroFamilias;
+	}
+
+	/**
+	 * @param numeroFamilias the numeroFamilias to set
+	 */
+	public void setNumeroFamilias(int numeroFamilias) {
+		this.numeroFamilias = numeroFamilias;
+	}
+
+	/**
+	 * @return the indiceMarginacion
+	 */
+	public String getIndiceMarginacion() {
+		return indiceMarginacion;
+	}
+
+	/**
+	 * @param indiceMarginacion the indiceMarginacion to set
+	 */
+	public void setIndiceMarginacion(String indiceMarginacion) {
+		this.indiceMarginacion = indiceMarginacion;
 	}
 
     /**
