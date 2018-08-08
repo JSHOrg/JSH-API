@@ -10,7 +10,9 @@ import com.amdocs.jshapi.domain.Direccion;
 @Projection(name = "centroComunitarioInline", types = BancoAlimentos.class)
 public interface CentroComunitarioInline {
     String getNombre();
+    String getCentroComunitario();
     Date getFechaRegistro();
+    int getNumeroFamilias();
     boolean isHabilitado();
     Direccion getDireccion();
     Contacto getContacto();
