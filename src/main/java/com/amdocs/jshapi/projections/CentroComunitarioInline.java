@@ -13,6 +13,7 @@ public interface CentroComunitarioInline {
     String getCentroComunitario();
     Date getFechaRegistro();
     int getNumeroFamilias();
+    String getIndiceMarginacion();
     boolean isHabilitado();
     Direccion getDireccion();
     Contacto getContacto();
