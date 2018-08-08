@@ -4,14 +4,13 @@
 package com.amdocs.jshapi.domain;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 /**
  * @author Alejandro Alberto Aguilar Morales
@@ -22,7 +21,7 @@ import javax.persistence.OneToOne;
 public class EstudioNutricio {
 
     @Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idestudiosocionutricio")
 	private Long id;
     
@@ -35,9 +34,8 @@ public class EstudioNutricio {
     @Column(name="timestamp")
     private Date date;
     
-    @OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idbeneficiario", name = "idbeneficiario")
-	private Beneficiario beneficiario;
+	@Column(name = "idbeneficiario")
+	private long beneficiario;
 
 	public EstudioNutricio() {
 	}
@@ -109,7 +107,7 @@ public class EstudioNutricio {
         /**
 	 * @return the beneficiario
 	 */
-	public Beneficiario getbeneficiario() {
+	public Long getbeneficiario() {
 		return this.beneficiario;
 	}
 
@@ -117,7 +115,7 @@ public class EstudioNutricio {
 	 * @param beneficiario
 	 *            the beneficiario to set
 	 */
-	public void setbeneficiario(Beneficiario beneficiario) {
+	public void setbeneficiario(Long beneficiario) {
 		this.beneficiario = beneficiario;
 	}
 }
