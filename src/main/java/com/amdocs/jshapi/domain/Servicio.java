@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Servicio {
 
     @Id
-	@GeneratedValue
+	/*@GeneratedValue*/
 	@Column(name = "idservicio")
 	private Long id;
     

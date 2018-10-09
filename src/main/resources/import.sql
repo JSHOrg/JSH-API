@@ -67,3 +67,6 @@ insert into Region (nombre, habilitado) values ('Región', 1);
 insert into BancoAlimentos (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
 
 insert into CentroComunitario (nombre, fechaRegistro, indicemarginacion, habilitado, direccion, idBancoAlimentosPerteneciente) values ('Centro comunitario', '2018-03-20 00:00:00', 37.2, 1, 1, 1);
+
+
+insert into curso ( nombre, Descripcion, IDBancoAlimentos, IDDonador) values ( 'Curso de pintura', 'Curso de pintura dirigido a personas de 0 a 100 a;os', 1, 1)

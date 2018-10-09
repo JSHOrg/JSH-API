@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Region {    
 
 	@Id
-	@GeneratedValue
+	/* @GeneratedValue */
 	@Column(name = "idregion")
 	private Long id;
 

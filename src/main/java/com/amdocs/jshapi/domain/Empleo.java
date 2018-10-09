@@ -7,8 +7,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +38,11 @@ public class Empleo {
 
 	@Column(length = 255, nullable = false)
 	private String ubicacion;
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="iddireccion",referencedColumnName="iddireccion")
+	private Direccion direccion;
+
 
 	/**
 	 * @return the id
@@ -105,4 +113,16 @@ public class Empleo {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+	
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param region the region to set
+     */
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+	    
 }

@@ -18,6 +18,8 @@ import javax.persistence.Table;
 /**
  * @author Alejandro Alberto Aguilar
  *
+ * 4/10/2018 Se remueve servicio del catalogo de proveedor 
+ * 
  */
 @Entity
 @Table(name="proveedor")
@@ -46,11 +48,7 @@ public class Proveedor {
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="idregion",referencedColumnName="idregion")
     private Region region;
-    
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="idservicio",referencedColumnName="idservicio")
-    private Servicio servicio;
-    
+      
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="idcontacto",referencedColumnName="idcontacto")
     private Contacto contacto;
@@ -163,19 +161,7 @@ public class Proveedor {
         this.region = region;
     }
     
-    /**
-     * @return the servicio
-     */
-    public Servicio getServicio() {
-        return servicio;
-    }
-
-    /**
-     * @param servicio the servicio to set
-     */
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
-    }
+     
 
     /**
      * @return the contacto
