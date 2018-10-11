@@ -4,9 +4,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.amdocs.jshapi.domain.Curso;
+import com.amdocs.jshapi.domain.Beneficiario;
 
-@RepositoryRestResource(path = "cursos", collectionResourceRel = "cursos")
-public interface CursoRepository extends PagingAndSortingRepository<Curso, Long>{
+
+@RepositoryRestResource(path = "beneficiarios", collectionResourceRel = "beneficiarios")
+public interface  BeneficiarioRepository extends PagingAndSortingRepository<Beneficiario, Long>{
 
 }

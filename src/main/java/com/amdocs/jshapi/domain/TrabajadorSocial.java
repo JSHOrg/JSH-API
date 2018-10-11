@@ -36,4 +36,66 @@ public class TrabajadorSocial {
 	
 	@Column(name = "gruposasignados")
 	private int gruposAsignados;
+	
+	
+	public Long getId ()
+	{
+		return id;
+	}
+	
+	public void setId (Long id)
+	{
+		this.id = id;
+	}
+	
+	public String getNombre ()
+	{
+		return nombre;
+	}
+	
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+	
+	public String getPuesto ()
+	{
+		return puesto;
+	}
+	
+	public void setPuesto(String puesto)
+	{
+		this.puesto = puesto;
+	}
+	
+	public String getCorreo ()
+	{
+		return correo;
+	}
+	
+	public void setCorreo(String correo)
+	{
+		this.correo = correo;
+	}
+	
+	public int getComunidadesAsignadas ()
+	{
+		return comunidadesAsignadas;
+	}
+	
+	public void setComunidadesAsignadas(int comunidadesasignadas)
+	{
+		this.comunidadesAsignadas = comunidadesasignadas;
+	}
+	
+	public int getGruposAsignados()
+	{
+		return gruposAsignados;
+	}
+	
+	public void setGruposAsignados(int gruposAsignados)
+	{
+		this.gruposAsignados = gruposAsignados;
+	}
+	
 }

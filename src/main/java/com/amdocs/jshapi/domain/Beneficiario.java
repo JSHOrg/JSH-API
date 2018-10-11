@@ -47,24 +47,18 @@ public class Beneficiario {
 		this.id = id;
 	}
 
-  	/**
-     	* @return the Identifier
-     	*/	
-	public Long getIdentifier(){
-		return this.id;
-	} 		
-	
+  		
 	/**
 	 * @return the contacto
 	 */
-	public Contacto getContact() {
+	public Contacto getContacto() {
 		return this.contacto;
 	}
 
 	/**
 	 * @param contact the contacto to set
 	 */
-	public void setNombre(Contacto contacto) {
+	public void setContacto(Contacto contacto) {
 		this.contacto = contacto;
 	}
 
@@ -78,7 +72,7 @@ public class Beneficiario {
 	/**
 	 * @param direccion the direccion to set
 	 */
-	public void setPerecedero(Direccion direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 }
