@@ -1,5 +1,9 @@
 package com.amdocs.jshapi.configuration;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +18,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.amdocs.jshapi.configuration.CustomPropertiesConfiguration;
 import com.amdocs.jshapi.service.AccountDetailsService;
@@ -68,9 +73,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		Map<String, CorsConfiguration> corsConfigMap = new HashMap<>();
+	    CorsConfiguration config = new CorsConfiguration();
+	    config.setAllowCredentials(true);
+	    //TODO: Make configurable
+	    config.setAllowedOrigins(Collections.singletonList("*"));
+	    config.setAllowedMethods(Collections.singletonList("*"));
+	    config.setAllowedHeaders(Collections.singletonList("*"));
+	    corsConfigMap.put("/api/comunitarios", config);
+	    
+	    
 		endpoints
 			.tokenStore(this.tokenStore)
 			.authenticationManager(this.authenticationManager)
-			.userDetailsService(this.userDetailsService);
+			.userDetailsService(this.userDetailsService)
+			.getFrameworkEndpointHandlerMapping().setCorsConfigurations(corsConfigMap);
 	}
 }

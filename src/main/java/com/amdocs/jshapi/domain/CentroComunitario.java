@@ -23,7 +23,7 @@ import javax.persistence.Table;
 public class CentroComunitario {
 
     @Id
-	@GeneratedValue
+	//@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY )
 	@Column(name = "idcentrocomunitario")
 	private Long id;
 	

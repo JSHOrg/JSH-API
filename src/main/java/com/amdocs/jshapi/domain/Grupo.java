@@ -23,14 +23,10 @@ public class Grupo {
 	@Id
 	@GeneratedValue
 	@Column(name = "idgrupo")
-	private Long id;
+	private int id;
 	
 	@Column
     private String comunidad;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtrabajadorsocial", name="idtrabajadorsocial")
-	private TrabajadorSocial trabajadorAsignado;
 	
 	@Column
     private int integrantes;
@@ -38,17 +34,21 @@ public class Grupo {
 	@Column
     private float progreso;
 
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "idtrabajadorsocial", name="idtrabajadorsocial")
+	private TrabajadorSocial trabajadorSocial;
+	
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public int getIdGrupo() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setIdGrupo(int id) {
 		this.id = id;
 	}
 
@@ -70,14 +70,14 @@ public class Grupo {
 	 * @return the trabajadorAsignado
 	 */
 	public TrabajadorSocial getTrabajadorAsignado() {
-		return trabajadorAsignado;
+		return trabajadorSocial;
 	}
 
 	/**
 	 * @param trabajadorAsignado the trabajadorAsignado to set
 	 */
-	public void setTrabajadorAsignado(TrabajadorSocial trabajadorAsignado) {
-		this.trabajadorAsignado = trabajadorAsignado;
+	public void setTrabajadorSocial(TrabajadorSocial trabajadorSocial) {
+		this.trabajadorSocial = trabajadorSocial;
 	}
 
 	/**

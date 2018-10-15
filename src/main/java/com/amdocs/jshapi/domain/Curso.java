@@ -130,7 +130,7 @@ public class Curso {
 		return direccion;
 	}
 	
-	public void setDireccio(Direccion direccion)
+	public void setDireccion(Direccion direccion)
 	{
 		this.direccion = direccion;
 	}
