@@ -1,10 +1,9 @@
 #Eclipse files
-
-.classpath
-.project
-.settings/
 .tern-project
  
+#Visual Studio files
+.vscode/
+
 #Maven files
 target/
 
@@ -19,3 +18,7 @@ hs_err_pid*
 *~
 /.apt_generated/
 .factorypath
+.classpath
+.project
+.settings/
+/bin/
