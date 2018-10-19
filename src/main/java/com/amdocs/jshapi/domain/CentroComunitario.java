@@ -5,6 +5,7 @@ package com.amdocs.jshapi.domain;
  */
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 public class CentroComunitario {
 
     @Id
-	//@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY )
+	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO )
 	@Column(name = "idcentrocomunitario")
 	private Long id;
 	
@@ -45,7 +46,7 @@ public class CentroComunitario {
 	@Column(name="indicemarginacion", length=12)
 	private String indiceMarginacion;
 	
-    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @OneToOne(optional=false, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
     private Direccion direccion;
   

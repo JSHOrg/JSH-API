@@ -27,5 +27,6 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 			.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/api/accounts")
 					.hasAnyAuthority("ADMIN");
+		
 	}
 }

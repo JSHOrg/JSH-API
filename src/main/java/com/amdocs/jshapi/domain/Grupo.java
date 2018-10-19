@@ -3,12 +3,16 @@
  */
 package com.amdocs.jshapi.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +27,7 @@ public class Grupo {
 	@Id
 	@GeneratedValue
 	@Column(name = "idgrupo")
-	private int id;
+	private long id;
 	
 	@Column
     private String comunidad;
@@ -38,17 +42,21 @@ public class Grupo {
 	@JoinColumn(referencedColumnName = "idtrabajadorsocial", name="idtrabajadorsocial")
 	private TrabajadorSocial trabajadorSocial;
 	
+	 
+	@OneToMany(mappedBy = "idgrupo")
+	private List<Familia> familias;
+	
 	/**
 	 * @return the id
 	 */
-	public int getIdGrupo() {
+	public long getIdGrupo() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setIdGrupo(int id) {
+	public void setIdGrupo(long id) {
 		this.id = id;
 	}
 
@@ -106,5 +114,10 @@ public class Grupo {
 	 */
 	public void setProgreso(float progreso) {
 		this.progreso = progreso;
+	}
+	
+	public List<Familia> getFamilias()
+	{
+		return familias;
 	}
 }

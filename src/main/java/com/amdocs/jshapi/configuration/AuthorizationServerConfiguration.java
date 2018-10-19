@@ -73,20 +73,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		Map<String, CorsConfiguration> corsConfigMap = new HashMap<>();
-	    CorsConfiguration config = new CorsConfiguration();
-	    config.setAllowCredentials(true);
-	    //TODO: Make configurable
-	    config.setAllowedOrigins(Collections.singletonList("*"));
-	    config.setAllowedMethods(Collections.singletonList("*"));
-	    config.setAllowedHeaders(Collections.singletonList("*"));
-	    corsConfigMap.put("/api/comunitarios", config);
-	    
-	    
 		endpoints
 			.tokenStore(this.tokenStore)
 			.authenticationManager(this.authenticationManager)
-			.userDetailsService(this.userDetailsService)
-			.getFrameworkEndpointHandlerMapping().setCorsConfigurations(corsConfigMap);
+			.userDetailsService(this.userDetailsService);
 	}
 }

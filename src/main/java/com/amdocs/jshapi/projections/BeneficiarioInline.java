@@ -8,6 +8,6 @@ import com.amdocs.jshapi.domain.Contacto;
 import com.amdocs.jshapi.domain.Direccion;
 
 @Projection(name = "beneficiarioInline", types = Beneficiario.class)
-public class BeneficiarioInline {
+public interface BeneficiarioInline {
 
 }
