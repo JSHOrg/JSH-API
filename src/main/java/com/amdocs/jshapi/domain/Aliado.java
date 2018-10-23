@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -14,26 +15,27 @@ import javax.persistence.Table;
 public class Aliado {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idaliado")
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
 	private Contacto contacto;
+	 
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idbancoalimentos", name="idbancoalimentos")
-	private BancoAlimentos bancoAlimentos;
+	@Column(name = "idbancoalimentos")
+	private Long idbancoalimentos; 
+	
+	@Column(name = "idtipoaliado")
+	private Long idtipoaliado; 
+	
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
 	private Direccion direccion;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtipoaliado", name="idtipoaliado")
-	private TipoAliado tipoaliado;
-	
+	 
 	@Column (name="razonsocial")
 	private String razonsocial;
 	
@@ -73,16 +75,7 @@ public class Aliado {
 		this.descripcion = descripcion;
 	}
 	
-	public BancoAlimentos getBancoAlimentos ()
-	{
-		return bancoAlimentos;
-	}
-	
-	public void setBancoAlimentos(BancoAlimentos bancoalimentos)
-	{
-		this.bancoAlimentos = bancoalimentos;
-	}
-	
+	 
 	public Contacto getContacto()
 	{
 		return contacto;
@@ -93,14 +86,25 @@ public class Aliado {
 		this.contacto = contacto;
 	}
 	
-	public TipoAliado getTipoAliado()
+	 
+	public void setIdTipoAliado(Long idtipoaliado)
 	{
-		return tipoaliado;
+		this.idtipoaliado = idtipoaliado;
 	}
 	
-	public void setTipoAliado (TipoAliado tipoaliado)
+	public Long getIdTipoAliado ()
 	{
-		this.tipoaliado = tipoaliado;
+		return idtipoaliado;
 	}
 	
+	public void setIdBancoAlimentos(long idbancoalimentos)
+	{
+		this.idbancoalimentos = idbancoalimentos;
+	}
+	
+	public Long getIdBancoAlimentos ()
+	{
+		return idbancoalimentos;
+	}
 }
+

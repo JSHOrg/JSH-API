@@ -12,7 +12,7 @@ import com.amdocs.jshapi.domain.TipoAliado;
 public interface AliadoInline {
 	String getRazonSocial();
     Contacto getContacto();
-    BancoAlimentos getBancoAlimentos();
     Direccion getDireccion();
-    TipoAliado getTipoAliado();
+    Long getIdTipoAliado();
+    Long getIdBancoAlimentos();
 }
