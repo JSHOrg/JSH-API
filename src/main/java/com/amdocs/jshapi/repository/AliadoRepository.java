@@ -22,8 +22,8 @@ public interface AliadoRepository extends PagingAndSortingRepository<Aliado, Lon
     @Override
     Iterable<Aliado> findAll();
 	
+	
 	@Query(value = "select a.* from aliado a where a.idbancoalimentos =:idbancoalimentos", nativeQuery = true)
-	  //List<User> findByFirstnameEndsWith(String firstname);
 	public Collection<Aliado> findAliadoByBancoAlimentos(@Param("idbancoalimentos") Integer bancoalimentos);
 
 }

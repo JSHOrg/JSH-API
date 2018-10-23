@@ -43,8 +43,8 @@ public class Grupo {
 	private TrabajadorSocial trabajadorSocial;
 	
 	 
-	@OneToMany(mappedBy = "idgrupo")
-	private List<Familia> familias;
+	/*@OneToMany(mappedBy = "idgrupo")
+	private List<Familia> familias;*/
 	
 	/**
 	 * @return the id
@@ -116,8 +116,8 @@ public class Grupo {
 		this.progreso = progreso;
 	}
 	
-	public List<Familia> getFamilias()
+	/*public List<Familia> getFamilias()
 	{
 		return familias;
-	}
+	}*/
 }

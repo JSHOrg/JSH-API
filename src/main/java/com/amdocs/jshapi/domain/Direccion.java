@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Direccion {
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name = "iddireccion")
 	private Long id;
 	

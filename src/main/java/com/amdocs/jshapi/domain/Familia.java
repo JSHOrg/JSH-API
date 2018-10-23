@@ -30,7 +30,7 @@ public class Familia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idfamilia")
-	private long id;
+	private int id;
 	
 	@Column(name="familia")
     private String familia;
@@ -44,23 +44,23 @@ public class Familia {
     @Column(name="integrantes")
     private int integrantes;
     
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
     private Direccion direccion;
     
-    @Column(name="idgrupo", insertable=false, updatable=false)
+    @Column(name="idgrupo" )
     private long idgrupo;   
     
-    @ManyToOne (fetch = FetchType.EAGER)
+    /*@ManyToOne (fetch = FetchType.EAGER)
     @JoinColumns(foreignKey = @ForeignKey(name="fk_familia_grupo"), value = { @JoinColumn(name="idgrupo") })
-    private Grupo grupo;
+    private Grupo grupo;*/
 
-    public long getId()
+    public int getId()
     {
     	return id;
     }
     
-    public void setId(long id)
+    public void setId(int id)
     {
     	this.id = id;
     }
@@ -105,5 +105,14 @@ public class Familia {
     	this.direccion = direccion;
     }
     
+    public Long getIdGrupo ()
+    {
+    	return idgrupo;
+    }
+    
+    public void setIdGrupo (Long idgrupo)
+    {
+    	 this.idgrupo = idgrupo;
+    }
      
 }
