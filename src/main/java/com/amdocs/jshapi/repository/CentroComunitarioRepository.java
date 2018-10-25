@@ -20,4 +20,7 @@ import com.amdocs.jshapi.projections.CentroComunitarioInline;
 public interface CentroComunitarioRepository extends PagingAndSortingRepository<CentroComunitario, Long> {
 
 	public CentroComunitario findCentroComunitarioByNombre(@Param("nombre") String nombre);
+	
+ 
+	
 }
