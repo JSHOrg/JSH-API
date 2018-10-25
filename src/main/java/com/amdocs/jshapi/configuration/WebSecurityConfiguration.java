@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
+
+ 
 
 /**
  * Spring boot web security configuration
@@ -42,4 +45,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 	
+	@Bean
+	public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
+	    return new SecurityEvaluationContextExtension();
+	}
 }

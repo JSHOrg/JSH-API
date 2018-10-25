@@ -1,5 +1,6 @@
 package com.amdocs.jshapi.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,17 +16,15 @@ import javax.persistence.Table;
 public class Benefactor {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idbenefactor")
 	private int id;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
 	private Direccion direccion;  
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtipobenefactor", name="idtipobenefactor")
-	private TipoBenefactor tipobenefactor; 
+	 
 
 	@Column (name="Nombre")
 	private String nombre;
@@ -52,17 +51,7 @@ public class Benefactor {
 	{
 		this.direccion = direccion;
 	}
-	
-	public TipoBenefactor getTipoBenefactor ()
-	{
-		return tipobenefactor;
-	}
-	
-	public void setTipoBenefactor(TipoBenefactor tipobenefactor)
-	{ 
-		this.tipobenefactor = tipobenefactor;
-	}
-	
+ 
 	public String getNombre()
 	{
 		return nombre;

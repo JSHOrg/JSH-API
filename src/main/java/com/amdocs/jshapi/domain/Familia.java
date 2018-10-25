@@ -51,10 +51,6 @@ public class Familia {
     @Column(name="idgrupo" )
     private long idgrupo;   
     
-    /*@ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumns(foreignKey = @ForeignKey(name="fk_familia_grupo"), value = { @JoinColumn(name="idgrupo") })
-    private Grupo grupo;*/
-
     public int getId()
     {
     	return id;

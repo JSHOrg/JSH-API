@@ -18,12 +18,15 @@ import com.amdocs.jshapi.projections.AliadoInline;
 
 public interface AliadoRepository extends PagingAndSortingRepository<Aliado, Long> {
 
-	@PostFilter("filterObject.userId == principal.id")
-    @Override
-    Iterable<Aliado> findAll();
-	
-	
-	@Query(value = "select a.* from aliado a where a.idbancoalimentos =:idbancoalimentos", nativeQuery = true)
-	public Collection<Aliado> findAliadoByBancoAlimentos(@Param("idbancoalimentos") Integer bancoalimentos);
+	@Query(value = "\r\n" + 
+			"select a.* from  BancoAlimentos b\r\n" + 
+			"inner join aliado a\r\n" + 
+			"on b.idbancoalimentos = a.idbancoalimentos\r\n" + 
+			"inner join usuariobanco ub \r\n" + 
+			"on ub.idbancoalimentos = b.idbancoalimentos\r\n" + 
+			"inner join usuario u\r\n" + 
+			"on ub.idusuario = u.idusuario\r\n" + 
+			"where u.Nombre =?#{ principal?.username }", nativeQuery = true)
+	public Collection<Aliado> findAliados();
 
 }

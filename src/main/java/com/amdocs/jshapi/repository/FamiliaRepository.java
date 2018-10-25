@@ -17,5 +17,8 @@ import com.amdocs.jshapi.domain.Grupo;
 public interface FamiliaRepository extends JpaRepository<Familia, Integer> {
 	
 	@Query(value = "select f.* from familia f where f.idgrupo =:idgrupo", nativeQuery = true)
-	public Collection<Familia> findFamiliaByGroup(@Param("idgrupo") Integer idgrupo);		
+	public Collection<Familia> findFamiliaByGroup(@Param("idgrupo") Integer idgrupo);	
+	
+	//@Query(value = "select f.* from familia f where f.idgrupo =:idgrupo", nativeQuery = true)
+	//public Collection<Familia> findFamiliaByGroup( Integer idgrupo, Integer idbancoalimentos);	
 }

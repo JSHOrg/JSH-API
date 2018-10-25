@@ -56,17 +56,59 @@ insert into DetalleDonativo (cantidadkg, cantidadpza, fechaconsumolimite, cosech
 
 insert into EntradaAlmacen ( foliointerno, cantidadoriginal, cantidadactual, seccionalmacenamiento, fechaentrada, status, detalleDonativo) values ( 1, 5, 4, 'SeccionAlmacenamiento', '2018-03-22 00:00:00', 1, 1);
 
-insert into Direccion (calle, numero, cp, ciudad, estado, latitud, longitud) values ('calle', 'num', '45020', 'ciudad', 'Jalisco', '12.123434', '41.081347');
+insert into Direccion (calle, numero, cp, ciudad, colonia, estado, latitud, longitud) values ('calle', 'num', '45020', 'ciudad', '', 'Jalisco', '12.123434', '41.081347');
 
 insert into TipoContacto (nombre) values ('tipo contacto');
 
-insert into Contacto (valor, tipoContacto, nombre, apellido, telefono, extension, celular, email, password, grupo, ultimoLogin,fechaRegistro,habilitado,datosExtra) values ('valor', 1, 'nombre', 'apellido', '5555800301', 227, '5585616164', 'plebe@gmail.com', 'pwd', 401, current_date, current_date, 1, '{"id": 1,"name": "A green onion"');
+insert into Contacto (valor, idtipoContacto, nombre, apellido, telefono, extension, celular, email, password, grupo, ultimoLogin,fechaRegistro,habilitado,datosExtra) values ('valor', 3, 'nombre', 'apellido', '5555800301', 227, '5585616164', 'plebe@gmail.com', 'pwd', 401, current_date, current_date, 1, '{"id": 1,"name": "A green onion"}');
 
 insert into Region (nombre, habilitado) values ('Región', 1);
 
-insert into BancoAlimentos (administrativo, nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado, region, direccion, contacto) values (1,'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
+insert into BancoAlimentos ( nombre, RazonSocial, Calificacion, fechaAfiliacion, fechaRegistro, habilitado,  iddireccion, idcontacto, idregion) values ( 'TEST BANCO ALIMENTOS','RAZON SOCIAL TEST BA','CAL','2018-03-17','2018-03-17',1,1,1,1)
 
 insert into CentroComunitario (nombre, fechaRegistro, indicemarginacion, habilitado, direccion, idBancoAlimentosPerteneciente) values ('Centro comunitario', '2018-03-20 00:00:00', 37.2, 1, 1, 1);
 
 
 insert into curso ( nombre, Descripcion, IDBancoAlimentos, IDDonador) values ( 'Curso de pintura', 'Curso de pintura dirigido a personas de 0 a 100 a;os', 1, 1)
+
+
+
+
+INSERT INTO trabajadorsocial 
+(  
+`ComunidadesAsignadas`,
+`Correo`,
+`GruposAsignados`,
+`Nombre`,
+`Puesto`)
+VALUES
+(
+0,
+'trabajadora',
+0,
+'Milena perez',
+'trabajadora social');
+
+ INSERT INTO `jsh`.`grupo`
+( 
+`comunidad`,
+`IDTrabajadorSocial`,
+`integrantes`,
+`progreso`)
+VALUES
+( 
+'chupaderos',
+1,
+10,
+'1');
+
+
+
+ INSERT INTO `jsh`.`tipoaliado`
+(`idtipoaliado`,
+`nombre`,
+`descripcion`)
+VALUES
+(  1,
+'Empleador',
+'Empleador');

@@ -50,7 +50,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 			.inMemory()
 			.withClient(properties.getClientId())
 				.authorizedGrantTypes("password", "refresh_token")
-				.authorities("ADMIN")
+				.authorities("ADMIN, Procurador")
 				.scopes("read", "write")
 				.resourceIds("restapi")
 				.secret(properties.getClientSecret());
@@ -78,4 +78,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 			.authenticationManager(this.authenticationManager)
 			.userDetailsService(this.userDetailsService);
 	}
+	
+	
 }

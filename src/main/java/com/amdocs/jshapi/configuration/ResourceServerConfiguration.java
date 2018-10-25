@@ -25,8 +25,17 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	public void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/api/accounts")
-					.hasAnyAuthority("ADMIN");
+			 .antMatchers("/", "/oauth/token" ).permitAll()
+			    .anyRequest().authenticated();
+				/* .antMatchers(HttpMethod.GET, "/api/**")
+					.hasAnyAuthority("ADMIN", "PROCURADOR", "LOGISTICA", "BENEFACTOR", "ALIADO", "TRABAJADOR")
+				 .antMatchers(HttpMethod.POST, "/api/**")
+				 	.hasAnyAuthority("ADMIN", "PROCURADOR", "LOGISTICA", "BENEFACTOR", "ALIADO", "TRABAJADOR")
+				 .antMatchers(HttpMethod.PUT, "/api/**")
+				 	.hasAnyAuthority("ADMIN", "PROCURADOR", "LOGISTICA", "BENEFACTOR", "ALIADO", "TRABAJADOR")
+				 .antMatchers(HttpMethod.DELETE, "/api/**")
+				 	.hasAnyAuthority("ADMIN", "PROCURADOR", "LOGISTICA", "BENEFACTOR", "ALIADO", "TRABAJADOR");*/
 		
 	}
+	
 }
