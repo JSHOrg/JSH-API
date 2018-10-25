@@ -22,7 +22,7 @@ public interface AliadoRepository extends PagingAndSortingRepository<Aliado, Lon
 			"select a.* from  BancoAlimentos b\r\n" + 
 			"inner join aliado a\r\n" + 
 			"on b.idbancoalimentos = a.idbancoalimentos\r\n" + 
-			"inner join usuariobanco ub \r\n" + 
+			"inner join bancoalimentosusuario ub \r\n" + 
 			"on ub.idbancoalimentos = b.idbancoalimentos\r\n" + 
 			"inner join usuario u\r\n" + 
 			"on ub.idusuario = u.idusuario\r\n" + 
