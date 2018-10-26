@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.amdocs.jshapi.domain.Curso;
 import com.amdocs.jshapi.domain.TrabajadorSocial;
 
-@CrossOrigin(origins = "http://localhost:8092")
+//@CrossOrigin(origins = "http://localhost:8092")
 @RepositoryRestResource(path = "cursos", collectionResourceRel = "cursos")
 public interface CursoRepository extends PagingAndSortingRepository<Curso, Long>{
 	

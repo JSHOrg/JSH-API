@@ -15,7 +15,7 @@ import com.amdocs.jshapi.domain.TrabajadorSocial;
  * @param <T>
  *
  */
-@CrossOrigin(origins = "http://localhost:8092")
+//@CrossOrigin(origins = "http://localhost:8092")
 @RepositoryRestResource(path = "trabajadorsocial", collectionResourceRel = "trabajadorsocial")
 public interface TrabajadorSocialRepository<T> 
 	extends PagingAndSortingRepository<TrabajadorSocial, Long>, QueryByExampleExecutor<T>  {

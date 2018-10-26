@@ -13,7 +13,7 @@
 	<artifactId>jshapi</artifactId>
 	<groupId>com.amdocs</groupId>
 	<name>JSH data layer API</name>
-	<version>0.0.3.080819.RC-2</version>
+	<version>0.0.3.080820.RC-2</version>
 	
 	<properties>
 		<java.version>1.8</java.version>

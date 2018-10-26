@@ -14,7 +14,7 @@ import com.amdocs.jshapi.domain.TrabajadorSocial;
  * @author robergut
  *
  */
-@CrossOrigin(origins = "http://localhost:8092")
+//@CrossOrigin(origins = "http://localhost:8092")
 @RepositoryRestResource(path = "grupos", collectionResourceRel = "grupos")
 public interface GrupoRepository extends PagingAndSortingRepository<Grupo, Long> {
 

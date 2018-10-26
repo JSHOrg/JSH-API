@@ -15,7 +15,7 @@ import com.amdocs.jshapi.projections.CentroComunitarioInline;
  * @author Roberto Gutierrez Garcia
  *
  */
-@CrossOrigin(origins = "http://localhost:8092")
+//@CrossOrigin(origins = "http://localhost:8092")
 @RepositoryRestResource(path = "comunitarios", collectionResourceRel = "comunitarios", excerptProjection = CentroComunitarioInline.class)
 public interface CentroComunitarioRepository extends PagingAndSortingRepository<CentroComunitario, Long> {
 
