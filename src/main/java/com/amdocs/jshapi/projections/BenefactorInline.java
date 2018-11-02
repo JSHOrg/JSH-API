@@ -10,7 +10,6 @@ public interface BenefactorInline {
 
 	 int getId();
 	 Direccion getDireccion();
-	 TipoBenefactor getTipoBenefactor ();
 	 String getNombre();
 	 String getEdad ();
 }

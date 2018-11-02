@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 /**
  * 
  * @author Roberto Gutierrez Garcia
@@ -24,7 +26,7 @@ import javax.persistence.Table;
 public class CentroComunitario {
 
     @Id
-	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO )
+	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY )
 	@Column(name = "idcentrocomunitario")
 	private Long id;
 	
@@ -46,17 +48,20 @@ public class CentroComunitario {
 	@Column(name="indicemarginacion", length=12)
 	private String indiceMarginacion;
 	
-    @OneToOne(optional=false, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(referencedColumnName="iddireccion", name="iddireccion", unique=true, nullable=false, updatable=false)
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
     private Direccion direccion;
   
+    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idcontacto", name="idcontacto")
+    private Contacto contacto;
+    
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentosperteneciente")
 	private BancoAlimentos bancoAlimentos;
 
-	@OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idcontacto", name="idcontacto")
-    private Contacto contacto;
+     
+	
 
 	/**
      * @return the id
@@ -163,6 +168,9 @@ public class CentroComunitario {
 		this.indiceMarginacion = indiceMarginacion;
 	}
 
+ 
+
+	
     /**
      * @return the direccion
      */
@@ -177,31 +185,21 @@ public class CentroComunitario {
 		this.direccion = direccion;
 	}
 
-    /**
-     * @return the bancoAlimentos
-     */
-	public BancoAlimentos getBancoAlimentos() {
-		return bancoAlimentos;
-	}
-
-    /**
-     * @param bancoAlimentos the bancoAlimentos to set
-     */
-	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
-		this.bancoAlimentos = bancoAlimentos;
-	}
-
+  
 	/**
-     * @return the bancoAlimentos
+     * @return the comtact
      */
-	public Contacto getContacto() {
+	 public Contacto getContacto() {
 		return contacto;
 	}
 
     /**
-     * @param contacto the bancoAlimentos to set
+     * @param contacto the contact to set
      */
 	public void setContacto(Contacto contacto) {
 		this.contacto = contacto;
 	}
+
+   
+	
 }

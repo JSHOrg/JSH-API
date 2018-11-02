@@ -9,6 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.amdocs.jshapi.domain.TrabajadorSocial;
+import com.amdocs.jshapi.projections.TrabajadorSocialInline;
 
 /**
  * @author Roberto Gutierrez Garcia
@@ -16,8 +17,9 @@ import com.amdocs.jshapi.domain.TrabajadorSocial;
  *
  */
 //@CrossOrigin(origins = "http://localhost:8092")
-@RepositoryRestResource(path = "trabajadorsocial", collectionResourceRel = "trabajadorsocial")
+@RepositoryRestResource(path = "trabajadoressociales", collectionResourceRel = "trabajadoressociales" , excerptProjection = TrabajadorSocialInline.class)
 public interface TrabajadorSocialRepository<T> 
 	extends PagingAndSortingRepository<TrabajadorSocial, Long>, QueryByExampleExecutor<T>  {
 
+	
 }

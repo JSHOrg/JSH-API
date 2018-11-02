@@ -19,8 +19,8 @@ public interface CentroComunitarioInline {
     int getNumeroFamilias();
     String getIndiceMarginacion();
     boolean isHabilitado();
-    Direccion getDireccion();
-    Contacto getContacto();
+   // Direccion getDireccion();
+     Contacto getContacto();
     BancoAlimentos getBancoAlimentos();
     
 }

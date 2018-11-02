@@ -44,6 +44,13 @@ public class SimpleCORSFilter implements Filter {
         }else {
             chain.doFilter(req, res);
        }
+        /* Revisar si necesita regresar un 200 o 204 */
+        /*
+        if ("DELETE".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+           }else {
+               chain.doFilter(req, res);
+          } */
     }
 
     @Override

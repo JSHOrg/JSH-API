@@ -116,8 +116,5 @@ public class Grupo {
 		this.progreso = progreso;
 	}
 	
-	/*public List<Familia> getFamilias()
-	{
-		return familias;
-	}*/
+	 
 }

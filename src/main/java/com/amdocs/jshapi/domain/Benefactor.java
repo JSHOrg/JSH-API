@@ -31,6 +31,8 @@ public class Benefactor {
 
 	@Column (name="Edad")
 	private String edad;
+	
+	@Column (name="" )
 
 	public int getId()
 	{
