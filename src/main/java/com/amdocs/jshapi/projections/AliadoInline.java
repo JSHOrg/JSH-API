@@ -10,7 +10,10 @@ import com.amdocs.jshapi.domain.TipoAliado;
 
 @Projection(name = "aliadoInline", types = Aliado.class)
 public interface AliadoInline {
-	String getRazonSocial();
+	
+	Long getId ();
+	String getDescripcion ();
+	String getRazonSocial();	
     Contacto getContacto();
     Direccion getDireccion();
     Long getIdTipoAliado();
