@@ -20,5 +20,6 @@ public interface DonadorInline {
     String getEmail();
     String getTipo();
     String getDescripcion();
-    BancoAlimentos getBancoAlimentos();
+    
+   // BancoAlimentos getBancoAlimentos();
 }

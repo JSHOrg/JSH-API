@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
 public class Donador {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "iddonador")
 	private Long id;
 
@@ -57,10 +58,13 @@ public class Donador {
 	@Column
 	private String descripcion;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@Column(name = "idbancoalimentosperteneciente")
+	private Long idbancoalimentos;
+	
+	/*@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idbancoalimentos", name = "idbancoalimentosperteneciente")
 	private BancoAlimentos bancoAlimentos;
-
+	*/
 	/**
 	 * @return the id
 	 */
@@ -248,18 +252,14 @@ public class Donador {
 		this.descripcion = descripcion;
 	}
 
-	/**
-	 * @return the bancoAlimentos
-	 */
-	public BancoAlimentos getBancoAlimentos() {
-		return bancoAlimentos;
-	}
-
-	/**
-	 * @param bancoAlimentos
-	 *            the bancoAlimentos to set
-	 */
-	public void setBancoAlimentos(BancoAlimentos bancoAlimentos) {
-		this.bancoAlimentos = bancoAlimentos;
-	}
+	 public Long getIDBancoAlimentosPerteneciente()
+	 {
+		 return idbancoalimentos;
+	 }
+	 
+	 public void setIDBancoAlimentosPerteneciente(Long idbancoalimentos)
+	 {
+		 this.idbancoalimentos = idbancoalimentos ;
+	 }
+	 
 }

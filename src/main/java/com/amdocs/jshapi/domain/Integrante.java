@@ -3,6 +3,7 @@ package com.amdocs.jshapi.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 public class Integrante {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idintegrante")
 	private long id;
 	
@@ -26,6 +27,16 @@ public class Integrante {
 	
 	@Column(name="idfamilia")
 	private Long idfamilia;
+	
+	@Column(name="idgrupo")
+	private Long idgrupo;
+	
+	@Column (name = "edad")
+	private String edad;
+
+	@Column (name = "telefono")
+	private String telefono;
+
 	
 	@Column (name = "rol")
 	private String rol;
@@ -113,5 +124,35 @@ public class Integrante {
 	public void setGraduacion(String graduacion)
 	{
 		this.graduacion = graduacion;
+	}
+	
+	public String getEdad()
+	{
+		return edad;
+	}
+	
+	public void setEdad(String edad)
+	{
+		this.edad = edad;
+	}
+	
+	public String getTelefono()
+	{
+		return telefono;
+	}
+	
+	public void setTelefono(String telefono)
+	{
+		this.telefono = telefono;
+	}
+	
+	public Long getIdGrupo()
+	{
+		return idgrupo;
+	}
+	
+	public void setIdGrupo(Long idgrupo)
+	{
+		this.idgrupo = idgrupo;
 	}
 }
