@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +27,6 @@ public class Integrante {
 	@Column(name = "apellidomaterno")
 	private String apellidomaterno;
 	
-	@Column(name="idfamilia")
-	private Long idfamilia;
-	
 	@Column(name="idgrupo")
 	private Long idgrupo;
 	
@@ -46,6 +45,10 @@ public class Integrante {
 	
 	@Column (name ="graduacion")
 	private String graduacion;
+	
+	@ManyToOne
+	@JoinColumn(name="idfamilia", nullable=false)
+	private Familia familia;
 	
 	public Long getId()
 	{
@@ -86,14 +89,13 @@ public class Integrante {
 		this.apellidomaterno = apellidomaterno;
 	}
 	
-	public Long getIdFamilia ()
-	{
-		return idfamilia;
+	public Familia getFamilia(){
+		return familia;
 	}
 	
-	public void setIdFamilia (Long idfamilia)
+	public void setFamilia(Familia familia)
 	{
-		this.idfamilia = idfamilia;
+		this.familia = familia;
 	}
 	
 	public String getRol ()

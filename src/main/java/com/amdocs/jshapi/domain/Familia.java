@@ -1,6 +1,7 @@
 package com.amdocs.jshapi.domain;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,6 +44,9 @@ public class Familia {
     
     @Column(name="integrantes")
     private int integrantes;
+    
+    @OneToMany (mappedBy="familia")
+    private Set<Integrante> Integrantes;
     
     @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
