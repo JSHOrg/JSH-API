@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,8 +28,11 @@ public class Aliado {
 	@Column(name = "idbancoalimentos")
 	private Long idbancoalimentos; 
 	
-	@Column(name = "idtipoaliado")
-	private Long idtipoaliado; 
+	 
+	
+	@ManyToOne
+	@JoinColumn(name="idtipoaliado", nullable=false)
+	private TipoAliado tipoaliado;
 	
 	
 	@OneToOne(fetch = FetchType.EAGER)
@@ -87,14 +91,14 @@ public class Aliado {
 	}
 	
 	 
-	public void setIdTipoAliado(Long idtipoaliado)
+	public void setTipoAliado(TipoAliado tipoaliado)
 	{
-		this.idtipoaliado = idtipoaliado;
+		this.tipoaliado = tipoaliado;
 	}
 	
-	public Long getIdTipoAliado ()
+	public TipoAliado getTipoAliado ()
 	{
-		return idtipoaliado;
+		return tipoaliado;
 	}
 	
 	public void setIdBancoAlimentos(long idbancoalimentos)

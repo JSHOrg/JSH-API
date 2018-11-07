@@ -16,6 +16,6 @@ public interface AliadoInline {
 	String getRazonSocial();	
     Contacto getContacto();
     Direccion getDireccion();
-    Long getIdTipoAliado();
+    TipoAliado getTipoAliado();
     Long getIdBancoAlimentos();
 }

@@ -1,8 +1,11 @@
 package com.amdocs.jshapi.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class TipoAliado {
 	
 	@Column
 	private String descripcion;
+	
+	 @OneToMany (mappedBy="tipoaliado")
+	 private Set<Aliado> Aliados;
 	
 	public int getId()
 	{

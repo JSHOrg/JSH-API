@@ -53,6 +53,12 @@ public class Proveedor {
     @JoinColumn(name="idcontacto",referencedColumnName="idcontacto")
     private Contacto contacto;
     
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="idservicio",referencedColumnName="idservicio")
+    private Servicio servicio;
+    
+    
+    
 	public Proveedor() {
 	}
 
@@ -175,5 +181,18 @@ public class Proveedor {
      */
     public void setContacto(Contacto contacto) {
         this.contacto = contacto;
+    }
+    
+    /**
+     * @return the servicio
+     */
+    public Servicio getServicio() {
+        return servicio;
+    }
+     /**
+     * @param servicio the servicio to set
+     */
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 }
