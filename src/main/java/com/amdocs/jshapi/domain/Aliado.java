@@ -1,5 +1,7 @@
 package com.amdocs.jshapi.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -48,6 +51,9 @@ public class Aliado {
 	
 	@Column (name="calificacion")
 	private String calificacion;
+	
+	 @OneToMany (mappedBy="aliado")
+	 private Set<Tutor> Tutores;
 
 	public Long getId ()
 	{

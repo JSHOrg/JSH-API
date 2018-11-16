@@ -53,15 +53,10 @@ public class Contacto {
 	@Column(length = 70)
 	private String email;
 
-	@Column(length = 40)
-	private String password;
-
 	@Column(columnDefinition = "SMALLINT")
 	private int grupo;
 
-	@Column(name = "ultimologin")
-	private Date ultimoLogin;
-
+	
 	@Column(name = "fecharegistro")
 	private Date fechaRegistro;
 
@@ -213,20 +208,7 @@ public class Contacto {
 		this.email = email;
 	}
 
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password
-	 *            the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 
 	/**
 	 * @return the grupo
@@ -243,20 +225,7 @@ public class Contacto {
 		this.grupo = grupo;
 	}
 
-	/**
-	 * @return the ultimoLogin
-	 */
-	public Date getUltimoLogin() {
-		return ultimoLogin;
-	}
 
-	/**
-	 * @param ultimoLogin
-	 *            the ultimoLogin to set
-	 */
-	public void setUltimoLogin(Date ultimoLogin) {
-		this.ultimoLogin = ultimoLogin;
-	}
 
 	/**
 	 * @return the fechaRegistro

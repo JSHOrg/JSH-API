@@ -32,8 +32,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		http
 		.cors().and()
 			.authorizeRequests()
-			 .antMatchers("/", "/oauth/token", "/api/aliados", "/api/integrantes").permitAll()
-			 .anyRequest().authenticated()
+			 //.antMatchers("/", "/oauth/token", "/api/aliados", "/api/integrantes").permitAll()
+			 //.anyRequest().authenticated()
 			 	.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 	          ;
 			   /* .anyRequest().authenticated() 

@@ -18,28 +18,33 @@ public class Benefactor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idbenefactor")
-	private int id;
+	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
 	private Direccion direccion;  
 	
-	 
+	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
+	private Contacto contacto;  
+	
 
 	@Column (name="Nombre")
 	private String nombre;
-
-	@Column (name="Edad")
-	private String edad;
 	
-	@Column (name="" )
+	@Column(name="razonsocial")
+	private String razonSocial;
 
-	public int getId()
+	 
+	
+	@Column (name="idbenefactor" )
+
+	public Long getId()
 	{
 		return id;
 	}
 	
-	public void setId(int id)
+	public void setId(Long id)
 	{
 		this.id = id;
 	}
@@ -54,6 +59,16 @@ public class Benefactor {
 		this.direccion = direccion;
 	}
  
+	public Contacto getContacto()
+	{
+		return contacto;
+	}
+	
+	public void setContacto(Contacto contacto)
+	{
+		this.contacto = contacto;
+	}
+	
 	public String getNombre()
 	{
 		return nombre;
@@ -64,14 +79,14 @@ public class Benefactor {
 		this.nombre = nombre;
 	}
 	
-	public String getEdad ()
+	public String getRazonSocial()
 	{
-		return edad;
+		return razonSocial;
 	}
 	
-	public void setEdad(String edad)
+	public void setRazonSocial(String razonSocial)
 	{
-		this.edad = edad;
+		this.razonSocial = razonSocial;
 	}
 
 }

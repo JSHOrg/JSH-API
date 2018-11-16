@@ -4,16 +4,21 @@ import org.springframework.data.rest.core.config.Projection;
 import java.util.Date;
 
 import com.amdocs.jshapi.domain.Contacto;
-import com.amdocs.jshapi.domain.Proveedor;
-import com.amdocs.jshapi.domain.Region;
-import com.amdocs.jshapi.domain.Servicio;
+import com.amdocs.jshapi.domain.Direccion;
+import com.amdocs.jshapi.domain.Tutor;
 
 import antlr.collections.List;
 
-@Projection(name = "tutorInline", types = Proveedor.class)
+@Projection(name = "tutorInline", types = Tutor.class)
 
 public interface TutorInline {
-	 String getNombre();
-	    String getComentarios();
-	     
+	 
+	 Long getId ();
+	 String  getComentarios();
+	 String getCalificacion ();
+	 String getEspecialidad();
+	 boolean isHabilitado();
+	 Direccion getDireccion();
+	 Contacto getContacto();
+	 
 }
