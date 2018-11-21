@@ -1,24 +1,24 @@
 package com.amdocs.jshapi.domain;
+import java.beans.Transient;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Formula;
+
 import com.amdocs.jshapi.domain.Direccion;
-import com.amdocs.jshapi.domain.Beneficiario;
 
 /**
  * @author Jose Eduardo Serrano
@@ -28,6 +28,10 @@ import com.amdocs.jshapi.domain.Beneficiario;
 @Table(name="familia")
 public class Familia {
 
+	@Formula(
+		    "(select count(*) from integrante where idfamilia = idfamilia)")
+		private int integrantesCount;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idfamilia")
@@ -47,7 +51,7 @@ public class Familia {
     
     @OneToMany (mappedBy="familia")
     private Set<Integrante> Integrantes;
-    
+     
     @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
     private Direccion direccion;
@@ -115,4 +119,9 @@ public class Familia {
     	 this.idgrupo = idgrupo;
     }
      
+    @Transient 
+    public int getIntegrantesCount()
+    {
+    	return integrantesCount;
+    }
 }

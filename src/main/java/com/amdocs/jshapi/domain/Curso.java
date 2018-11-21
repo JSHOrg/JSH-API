@@ -29,11 +29,7 @@ public class Curso {
 	@Column(name="nombre", length=255)
 	private String nombre;
 	
-	@Column(name="patrocinado", length=255)
-	private String patrocinado;
 	
-	@Column(name="impartido", length=255)
-	private String impartido;
 	
 	@Column(name="calificacion", length=255)
 	private String calificacion;
@@ -84,27 +80,7 @@ public class Curso {
 	{
 		this.nombre = nombre;
 	}
-	
-	public String getPatrocinado ()
-	{
-		return patrocinado;
-	}
-	 
-	public void setPatrocinado (String patrocinado)
-	{
-		this.patrocinado = patrocinado;
-	}
-	
-	public String getImpartido ()
-	{
-		return impartido;
-	}
-	
-	public void setImpartido(String impartido)
-	{
-		this.impartido = impartido;
-	}
-	
+
 	public String getCalificacion () 
 	{
 		return calificacion;

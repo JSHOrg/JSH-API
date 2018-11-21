@@ -6,5 +6,6 @@ import com.amdocs.jshapi.domain.Familia;
 
 @Projection(name = "familiaInline", types = Familia.class)
 public interface FamiliaInline {
-
+	int getId();
+	int getIntegrantesCount();
 }

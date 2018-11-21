@@ -11,8 +11,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.amdocs.jshapi.domain.Aliado;
 import com.amdocs.jshapi.domain.Familia;
 import com.amdocs.jshapi.domain.Grupo;
+import com.amdocs.jshapi.projections.FamiliaInline;
 
-@RepositoryRestResource(path = "familias", collectionResourceRel = "familias")
+@RepositoryRestResource(path = "familias", collectionResourceRel = "familias", excerptProjection = FamiliaInline.class)
 
 public interface FamiliaRepository extends JpaRepository<Familia, Integer> {
 	

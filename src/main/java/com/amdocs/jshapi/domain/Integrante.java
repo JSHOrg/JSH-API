@@ -1,11 +1,17 @@
 package com.amdocs.jshapi.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,9 +33,7 @@ public class Integrante {
 	@Column(name = "apellidomaterno")
 	private String apellidomaterno;
 	
-	@Column(name="idgrupo")
-	private Long idgrupo;
-	
+	 
 	@Column (name = "edad")
 	private String edad;
 
@@ -49,6 +53,9 @@ public class Integrante {
 	@ManyToOne
 	@JoinColumn(name="idfamilia", nullable=false)
 	private Familia familia;
+	
+	@ManyToMany(mappedBy = "integrantes")
+	private Set<Grupo> grupos = new HashSet<Grupo>();
 	
 	public Long getId()
 	{
@@ -148,13 +155,12 @@ public class Integrante {
 		this.telefono = telefono;
 	}
 	
-	public Long getIdGrupo()
+	public Set<Grupo> getGrupos ()
 	{
-		return idgrupo;
+		return this.grupos;
 	}
-	
-	public void setIdGrupo(Long idgrupo)
+	public void setGrupos (Set<Grupo> grupos)
 	{
-		this.idgrupo = idgrupo;
+		this.grupos = grupos;
 	}
 }
