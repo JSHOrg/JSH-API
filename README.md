@@ -13,3 +13,4 @@ Repositorio del proyecto de back end para el proyecto Jalisco sin hambre.
 * Added oauth2 security layer
 
 
+Version for merge of logitic module and api module.
