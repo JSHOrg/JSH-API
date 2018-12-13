@@ -21,14 +21,13 @@ public class Benefactor {
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
-	private Direccion direccion;  
-	
-	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
 	private Contacto contacto;  
 	
-
+	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
+	private Direccion direccion;  
+	
 	@Column (name="Nombre")
 	private String nombre;
 	

@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author Luis Cruz
  */
 @Entity
-@Table(name="donativo")
+@Table(name="donativos")
 public class Donativo {
 
 	@Id

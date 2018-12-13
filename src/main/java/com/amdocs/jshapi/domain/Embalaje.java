@@ -14,7 +14,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="embalaje")
+@Table(name="embalajes")
 public class Embalaje {
 
     @Id

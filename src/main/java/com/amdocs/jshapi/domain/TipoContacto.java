@@ -3,10 +3,13 @@
  */
 package com.amdocs.jshapi.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,8 @@ public class TipoContacto {
 	@Column(length = 50, nullable = false)
 	private String nombre;
 
+	 @OneToMany (mappedBy="tipoContacto")
+	 private Set<Contacto> Contactos;
 	/**
 	 * @return the id
 	 */

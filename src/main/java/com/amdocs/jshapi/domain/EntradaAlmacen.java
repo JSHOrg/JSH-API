@@ -21,7 +21,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="entradaalmacen")
+@Table(name="entradasalmacen")
 public class EntradaAlmacen {
 
 	@Id

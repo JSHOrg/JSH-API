@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,8 +32,8 @@ public class Contacto {
 	@Column(length = 200)
 	private String valor;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtipocontacto", name = "idtipocontacto")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "idtipocontacto", name="idtipocontacto",  nullable=false)
 	private TipoContacto tipoContacto;
 
 	@Column(length = 50)
@@ -106,7 +107,7 @@ public class Contacto {
 	/**
 	 * @return the tipoContacto
 	 */
-	public TipoContacto getTipoContacto() {
+ 	public TipoContacto getTipoContacto() {
 		return tipoContacto;
 	}
 

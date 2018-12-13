@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * @author Roberto Gutierrez Garcia
  */
 @Entity
-@Table(name="detalledonativo")
+@Table(name="donativosdetalles")
 public class DetalleDonativo {
 
     @Id
