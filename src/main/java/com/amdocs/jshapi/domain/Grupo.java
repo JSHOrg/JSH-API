@@ -2,7 +2,7 @@
  * 
  */
 package com.amdocs.jshapi.domain;
-
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -28,7 +29,7 @@ import javax.persistence.Table;
 public class Grupo {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idgrupo")
 	private long id;
 	
@@ -36,36 +37,75 @@ public class Grupo {
 	@Column
     private float progreso;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	/*
+	 * 
+	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
+	private Contacto contacto;  
+	 */
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idtrabajadorsocial", name="idtrabajadorsocial")
 	private TrabajadorSocial trabajadorSocial;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idcentrocomunitario", name="idcentrocomunitario")
-	private CentroComunitario centrocomunitario;
+	@JoinColumn(referencedColumnName = "idcentrograduacion", name="idcentrograduacion")
+	private CentroGraduacion centroGraduacion;
 	
-	@ManyToMany(cascade = { 
-	        CascadeType.PERSIST, 
-	        CascadeType.MERGE
-	    })
-	    @JoinTable(name = "grupo_integrante",
-	        joinColumns = @JoinColumn(name = "idgrupo"),
-	        inverseJoinColumns = @JoinColumn(name = "idintegrante")
-	    )
-	private Set<Integrante> integrantes = new HashSet<Integrante>();
+	@Column(name="fechainicio")
+	private Date fechaInicio;
+	
+	@Column(name="fechafin")
+	private Date fechaFin;
+	
+	@Column(name="descripcion")
+	private String descripcion;
+	
+	@Column(name="estatusgrupo")
+	private int estatusGrupo;
+	
+	
+	public int getEstatusGrupo () 
+	{
+		return estatusGrupo; 
+	}
+	
+	public void setEstatusGrupo (int estatusGrupo)
+	{
+		this.estatusGrupo = estatusGrupo;
+	}
+	
+	public void setFechaInicio (Date fechaInicio)
+	{
+		this.fechaInicio = fechaInicio;
+	}
+	
+	public Date getFechaInicio ()
+	{
+		return fechaInicio;
+	}
+	
+	public void setFechaFin (Date fechaFin)
+	{
+		this.fechaFin = fechaFin;
+	}
+	
+	public Date getFechaFin ()
+	{
+		return fechaFin;
+	}
+	
+	public String getDescripcion()
+	{
+		return descripcion;
+	}
+	
+	public void setDescripcion(String descripcion)
+	{
+		this.descripcion = descripcion;
+	}
 	 
-	public void addIntegrante (Integrante integrante)
-	{
-		integrantes.add(integrante);
-		integrante.getGrupos().add(this);
-	}
-	
-	public void removeIntegrante (Integrante integrante)
-	{
-		this.integrantes.remove(integrante);
-		integrante.getGrupos().remove(this);
-	}
- 	
+	 
 	/**
 	 * @return the id
 	 */
@@ -85,7 +125,7 @@ public class Grupo {
 	/**
 	 * @return the trabajadorAsignado
 	 */
-	public TrabajadorSocial getTrabajadorAsignado() {
+	public TrabajadorSocial getTrabajadorSocial() {
 		return trabajadorSocial;
 	}
 
@@ -96,19 +136,20 @@ public class Grupo {
 		this.trabajadorSocial = trabajadorSocial;
 	}
 
+	public CentroGraduacion getCentroGraduacion ()
+	{
+		return centroGraduacion;
+	}
+	
+	public void setCentroGraduacion(CentroGraduacion centroGraduacion)
+	{
+		this.centroGraduacion = centroGraduacion;
+	}
 	/**
 	 * @return the integrantes
-	 */
-	public Set<Integrante> getIntegrantes() {
-		return integrantes;
-	}
+ 
 
-	/**
-	 * @param integrantes the integrantes to set
-	 */
-	public void setIntegrantes(Set<Integrante> integrantes) {
-		this.integrantes = integrantes;
-	}
+	 
 
 	/**
 	 * @return the progreso

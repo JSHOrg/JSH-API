@@ -22,19 +22,19 @@ public class DetalleDonativo {
 
     @Id
 	@GeneratedValue
-	@Column(name = "iddetalledonativo")
+	@Column(name = "iddonativodetalle")
 	private Long id;
     
-    @Column(name="cantidadkg")
+    @Column(name="cantidadkgs")
     private String cantidadKg;
     
-    @Column(name="cantidadpza")
+    @Column(name="cantidadpiezas")
     private String cantidadPza;
     
     @Column(name="fechaconsumolimite")
     private Date fechaConsumoLimite;
     
-    @Column
+    @Column(name="cosecha")
     private boolean cosecha;
     
     @Column(name="pagocosecha")
@@ -83,7 +83,7 @@ public class DetalleDonativo {
     private Embalaje embalaje;
 
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentos") 
+    @JoinColumn(referencedColumnName="idbancoalimentos", name="idbanco") 
     private BancoAlimentos bancoAlimentos;
     
 	@ManyToOne(fetch=FetchType.EAGER)

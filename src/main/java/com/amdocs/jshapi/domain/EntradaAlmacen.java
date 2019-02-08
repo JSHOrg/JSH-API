@@ -48,11 +48,11 @@ public class EntradaAlmacen {
 	private boolean status;
 
 	@OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="idbancoalimentos",referencedColumnName="idbancoalimentos")
+    @JoinColumn(name="idbanco",referencedColumnName="idbancoalimentos")
 	private BancoAlimentos bancoAlimentos;
 
 	@OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="iddetalledonativo",referencedColumnName="iddetalledonativo")
+    @JoinColumn(name="iddonativodetalle",referencedColumnName="iddonativodetalle")
 	private DetalleDonativo detalleDonativo;
 
 	@ManyToOne(fetch=FetchType.EAGER)

@@ -30,7 +30,7 @@ public class SolicitudesRecoleccion {
 	private Long id;
     
 	@OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="iddetalledonativo", referencedColumnName="iddetalledonativo")
+    @JoinColumn(name="iddetalledonativo", referencedColumnName="idDonativoDetalle")
 	private DetalleDonativo detalleDonativo;
 
     @OneToOne(fetch = FetchType.EAGER)

@@ -7,12 +7,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -50,12 +52,15 @@ public class Integrante {
 	@Column (name ="graduacion")
 	private String graduacion;
 	
-	@ManyToOne
-	@JoinColumn(name="idfamilia", nullable=false)
-	private Familia familia;
+	@Column (name ="SigoID")
+	private String sigoID;
 	
-	@ManyToMany(mappedBy = "integrantes")
-	private Set<Grupo> grupos = new HashSet<Grupo>();
+	@Column (name ="comunidad")
+	private String comunidad;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "idgrupo", name="idgrupo")
+	private Grupo grupo;
 	
 	public Long getId()
 	{
@@ -96,15 +101,7 @@ public class Integrante {
 		this.apellidomaterno = apellidomaterno;
 	}
 	
-	public Familia getFamilia(){
-		return familia;
-	}
-	
-	public void setFamilia(Familia familia)
-	{
-		this.familia = familia;
-	}
-	
+	 
 	public String getRol ()
 	{
 		return rol;
@@ -155,12 +152,32 @@ public class Integrante {
 		this.telefono = telefono;
 	}
 	
-	public Set<Grupo> getGrupos ()
+	public Grupo getGrupo ()
 	{
-		return this.grupos;
+		return this.grupo;
 	}
-	public void setGrupos (Set<Grupo> grupos)
+	public void setGrupo (Grupo grupo)
 	{
-		this.grupos = grupos;
+		this.grupo = grupo;
+	}
+	
+	public String getSigoID ()
+	{
+		return sigoID;
+	}
+	
+	public void setSigoID(String sigoID)
+	{
+		this.sigoID = sigoID;
+	}
+	
+	public String getComunidad ()
+	{
+		return comunidad;
+	}
+	
+	public void setComunidad (String comunidad)
+	{
+		this.comunidad = comunidad;
 	}
 }

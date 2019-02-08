@@ -46,11 +46,7 @@ public class Familia {
     @Column(name="fechaalta")
     private Date date;
     
-    @Column(name="integrantes")
-    private int integrantes;
     
-    @OneToMany (mappedBy="familia")
-    private Set<Integrante> Integrantes;
      
     @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
@@ -89,15 +85,7 @@ public class Familia {
     	this.representante = representante;
     }
     
-    public int getIntegrantes()
-    {
-    	return integrantes;
-    }
-    
-    public void setIntegrantes(int integrantes)
-    {
-    	this.integrantes = integrantes;
-    }
+  
     
     public Direccion getDireccion()
     {
