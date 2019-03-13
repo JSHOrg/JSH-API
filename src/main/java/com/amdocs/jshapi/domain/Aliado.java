@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.amdocs.jshapi.enums.TipoAliado;
 
 @Entity
 @Table(name="aliado")
@@ -27,21 +31,16 @@ public class Aliado {
 	@JoinColumn(referencedColumnName = "idcontacto", name="idcontacto")
 	private Contacto contacto;
 	 
-	
-	@Column(name = "idbancoalimentos")
-	private Long idbancoalimentos; 
-	
-	 
-	
 	@ManyToOne
-	@JoinColumn(name="idtipoaliado", nullable=false)
-	private TipoAliado tipoaliado;
-	
+	@JoinColumn(name = "idbancoalimentos", nullable=false)
+	private  BancoAlimentos bancoAlimentos; 	
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "iddireccion", name="iddireccion")
 	private Direccion direccion;
 
+	@Enumerated(EnumType.STRING)
+	private TipoAliado tipoaliado;
 	 
 	@Column (name="razonsocial")
 	private String razonsocial;
@@ -52,9 +51,6 @@ public class Aliado {
 	@Column (name="calificacion")
 	private String calificacion;
 	
-	 @OneToMany (mappedBy="aliado")
-	 private Set<Tutor> Tutores;
-
 	public Long getId ()
 	{
 		return id;
@@ -95,26 +91,25 @@ public class Aliado {
 	{
 		this.contacto = contacto;
 	}
-	
-	 
-	public void setTipoAliado(TipoAliado tipoaliado)
+		 
+	public void setBancoAlimentos(BancoAlimentos  bancoAlimentos)
 	{
-		this.tipoaliado = tipoaliado;
+		this.bancoAlimentos = bancoAlimentos;
 	}
 	
-	public TipoAliado getTipoAliado ()
+	public BancoAlimentos getBancoAlimentos ()
+	{
+		return bancoAlimentos;
+	}
+	
+	public TipoAliado getTipoAliado()
 	{
 		return tipoaliado;
 	}
 	
-	public void setIdBancoAlimentos(long idbancoalimentos)
+	public void setTipoAliado(TipoAliado tipoaliado)
 	{
-		this.idbancoalimentos = idbancoalimentos;
-	}
-	
-	public Long getIdBancoAlimentos ()
-	{
-		return idbancoalimentos;
+		this.tipoaliado = tipoaliado;
 	}
 }
 

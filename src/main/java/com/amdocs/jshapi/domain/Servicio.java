@@ -15,7 +15,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="servicio")
+@Table(name="servicios")
 public class Servicio {
 
     @Id
@@ -26,11 +26,8 @@ public class Servicio {
     @Column(name="tiposervicio")
     private String tipoServicio;
     
-    private String negocio;
-    
-    private String beneficio;
-    
-    private String contacto;
+  
+     
     
 	public Servicio() {
 	}
@@ -70,46 +67,5 @@ public class Servicio {
     public void setTipoServicio(String tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
-
-	/**
-	 * @return the negocio
-	 */
-	public String getNegocio() {
-		return negocio;
-	}
-
-	/**
-	 * @param negocio the negocio to set
-	 */
-	public void setNegocio(String negocio) {
-		this.negocio = negocio;
-	}
-
-	/**
-	 * @return the beneficio
-	 */
-	public String getBeneficio() {
-		return beneficio;
-	}
-
-	/**
-	 * @param beneficio the beneficio to set
-	 */
-	public void setBeneficio(String beneficio) {
-		this.beneficio = beneficio;
-	}
-
-	/**
-	 * @return the contacto
-	 */
-	public String getContacto() {
-		return contacto;
-	}
-
-	/**
-	 * @param contacto the contacto to set
-	 */
-	public void setContacto(String contacto) {
-		this.contacto = contacto;
-	}
+ 
 }

@@ -32,7 +32,7 @@ public class Producto {
     private String perecedero;
     
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idclasificacionproducto", name="idclasificacionproducto")
+    @JoinColumn(referencedColumnName="idproductoclasificacion", name="idproductoclasificacion")
     private ClasificacionProducto clasificacion;
 
 	/**

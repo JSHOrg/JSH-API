@@ -19,7 +19,7 @@ public class ClasificacionProducto {
 
     @Id
 	@GeneratedValue
-	@Column(name = "idclasificacionproducto")
+	@Column(name = "idproductoclasificacion")
 	private Long id;
     
     @Column(length=30)

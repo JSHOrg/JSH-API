@@ -6,7 +6,10 @@ package com.amdocs.jshapi.domain;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +35,8 @@ public class Contacto {
 	@Column(length = 200)
 	private String valor;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idtipocontacto", name="idtipocontacto",  nullable=false)
-	private TipoContacto tipoContacto;
+	@Enumerated(EnumType.STRING)
+	private TipoContacto tipocontacto;
 
 	@Column(length = 50)
 	private String nombre;
@@ -108,15 +110,15 @@ public class Contacto {
 	 * @return the tipoContacto
 	 */
  	public TipoContacto getTipoContacto() {
-		return tipoContacto;
+		return tipocontacto;
 	}
 
 	/**
 	 * @param tipoContacto
 	 *            the tipoContacto to set
 	 */
-	public void setTipoContacto(TipoContacto tipoContacto) {
-		this.tipoContacto = tipoContacto;
+	public void setTipoContacto(TipoContacto tipocontacto) {
+		this.tipocontacto = tipocontacto;
 	}
 
 	/**

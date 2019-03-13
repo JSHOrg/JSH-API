@@ -8,7 +8,5 @@ import com.amdocs.jshapi.domain.Curso;
 
 @Projection(name = "cursoInline", types = Curso.class)
 public interface CursoInline {
-	 Long getId();
 	 
-	 String getDefinicion ();
 }

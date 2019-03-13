@@ -1,18 +1,21 @@
 package com.amdocs.jshapi.domain;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import com.amdocs.jshapi.domain.CentroComunitario;
+import com.amdocs.jshapi.domain.CentroGraduacion;
 import com.amdocs.jshapi.domain.Direccion;;
 @Entity
 @Table(name="curso")
@@ -43,9 +46,20 @@ public class Curso {
 	
 	 
     @OneToOne(optional=false, fetch=FetchType.EAGER)
-    @JoinColumn(referencedColumnName="idcentrocomunitario", name="idcentrocomunitario")
-	private CentroComunitario centrocomunitario; 
+    @JoinColumn(referencedColumnName="idcentrograduacion", name="idcentrograduacion")
+	private CentroGraduacion centrograduacion; 
     
+    @OneToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(referencedColumnName="idareaofertaeducativa", name="idareaofertaeducativa")
+    private AreaOfertaEducativa areaofertaeducativa;
+    
+    /*@OneToMany(
+            mappedBy = "curso",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+        )
+    private List<CursoIntegrante> cursosintegrantes = new ArrayList<>();
+    */
     
 	/**
 	 * @return the id
@@ -111,14 +125,24 @@ public class Curso {
 		this.direccion = direccion;
 	}
 	
-	public CentroComunitario getCentroComunitario()
+	public CentroGraduacion getCentroGraduacion()
 	{
-		return centrocomunitario;
+		return centrograduacion;
 	}
 	
-	public void setCentroComunitario(CentroComunitario centrocomunitario)
+	public void setCentroGraduacion(CentroGraduacion centrograduacion)
 	{
-		this.centrocomunitario = centrocomunitario;
+		this.centrograduacion = centrograduacion;
+	}
+	
+	public AreaOfertaEducativa getAreaOfertaEducativa ()
+	{
+		return this.areaofertaeducativa;
+	}
+	
+	public void setAreaOfertaEducativa (AreaOfertaEducativa areaofertaeducativa)
+	{
+		this.areaofertaeducativa = areaofertaeducativa;
 	}
 }
 

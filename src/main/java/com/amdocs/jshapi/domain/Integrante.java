@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,11 +15,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
+
 @Entity
 @Table(name="integrante")
+@NaturalIdCache
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) 
 public class Integrante {
 
 	@Id
@@ -26,6 +35,7 @@ public class Integrante {
 	@Column(name = "idintegrante")
 	private long id;
 	
+	@NaturalId
 	@Column(name = "nombre")
 	private String nombre;
 	
@@ -62,6 +72,13 @@ public class Integrante {
 	@JoinColumn(referencedColumnName = "idgrupo", name="idgrupo")
 	private Grupo grupo;
 	
+    @OneToMany(
+            mappedBy = "integrante",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+        )
+    private List<CursoIntegrante> cursosintegrantes = new ArrayList<>();
+    
 	public Long getId()
 	{
 		return id;
