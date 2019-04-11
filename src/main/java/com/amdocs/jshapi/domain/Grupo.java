@@ -50,7 +50,7 @@ public class Grupo {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "idcentrograduacion", name="idcentrograduacion")
-	private CentroGraduacion centroGraduacion;
+	private Centrograduacion centroGraduacion;
 	
 	@Column(name="fechainicio")
 	private Date fechaInicio;
@@ -136,12 +136,12 @@ public class Grupo {
 		this.trabajadorSocial = trabajadorSocial;
 	}
 
-	public CentroGraduacion getCentroGraduacion ()
+	public Centrograduacion getCentroGraduacion ()
 	{
 		return centroGraduacion;
 	}
 	
-	public void setCentroGraduacion(CentroGraduacion centroGraduacion)
+	public void setCentroGraduacion(Centrograduacion centroGraduacion)
 	{
 		this.centroGraduacion = centroGraduacion;
 	}

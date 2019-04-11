@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
- 
+
+import com.amdocs.jshapi.proxys.BamxProxy;
 import com.amdocs.jshapi.proxys.responses.Beneficiario;
 import com.amdocs.jshapi.proxys.responses.ResponseBeneficiarios;
 
@@ -20,28 +21,15 @@ public class BeneficiariosSIGO {
 	@RequestMapping(method = RequestMethod.GET,  value = "ByFolio", params = {"FolioFamiliar"})
 	public ResponseBeneficiarios getBeneficiarioByFolio(String FolioFamiliar) throws JsonProcessingException 
 	{
-		List<Beneficiario> beneficiarios = new ArrayList<Beneficiario>();
-		
-		Beneficiario beneficiario1 = new Beneficiario();
-		beneficiario1.setNombre("David");
-		beneficiario1.setApellidoPaterno("Conde");
-		beneficiario1.setApellidoMaterno("De Dinamarca");
-		beneficiario1.setIdBeneficiario(19200);
-		
-		Beneficiario beneficiario2 = new Beneficiario();
-		beneficiario2.setNombre("Margarita");
-		beneficiario2.setApellidoPaterno("Conde");
-		beneficiario2.setApellidoMaterno("De Dinamarca");
-		beneficiario2.setIdBeneficiario(19200);
-		
-		beneficiarios.add(beneficiario1);
-		beneficiarios.add(beneficiario2);
-		
 		ResponseBeneficiarios response = new ResponseBeneficiarios();
+		
+		BamxProxy bamxProxy = new BamxProxy();
+	
+		List<Beneficiario> beneficiarios = bamxProxy.getListBeneficiarios(FolioFamiliar);
 		response.setBeneficiarios(beneficiarios);
-		 
 		
 		return response;
+
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,  value = "ByApellido", params = {"Apellido"})

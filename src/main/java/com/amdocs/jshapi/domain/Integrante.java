@@ -1,8 +1,6 @@
 package com.amdocs.jshapi.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,81 +11,61 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
-
+ 
 @Entity
 @Table(name="integrante")
-@NaturalIdCache
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) 
+
+
 public class Integrante {
+
+	
+	/*public Integrante(Set<CursoIntegrante> cursosintegrantes)
+	{
+		this.cursosintegrantes = cursosintegrantes;
+	}*/
+	
+	private Long id;
+	
+	private String nombre;
+	private String apellidopaterno;
+	private String apellidomaterno;
+	private String edad;
+	private String telefono;
+	private String rol;
+	private String escolaridad;
+	private String graduacion;
+	private String sigoID;
+	
+	private String comunidad;
+
+	private Grupo grupo;
+	
+ //	private Set<CursoIntegrante> cursosintegrantes = new HashSet<CursoIntegrante>(0);
+   
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idintegrante")
-	private long id;
-	
-	@NaturalId
-	@Column(name = "nombre")
-	private String nombre;
-	
-	@Column(name = "apellidopaterno")
-	private String apellidopaterno;
-	
-	@Column(name = "apellidomaterno")
-	private String apellidomaterno;
-	
-	 
-	@Column (name = "edad")
-	private String edad;
-
-	@Column (name = "telefono")
-	private String telefono;
-
-	
-	@Column (name = "rol")
-	private String rol;
-	
-	@Column (name = "escolaridad")
-	private String escolaridad;
-	
-	@Column (name ="graduacion")
-	private String graduacion;
-	
-	@Column (name ="SigoID")
-	private String sigoID;
-	
-	@Column (name ="comunidad")
-	private String comunidad;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(referencedColumnName = "idgrupo", name="idgrupo")
-	private Grupo grupo;
-	
-    @OneToMany(
-            mappedBy = "integrante",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-        )
-    private List<CursoIntegrante> cursosintegrantes = new ArrayList<>();
-    
 	public Long getId()
 	{
-		return id;
+		return this.id;
 	}
-	public void setID(Long id)
+	public void setId(Long id)
 	{
 		this.id =id;
 	}
 	
+	@Column(name = "nombre")
 	public String getNombre()
 	{
 		return nombre;
@@ -98,6 +76,7 @@ public class Integrante {
 		this.nombre= nombre;
 	}
 	
+	@Column(name = "apellidopaterno")
 	public String getApellidoPaterno ()
 	{
 		return apellidopaterno;
@@ -108,6 +87,7 @@ public class Integrante {
 		this.apellidopaterno = apellidopaterno;
 	}
 	
+	@Column(name = "apellidomaterno")
 	public String getApellidoMaterno ()
 	{
 		return apellidomaterno;
@@ -118,7 +98,8 @@ public class Integrante {
 		this.apellidomaterno = apellidomaterno;
 	}
 	
-	 
+
+	@Column (name = "rol")
 	public String getRol ()
 	{
 		return rol;
@@ -129,6 +110,7 @@ public class Integrante {
 		this.rol  = rol;
 	}
 	
+	@Column (name = "escolaridad")
 	public String getEscolaridad ()
 	{
 		return escolaridad;
@@ -139,6 +121,8 @@ public class Integrante {
 		this.escolaridad = escolaridad;
 	}
 	
+	
+	@Column (name ="graduacion")
 	public String getGraduacion ()
 	{
 		return graduacion;
@@ -149,6 +133,7 @@ public class Integrante {
 		this.graduacion = graduacion;
 	}
 	
+	@Column (name = "edad")
 	public String getEdad()
 	{
 		return edad;
@@ -159,6 +144,7 @@ public class Integrante {
 		this.edad = edad;
 	}
 	
+	@Column (name = "telefono")
 	public String getTelefono()
 	{
 		return telefono;
@@ -169,6 +155,9 @@ public class Integrante {
 		this.telefono = telefono;
 	}
 	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "idgrupo", name="idgrupo")
 	public Grupo getGrupo ()
 	{
 		return this.grupo;
@@ -178,6 +167,7 @@ public class Integrante {
 		this.grupo = grupo;
 	}
 	
+	@Column (name ="SigoID")
 	public String getSigoID ()
 	{
 		return sigoID;
@@ -188,6 +178,8 @@ public class Integrante {
 		this.sigoID = sigoID;
 	}
 	
+
+	@Column (name ="comunidad")
 	public String getComunidad ()
 	{
 		return comunidad;
@@ -197,4 +189,15 @@ public class Integrante {
 	{
 		this.comunidad = comunidad;
 	}
+	
+	/*@OneToMany(  mappedBy = "integrante", fetch=FetchType.LAZY )
+ 	public   Set<CursoIntegrante> getCursosIntegrantes ()
+	{
+		return this.cursosintegrantes;
+	}
+	 
+	public void setCursosIntegrantes(Set<CursoIntegrante> cursosintegrantes )
+	{
+		this.cursosintegrantes = cursosintegrantes;
+	}*/
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import com.amdocs.jshapi.bamx.CatESNPreguntaAlimentacion;
 import com.amdocs.jshapi.bamx.ESNAlimentacionRespuesta;
 import com.amdocs.jshapi.estudios.Alimentacion;
+import com.amdocs.jshapi.estudios.Pregunta;
 
 public class AlimentacionTranslate {
 	
@@ -53,84 +54,10 @@ public class AlimentacionTranslate {
 	{
 		List<ESNAlimentacionRespuesta> listaPreguntas = new ArrayList<ESNAlimentacionRespuesta>();
 		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(AlgunaVezSeQuedaronSinComida
-						, 
-						alimentacion.getAlgunaVezSeQuedaronSinComida()));
-		
-		listaPreguntas.add( translateAlimentacionRespuesta
-				( AlgunaVezUnMenorDe18AnosSeDurmioConHambre
-						, 
-						alimentacion.getAlgunaVezUnMenorDe18AnosSeDurmioConHambre()));
-		
-		listaPreguntas.add( translateAlimentacionRespuesta
-				( AlgunaVezUstedOAlgunAdultoEnSuHogarSintioHambrePeroNoComio
-						, 
-						alimentacion.getAlgunaVezUstedOAlgunAdultoEnSuHogarSintioHambrePeroNoComio()));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				( AlgunaVezAlgunMenorDe18AnosEnSuHogarSintioHambrePeroNoComio
-					 , 
-					 alimentacion.getAlgunaVezAlgunMenorDe18AnosEnSuHogarSintioHambrePeroNoComio()
-				));
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(AlgunaVezUstedOAlgunAdultoEnSuHogarDejoDeDesayunarComerOCenar,
-						alimentacion.getAlgunaVezUstedOAlgunAdultoEnSuHogarDejoDeDesayunarComerOCenar()
-				));
-				
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(AlgunaVezAlgunMenorDe18AnosEnSuHogarDejoDeDesayunarComerOCenar
-						, 
-						alimentacion.getAlgunaVezAlgunMenorDe18AnosEnSuHogarDejoDeDesayunarComerOCenar()
-						));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				( AlgunaVezAlgunMenorDe18AnosEnSuHogarComioMenosDeLoQuePiensaDeberiaComer
-					 , 
-						alimentacion.getAlgunaVezAlgunMenorDe18AnosEnSuHogarComioMenosDeLoQuePiensaDeberiaComer()
-				));
-		  
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  AlgunaVezUstedOAlgunAdultoEnSuHogarComioMenosDeLoQuePiensaDeberiaComer
-					 , 
-					 alimentacion.getAlgunaVezUstedOAlgunAdultoEnSuHogarComioMenosDeLoQuePiensaDeberiaComer()
-				));
-		  
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  
-						AlgunaVezAlgunMenorDe18AnosEnSuHogarTuvoUnaAlimentacionBasadaEnPocaVariedad
-					 , 
-					 alimentacion.getAlgunaVezAlgunMenorDe18AnosEnSuHogarTuvoUnaAlimentacionBasadaEnPocaVariedad()
-				));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  
-						AlgunaVezUstedOAlgunAdultoEnSuHogarTuvoUnaAlimentacionBasadaEnPocaVariedadDeAlimentos
-					 , 
-					 alimentacion.getAlgunaVezUstedOAlgunAdultoEnSuHogarTuvoUnaAlimentacionBasadaEnPocaVariedadDeAlimentos()
-				));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  
-						AlgunaVezEnSuHogarTuvieronQueDisminuirLaCantidadServidaEnLaComidaAAlgunMenorDe18Anos
-					 , 
-					 alimentacion.getAlgunaVezEnSuHogarTuvieronQueDisminuirLaCantidadServidaEnLaComidaAAlgunMenorDe18Anos()
-				));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  
-						AlgunaVezUstedOAlgunAdultoEnSuHogarSoloComioUnaVezAlDiaODejoDeComerDuranteUnDia
-					 , 
-					 alimentacion.getAlgunaVezUstedOAlgunAdultoEnSuHogarSoloComioUnaVezAlDiaODejoDeComerDuranteUnDia()
-				));
-		
-		listaPreguntas.add(translateAlimentacionRespuesta
-				(  
-						AlgunaVezAlgunMenorDe18AnosEnSuHogarSoloComioUnaVezAlDiaODejoDeComerDuranteUnDia
-					 , 
-					 alimentacion.getAlgunaVezAlgunMenorDe18AnosEnSuHogarSoloComioUnaVezAlDiaODejoDeComerDuranteUnDia()
-				));
-		
+		for(Pregunta item : alimentacion.getPreguntas())
+		{
+			listaPreguntas.add(translateAlimentacionRespuesta(item.getPregunta(), item.getRespuesta()));
+		}
 		return listaPreguntas;
 		
 	}

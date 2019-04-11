@@ -45,7 +45,7 @@ public class ESNBeneficiarioTranslate {
 		esnBeneficiario.setCatDirEstado(translateStringToDirEstado(integrante.getEntidadDeNacimiento()));
 		esnBeneficiario.setDtFechaNacimiento(integrante.getFechaDeNacimiento());
 		esnBeneficiario.setCatESNEscolaridad(translateEscolaridad(integrante.getNivel()));
-		esnBeneficiario.setGradoEscolar(translateGradoEscolar(integrante.getGrado()));
+		//esnBeneficiario.setGradoEscolar(translateGradoEscolar(integrante.getGrado()));
 		return esnBeneficiario;
 		
 	}

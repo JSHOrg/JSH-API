@@ -3,10 +3,12 @@ package com.amdocs.jshapi.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Account {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idusuario")
 	private Long id;
 	
@@ -41,7 +43,8 @@ public class Account {
     @Column(name="fecharegistro")
     private Date fechaRegistro;
     
-	@JsonIgnore
+	//@JsonIgnore
+	@Column(name="password")
 	private String password;
 	
     @OneToOne(optional=false, fetch=FetchType.EAGER)
@@ -49,7 +52,7 @@ public class Account {
     private TipoUsuario tipo;
 
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(name="ACCOUNT_GRANTED_AUTHORITIES",joinColumns={
 		@JoinColumn(name="account", referencedColumnName="idusuario") 
 	},inverseJoinColumns={
@@ -61,7 +64,7 @@ public class Account {
 		return authorities;
 	}
 	
-	public void setAuthorities(List<AccountGrantedAuthority> authorities){
+	public void setGrantedAuthorities(List<AccountGrantedAuthority> authorities){
 		this.authorities = authorities;
 	}
 	

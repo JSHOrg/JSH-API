@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.amdocs.jshapi.bamx.CatESNBanoEscusado;
 import com.amdocs.jshapi.bamx.CatESNCondicionVivienda;
+import com.amdocs.jshapi.bamx.CatESNEquipamiento;
 import com.amdocs.jshapi.bamx.CatESNServicioGas;
 import com.amdocs.jshapi.bamx.CatESNTenencia;
 import com.amdocs.jshapi.bamx.CatESNTipoApoyo;
@@ -16,8 +17,11 @@ import com.amdocs.jshapi.bamx.CatPGralParedes;
 import com.amdocs.jshapi.bamx.CatPGralTechos;
 import com.amdocs.jshapi.bamx.CatPGralTipoVivienda;
 import com.amdocs.jshapi.bamx.CatPGralTiposPisos;
+import com.amdocs.jshapi.bamx.ESNAlimentacionRespuesta;
 import com.amdocs.jshapi.bamx.ESNBeneficiario;
 import com.amdocs.jshapi.bamx.ESNCompleto;
+import com.amdocs.jshapi.bamx.ESNEquipamientosEstudio;
+import com.amdocs.jshapi.bamx.ESNIngresoSemanal;
 import com.amdocs.jshapi.estudios.Alimentacion;
 import com.amdocs.jshapi.estudios.CondicionesEconomicas;
 import com.amdocs.jshapi.estudios.DatosGenerales;
@@ -30,6 +34,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EstudioToESNCompletoTranslate extends EstudioToESNTranslate {
+	
+	
 	
 	public static String SerializeESN (ESNCompleto bmxesn)
 	{
@@ -46,7 +52,67 @@ public class EstudioToESNCompletoTranslate extends EstudioToESNTranslate {
 		return requestString; 
 	}
 	
-	public static ESNCompleto TranslateEstudioCompleto (Estudio estudio )
+	public static String GetStringESNCompleto(Estudio estudio) throws JsonProcessingException 
+	{
+		
+		InfraestructuraDeVivienda infraestructura = estudio.getEmbedded().getInfraestructuraDeVivienda();
+		Alimentacion alimentacion = estudio.getEmbedded().getAlimentacion();
+		List<Integrante> integrantes = estudio.getEmbedded().getEstructuraFamiliar().getIntegrantes();
+		CondicionesEconomicas condicionesEconomicas = estudio.getEmbedded().getCondicionesEconomicas();
+		
+		String strESNCompleto = GetStringEstudio(estudio);
+		System.out.println(strESNCompleto);
+		strESNCompleto = getPreparedJson(strESNCompleto) + ",\"ESNAlimentacionRespuesta\":" + GetStringAlimentacion(alimentacion) + ",";
+		System.out.println(strESNCompleto);
+		strESNCompleto =getPreparedJson(strESNCompleto) + ",\"ESNBeneficiario\":" + GetStringIntegrantes(integrantes) + ",";
+		System.out.println(strESNCompleto);
+		strESNCompleto =getPreparedJson(strESNCompleto) + ",\"ESNEquipamientosEstudio\":" + GetStringEquipamiento(infraestructura) + ",";
+		System.out.println(strESNCompleto);
+		strESNCompleto =getPreparedJson(strESNCompleto) + ",\"ESNIngresoSemanal\":" + GetStringIngresos(condicionesEconomicas) + ",";
+		strESNCompleto =getPreparedJson(strESNCompleto) + ",\"ESNEgresoSemanal\":" + "[]" + "}";
+		 
+		// TODO Mapeo ingresos y egresos 
+		return strESNCompleto;
+		
+	}
+	
+	public static String GetStringIngresos(CondicionesEconomicas condiciones) throws JsonProcessingException
+	{
+		ObjectMapper objectmapper = new ObjectMapper(); 
+		List<ESNIngresoSemanal> listaIngresos = IngresosTranslate.TranslateIngresoSemana(condiciones);
+		return objectmapper.writeValueAsString(listaIngresos);
+	}
+	public static String GetStringAlimentacion (Alimentacion alimentacion) throws JsonProcessingException {
+		ObjectMapper objectmapper = new ObjectMapper(); 
+		List<ESNAlimentacionRespuesta> listAlimentacion = AlimentacionTranslate.translateAlimentacion(alimentacion);
+		return objectmapper.writeValueAsString(listAlimentacion);
+	}
+	
+	public static String GetStringIntegrantes(List<Integrante> integrantes) throws JsonProcessingException {
+		ObjectMapper objectmapper = new ObjectMapper(); 
+		List<ESNBeneficiario> listaBeneficiarios = new ArrayList<ESNBeneficiario>();
+		for(Integrante item : integrantes)
+		{
+			listaBeneficiarios.add(ESNBeneficiarioTranslate.TranslateBeneficiario(item));
+		}
+		return objectmapper.writeValueAsString(listaBeneficiarios);
+	}
+	
+	public static String GetStringEstudio (Estudio estudio) throws JsonProcessingException {
+		ObjectMapper objectmapper = new ObjectMapper(); 
+		ESNCompleto esn = TranslateEstudioCompleto(estudio);
+		return objectmapper.writeValueAsString(esn);
+	}
+	
+	
+	public static String GetStringEquipamiento(InfraestructuraDeVivienda infraestructura ) throws JsonProcessingException
+	{
+		ObjectMapper objectmapper = new ObjectMapper(); 
+		List<ESNEquipamientosEstudio> listaEquipamiento = EquipamientoTranslate.translateEquipamientos(infraestructura);
+		return objectmapper.writeValueAsString(listaEquipamiento);
+	}
+	
+	public static ESNCompleto TranslateEstudioCompleto (Estudio estudio ) throws JsonProcessingException
 	{
 		ESNCompleto esnCompleto = new ESNCompleto();
 		
@@ -56,28 +122,22 @@ public class EstudioToESNCompletoTranslate extends EstudioToESNTranslate {
 		Representante representante = estudio.getEmbedded().getRepresentante();
 		InfraestructuraDeVivienda infraestructura = estudio.getEmbedded().getInfraestructuraDeVivienda();
 		Alimentacion alimentacion = estudio.getEmbedded().getAlimentacion();
-		List<Integrante> integrantes = estudio.getEmbedded().getEstructuraFamiliar().getIntegrantes();
+		//List<Integrante> integrantes = estudio.getEmbedded().getEstructuraFamiliar().getIntegrantes();
 		
-		List<ESNBeneficiario> listaBeneficiarios = new ArrayList<ESNBeneficiario>();
-		for(Integrante item : integrantes)
-		{
-			listaBeneficiarios.add(ESNBeneficiarioTranslate.TranslateBeneficiario(item));
-		}
 		
-		esnCompleto.setESNBeneficiario(listaBeneficiarios);
+		
+		//esnCompleto.setESNBeneficiario(listaBeneficiarios);
 		esnCompleto.setStrCalle(representante.getCalle());
 		esnCompleto.setStrNoExterior(representante.getNumeroExterior()); // Validar este campo como numerico 
 		esnCompleto.setTelefono(datosGenerales.getTelefonoCelular());
 		esnCompleto.setCDescripcionUbicacion(datosGenerales.getDescripcionDeUbicacion());
 		esnCompleto.setCP(datosGenerales.getCodigoPostal());
 		esnCompleto.setStrEntreCalles(datosGenerales.getEntreVialidades());
-	//	bmxesn.setStrNoInterior(Integer.parseInt(representante.getNumeroInterior()) );
+		esnCompleto.setStrNoInterior(Integer.parseInt(datosGenerales.getNumeroInterior()));
 		esnCompleto.setStrNombreAsentamiento(datosGenerales.getNombreDeAsentamiento());
-		// esnCompleto.setApoyoEspecie(); Revisar de donde obtengo este campo // valor Alimento
- 		
-		
+			// esnCompleto.setApoyoEspecie(); Revisar de donde obtengo este campo // valor Alimento\
 		esnCompleto.setNoCuartosParaDormir(getIntValueFromStringField(infraestructura.getCuartosParaDormir()));
-		//esnCompleto.setCuartoBano();
+			//esnCompleto.setCuartoBano();
 		
 		esnCompleto.setCatESNBanoEscusado(translateBanoEscusado(infraestructura));
 		esnCompleto.setCatESNCondicionVivienda(translateCondicionVivienda (infraestructura));
@@ -86,34 +146,34 @@ public class EstudioToESNCompletoTranslate extends EstudioToESNTranslate {
 		esnCompleto.setCatESNTipoApoyo(translateTipoApoyo(condicionesEconomicas));
 		esnCompleto.setCatGralDuracionMeses(translateDuracionMeses ()); // revisar fuente de este campo
 		esnCompleto.setCatPGralFrecuencia(translateFrecuencia(alimentacion) );
-		//esnCompleto.setRemesas();
+			//esnCompleto.setRemesas();
 		
-		esnCompleto.setCatPGralFrecuenciaApoyoEspecie(translateFrecuenciaApoyoEspecie(condicionesEconomicas) );
+ 		esnCompleto.setCatPGralFrecuenciaApoyoEspecie(translateFrecuenciaApoyoEspecie(condicionesEconomicas) );
 		esnCompleto.setCatPGralFrecuenciaRemesas(translateFrecuenciaRemesas()); // Revisar si este campo existe en la fuente
-		
-		//esnCompleto.setCatPGralParedes(translateParedes(infraestructura) );
+		 
+			//esnCompleto.setCatPGralParedes(translateParedes(infraestructura) );
 		esnCompleto.setCatPGralTechos(translateTechos(infraestructura) );
 		esnCompleto.setCatPGralParedes(translateParedes(infraestructura));
 		esnCompleto.setCatPGralTiposPisos(translatePisos(infraestructura));
 		esnCompleto.setCatPGralTipoVivienda(translateTipoVivienda (infraestructura));
 		// esnCompleto.setCocinaSeparada();  // Campo no mapeado
-		//esnCompleto.setESNAlimentacionRespuesta( AlimentacionTranslate.translateAlimentacion(alimentacion));
-		
+		 
+ 		//esnCompleto.setESNAlimentacionRespuesta( AlimentacionTranslate.translateAlimentacion(alimentacion));
 		
 		esnCompleto.setCatESNTipoAsentamiento((translateTipoAsentamiento(datosGenerales)));
 		esnCompleto.setCatESNTipoVialidad(translateTipoVialidad(datosGenerales));
 		esnCompleto.setCatDirAsentamiento(translateDirAsentamiento(datosGenerales));
 		esnCompleto.setCatDirEstado(translateCarDirEstado(datosGenerales));
 		esnCompleto.setCatDirMunicipio(translateCatDirMunicipio(datosGenerales));
-		esnCompleto.setCatPGralServiciosAgua(translateCatPGralServiciosAgua (condicionesEconomicas));
+		esnCompleto.setCatPGralServiciosAgua(translateCatPGralServiciosAgua (servicios));
 		esnCompleto.setCatESNServicioGas(translateServicioGas (condicionesEconomicas));
 		
-		esnCompleto.setCatPGralServiciosLuz(translateCatPGralServiciosLuz(condicionesEconomicas));
+		esnCompleto.setCatPGralServiciosLuz(translateCatPGralServiciosLuz(servicios));
 		esnCompleto.setCatPGralServiciosSanitarios(translateCatPGralServiciosSanitarios(servicios));
 		
 		esnCompleto.setPDiagDiagnostico(translatePDiagDiagnostico()); // Revisar fuente de este campo
 		esnCompleto.setPDiagGrupo(translatePDiagGrupo()); // Revisar fuente de este campo
-		
+ 		//esnCompleto.setESNEquipamientosEstudio(EquipamientoTranslate.translateEquipamientos(infraestructura));
 		return esnCompleto;
 	}
 
@@ -226,5 +286,11 @@ public class EstudioToESNCompletoTranslate extends EstudioToESNTranslate {
 	         return false;  
 	      }  
 	}
+	
+	private static String getPreparedJson(String input) {
+		return input.substring(0, input.length()-1);
+	}
+	
+	
 	
 }

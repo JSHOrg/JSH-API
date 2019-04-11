@@ -23,7 +23,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
  */
 @Entity
 @Table(name="centrograduacion")
-public class CentroGraduacion {
+public class Centrograduacion {
 
     @Id
 	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY )
@@ -54,9 +54,6 @@ public class CentroGraduacion {
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="idbancoalimentos", name="idbancoalimentos")
 	private BancoAlimentos bancoAlimentos;
-
-     
-	
 
 	/**
      * @return the id
@@ -153,7 +150,7 @@ public class CentroGraduacion {
 
   
 	/**
-     * @return the comtact
+     * @return the contacto
      */
 	 public Contacto getContacto() {
 		return contacto;
@@ -169,8 +166,6 @@ public class CentroGraduacion {
    public BancoAlimentos getBancoAlimentos ()
    {
 	   return bancoAlimentos;
-	   
-	  
    }
 
    public void setBancoAlimentos(BancoAlimentos bancoAlimentos)

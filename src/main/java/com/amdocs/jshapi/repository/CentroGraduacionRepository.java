@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-import com.amdocs.jshapi.domain.CentroGraduacion;
+import com.amdocs.jshapi.domain.Centrograduacion;
 import com.amdocs.jshapi.projections.CentroGraduacionInline;
 
 /**
@@ -16,9 +16,9 @@ import com.amdocs.jshapi.projections.CentroGraduacionInline;
  */
 
 @RepositoryRestResource(path = "centrograduacion", collectionResourceRel = "centrograduacion", excerptProjection = CentroGraduacionInline.class)
-public interface CentroGraduacionRepository extends JpaRepository<CentroGraduacion, Long> {
+public interface CentroGraduacionRepository extends JpaRepository<Centrograduacion, Long> {
 
-	public CentroGraduacion findCentroGraduacionByNombre(@Param("nombre") String nombre);
+	public Centrograduacion findCentroGraduacionByNombre(@Param("nombre") String nombre);
 	
  
 	

@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.amdocs.jshapi.proxys.BamxProxy;
+import com.amdocs.jshapi.proxys.responses.Beneficiario;
 import com.amdocs.jshapi.proxys.responses.Catalogo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -476,6 +477,24 @@ public class bamxproxytest {
 		}
 		 
 		 assertEquals(10, lista.size());	
+	}
+	
+	@Test 
+	public void bamxproxy_GetBeneficiarios_Test ()
+	{
+		BamxProxy proxy = new BamxProxy();
+		List<Beneficiario> lista = new ArrayList<Beneficiario>();
+		String folioFamiliar = "BAGDL0091510";
+		
+		try {
+			lista = proxy.getListBeneficiarios(folioFamiliar);
+			
+		}catch (JsonProcessingException e)
+		{
+			e.printStackTrace();
+		}
+		
+		assertEquals(1, lista.size());	
 	}
 	
 }

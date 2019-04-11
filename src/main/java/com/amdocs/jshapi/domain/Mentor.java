@@ -2,7 +2,6 @@ package com.amdocs.jshapi.domain;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,37 +10,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tutor")
-public class Tutor {
+@Table(name = "mentor")
+public class Mentor {
 
-	public Tutor ()
-	{
-		
-	}
-	
-	public Tutor (Set<TutorCurso> tutoresCurso)
-	{
-		this.tutoresCurso =  tutoresCurso;
-	}
-	
 	private Long id;	
 	private String comentarios;
 	private String calificacion;
 	private String especialidad;
 	private boolean habilitado;
-	private Aliado aliado;
 	private Direccion direccion;
 	private Contacto contacto;
-	private Set<TutorCurso> tutoresCurso;
+ 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "idtutor")
+	@Column(name = "idmentor")
 	public Long getId ()
 	{
 		return this.id;
@@ -74,18 +61,6 @@ public class Tutor {
 		this.calificacion = calificacion;
 	}
 	
-	
-	@ManyToOne
-	@JoinColumn(name="idaliado", nullable=false)
-	public Aliado getAliado()
-	{
-		return aliado;
-	}
-	
-	public void setAliado (Aliado aliado)
-	{
-		this.aliado = aliado;
-	}
 	
 	@OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(referencedColumnName="iddireccion", name="iddireccion")
@@ -129,17 +104,5 @@ public class Tutor {
 	
 	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
-	}
-
-	@OneToMany (mappedBy ="tutor",
-			cascade = CascadeType.ALL)
-	public Set<TutorCurso> getTutorcurso ()
-	{
-		return this.tutoresCurso;
-	}
-	
-	public void setTutorcurso (Set<TutorCurso> tutorescurso)
-	{
-		this.tutoresCurso = tutorescurso;
 	}
 }

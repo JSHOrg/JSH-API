@@ -2,8 +2,11 @@ package com.amdocs.jshapi.proxys;
 
 import java.net.URI;
 import java.util.List;
+
+import com.amdocs.jshapi.proxys.responses.Beneficiario;
 import com.amdocs.jshapi.proxys.responses.Catalogo;
 import com.amdocs.jshapi.proxys.responses.Response;
+import com.amdocs.jshapi.proxys.responses.ResponseBeneficiarios;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.client.RestTemplate;
 import static com.amdocs.jshapi.proxys.EndPoints.*;
@@ -16,9 +19,36 @@ public class BamxProxy extends BaseProxy {
 	final String gruposEndPoint = "/api/GruposEsn/listarGrupos";
 	final String Pdiagnostico = "&idPDiagNostico=";
 			
+	final String beneficiariosEndPoint = "/api/EstudioSocioNutricio/getBeneficiariosRegistrados";
+	final String folioFamiliarParameter = "&esnJSON=%7B%22FolioFamiliar%22:";
 	
 	
-	//final String CatalogosEndPoint = "https://webapiservice.bamx.org.mx/api/CatESN/";
+	public List<Beneficiario> getListBeneficiarios (String folioFamiliar) throws JsonProcessingException
+	{
+		//http://localhost:50559/api/EstudioSocioNutricio/getBeneficiariosRegistrados?accesoJSON={"UserName":'elsa.dominguez@prosociedad.org',"Pass":'y9Z5',"token":'4z8qt8SzrIEMIvOdYsoeWqYmbSY31QSHQL9IjBJkor0=',"idBanco":34}&esnJSON={"FolioFamiliar": "BAGDL0090993"}
+		StringBuilder urlGetLisBeneficiarios = new StringBuilder(urlPost);
+		urlGetLisBeneficiarios.append(beneficiariosEndPoint);
+		urlGetLisBeneficiarios.append(AccesoJsonParameter);
+		urlGetLisBeneficiarios.append(super.getUser());
+		urlGetLisBeneficiarios.append(folioFamiliarParameter);
+		urlGetLisBeneficiarios.append("%20%22" + folioFamiliar + "%22%7D");
+		
+		/* s.replace("{", "%7B")
+		  .replace("\"", "%22")
+		  .replace("}", "%7D");*/
+
+		System.out.println(urlGetLisBeneficiarios.toString());
+		
+		URI uri = URI.create(urlGetLisBeneficiarios.toString());
+
+		System.out.println(uri);
+		
+		RestTemplate restTemplate = new  RestTemplate();
+		ResponseBeneficiarios response = restTemplate.getForObject(uri, ResponseBeneficiarios.class );
+		System.out.println( response.getError());
+		return response.getBeneficiarios();
+	}
+
 	public List<Catalogo> getListGrupos (int idPDiagnostico) throws JsonProcessingException
 	{		 
 		StringBuilder urlGetListGrupos = new StringBuilder(urlPost);

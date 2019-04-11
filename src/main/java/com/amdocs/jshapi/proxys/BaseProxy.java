@@ -82,4 +82,14 @@ public class BaseProxy {
 		System.out.println(requestString);
 		return BamxProxy.encodeURIComponent(requestString);
 	}
+	
+	protected user getUserObject()
+	{
+		user userapp = new user();
+		userapp.setIdBanco(idbanco);
+		userapp.setPass(password);
+		userapp.setUserName(username);
+		userapp.setToken(token);
+		return userapp;
+	}
 }

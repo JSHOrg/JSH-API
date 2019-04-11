@@ -68,7 +68,7 @@ private String tipoDeAsentamiento;
 private String fechaDeLevantamiento;
 @JsonProperty("Nombre de asentamiento")
 private String nombreDeAsentamiento;
-@JsonProperty(" Descripcion de ubicacion ")
+@JsonProperty("Descripcion de ubicacion")
 private String descripcionDeUbicacion;
 @JsonProperty("Nombre de la comunidad o programa")
 private String nombreDeLaComunidadOPrograma;

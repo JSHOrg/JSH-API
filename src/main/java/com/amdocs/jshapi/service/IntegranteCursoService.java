@@ -1,5 +1,8 @@
 package com.amdocs.jshapi.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -29,61 +32,40 @@ public class IntegranteCursoService {
 	
 	
 	//@Transactional
-	public String AgregarIntegrantesCurso(CursoIntegrantesRequest cursointegrante)
+	public String AgregarIntegrantesCurso(CursoIntegrantesRequest cursointegranteentity)
 	{
 		System.out.println("Ingrensando al metodo de servicio");
-		System.out.println(cursointegrante.getIntegrantes().size());
+		//System.out.println(cursointegrante.getIntegrantes().size());
 		//Optional<Curso> cursoentity = cursorepository.findById((long) cursointegrante.getIdCurso());
 
-		Optional<Curso> cursoentity ;
 		try 
 		{
-			cursoentity = cursorepository.findById((long) 2);
-			System.out.println("despues del find by id");	
-		//System.out.println(cursoentity.isPresent());
-		
-		if(cursoentity.isPresent())
-		{
-			System.out.println("Se encontro el curso");
-			if(cursointegrante.getIntegrantes().size()> 0)
-			{
-				System.out.println("Mas de un integrante");
-				for(final IntegranteRequest integrante : cursointegrante.getIntegrantes())
-				{
-					Optional<Integrante>  integranteentity = integranterepository.findById((long) integrante.getId()) ;
-					if(integranteentity.isPresent())
-					{
-						 CursoIntegrante cursointegranteentity = 
-								 new CursoIntegrante(cursoentity.get(), integranteentity.get());
-						 integrantescursosrepository.save(cursointegranteentity);
-					}
-					else
-					{
-						System.out.println("No se encontro el curso 234");
-						return "Algo no encontrado";
-					}				
-				}
-			}
-			else
-			{
-				System.out.println("No se encontro el curso 22");
-				return "No encontrado";
-			}
+			Optional<Curso> curso = cursorepository.findById((long) 2);
+			Optional<Integrante> integrante = integranterepository.findById((long)21);
+			
+			CursoIntegrante cursointegrante = new CursoIntegrante();
+			cursointegrante.setCurso(curso.get());
+			
+			System.out.println(curso.get().getDescripcion());
+			
+			cursointegrante.setIntegrante(integrante.get());
+			
+			System.out.println(integrante.get().getApellidoPaterno());
+			
+			curso.get().getCursosIntegrantes().add(cursointegrante);
+			cursorepository.save(curso.get());
+			
+			//integrantescursosrepository.save(cursointegrante);
 		}
-		else 
+		catch(Exception ex)
 		{
-			System.out.println("No se encontro el curso");
-			return "Aqui tampoco se encontro";
-		}
-		System.out.println(cursoentity.get().getNombre());
-		}
-		catch (HibernateException ex)
-		{
-			ex.printStackTrace();
+			System.out.println("Se obtuvo una excepcion en el service");
+			 
 			System.out.println(ex.getMessage());
+			System.out.println(ex.getLocalizedMessage());
 		}
-
-		System.out.println("No se encontro el curso 14");
-		return "No se como llego aqui";
+		
+		
+		 return "Se hizo la insercion del registro"	;	
 	}
 }

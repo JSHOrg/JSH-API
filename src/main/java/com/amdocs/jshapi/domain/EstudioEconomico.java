@@ -29,7 +29,7 @@ public class EstudioEconomico {
     private String nombreEstudio;
     
     @Column(name="detallees")
-    private String detalleEstudio;
+    private String detalleestudio;
 
     @Column(name="timestamp")
     private Date date;
@@ -78,15 +78,16 @@ public class EstudioEconomico {
     /**
 	 * @return the detalle de estudio
 	 */
-	public String getDetalleEstudio() {
-		return this.detalleEstudio;
+	 
+	public String getDetalleestudio() {
+		return this.detalleestudio;
 	}
 
 	/**
 	 * @param detalleEstudio the detallle estudio to set
 	 */
-	public void setDetalleEstudio(String detalleEstudio) {
-		this.detalleEstudio = detalleEstudio;
+	public void setDetalleestudio(String detalleEstudio) {
+		this.detalleestudio = detalleEstudio;
     }
     
     /**

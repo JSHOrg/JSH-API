@@ -9,11 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+import java.math.BigDecimal;
 /**
  * @author Roberto Gutierrez Garcia
  *
@@ -22,31 +25,34 @@ import javax.persistence.Table;
 @Table(name = "empleo")
 public class Empleo {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "idempleo")
-	private Long id;
-
-	@Column(name="tipoempleo", length=50, nullable=false)
-	private String tipo;
-
-	@Column(name="ofertaeconomica", nullable = false)
-	private float ofertaEconomica;
-
-	@Column(nullable = false)
-	private Date vigencia;
-
-	@Column(length = 255, nullable = false)
-	private String ubicacion;
 	
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="iddireccion",referencedColumnName="iddireccion")
+	private Long id;
+	private String puesto;
+	private String plazas;
+	private String sexo;
+	private String requisitos;
+	private String escolaridad;
+	private String experiencia;
+	private BigDecimal sueldoMensual;
+	private String horario;
+	private String nombreempresa;
+	private String giro;
+	private String observaciones;
+	
+	private Contacto contacto;
+	private Aliado aliado;
 	private Direccion direccion;
-
+	
+	private Date fechaAlta;
+	private Date vigencia;
+	
 
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "idempleo")
 	public Long getId() {
 		return id;
 	}
@@ -61,34 +67,98 @@ public class Empleo {
 	/**
 	 * @return the tipo
 	 */
-	public String getTipo() {
-		return tipo;
+	@Column(name="puesto", length=45, nullable=false)
+	public String getPuesto() {
+		return puesto;
 	}
 
 	/**
 	 * @param tipo the tipo to set
 	 */
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setPuesto(String puesto) {
+		this.puesto = puesto;
 	}
 
 	/**
 	 * @return the ofertaEconomica
 	 */
-	public float getOfertaEconomica() {
-		return ofertaEconomica;
+	@Column(name="plazas",length=10, nullable = false)
+	public String getPlazas() {
+		return plazas;
 	}
 
-	/**
-	 * @param ofertaEconomica the ofertaEconomica to set
-	 */
-	public void setOfertaEconomica(float ofertaEconomica) {
-		this.ofertaEconomica = ofertaEconomica;
+	public void setPlazas(String plazas)
+	{
+		this.plazas = plazas;
 	}
-
-	/**
-	 * @return the vigencia
-	 */
+	@Column(name="sexo",length=20, nullable = false)
+	public String getSexo()
+	{
+		return this.sexo;
+	}
+	
+	public void setSexo (String sexo)
+	{
+		this.sexo = sexo;
+	}
+	
+	@Column(name="requisitos",length=255)
+	public String getRequisitos ()
+	{
+		 return this.requisitos;
+	}
+	
+	public void setRequisitos (String requisitos)
+	{
+		this.requisitos = requisitos;
+	}
+	
+	@Column(name="escolaridad",length=45)
+	public String getEscolaridad ()
+	{
+		return this.escolaridad;
+	}
+	
+	public void setEscolaridad(String escolaridad)
+	{
+		this.escolaridad = escolaridad;
+	}
+	
+	@Column(name="experiencia",length=55)
+	public String getExperiencia()
+	{
+		return this.experiencia;
+	}
+	
+	public void setExperiencia (String experiencia)
+	{
+		this.experiencia = experiencia;
+	}
+	
+	@Column(name="sueldomensual")
+	public BigDecimal getSueldomensual()
+	{
+		return this.sueldoMensual;
+	}
+	
+	public void setSueldomensual (BigDecimal sueldomensual)
+	{
+		this.sueldoMensual = sueldomensual;
+	}
+	
+ 
+	@Column(name="horario", length=50)
+	public String getHorario()
+	{
+		return this.horario;
+	}
+	
+	public void setHorario(String horario)
+	{
+		this.horario = horario;
+	}
+	
+	@Column(name="vigencia", nullable = false)
 	public Date getVigencia() {
 		return vigencia;
 	}
@@ -99,21 +169,78 @@ public class Empleo {
 	public void setVigencia(Date vigencia) {
 		this.vigencia = vigencia;
 	}
-
-	/**
-	 * @return the ubicacion
-	 */
-	public String getUbicacion() {
-		return ubicacion;
-	}
-
-	/**
-	 * @param ubicacion the ubicacion to set
-	 */
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
+	
+	@Column(name="fechaalta", nullable = false)
+	public Date getFechaalta ()
+	{
+		return this.fechaAlta;
 	}
 	
+	public void setFechaalta(Date fechaalta)
+	{
+		this.fechaAlta = fechaalta;
+	}
+	
+
+	@Column(name="nombreempresa",length=200)
+	public String getNombreempresa ()
+	{
+		return this.nombreempresa;
+	}
+	
+	public void setNombreempresa(String nombreempresa)
+	{
+		this.nombreempresa= nombreempresa;
+	}
+	
+	@Column(name="giro",length=45)
+	public String getGiro() 
+	{
+		return this.giro;
+	}
+	
+	public void setGiro(String giro)
+	{
+		this.giro = giro;
+	}
+	
+	@Column(name="observaciones",length=45)
+	public String getObservaciones() 
+	{
+		return this.observaciones;
+	}
+	
+	public void setObservaciones(String observaciones)
+	{
+		this.observaciones = observaciones;
+	} 
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idcontacto",referencedColumnName="idcontacto")
+	public Contacto getContacto()
+	{
+		return this.contacto;
+	}
+	
+	public void setContacto (Contacto contacto)
+	{
+		this.contacto = contacto;
+	}
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idaliado",referencedColumnName="idaliado")
+	public Aliado getAliado()
+	{
+		return this.aliado;
+	}
+	
+	public void setAliado(Aliado aliado)
+	{
+		this.aliado = aliado;
+	}
+	 
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="iddireccion",referencedColumnName="iddireccion")
     public Direccion getDireccion() {
         return direccion;
     }

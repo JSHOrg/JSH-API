@@ -2,6 +2,7 @@ package com.amdocs.jshapi.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.amdocs.jshapi.bamx.ESNCompleto;
@@ -13,7 +14,7 @@ import com.amdocs.jshapi.mappers.EstudioMapper;
 
 public class TranslateEstudioTest {
 
-	@Test
+	@Ignore @Test
 	public void Translate_String_ESN ()
 	{
 		String input = "{\r\n" + 

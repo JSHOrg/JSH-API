@@ -14,7 +14,7 @@ import com.amdocs.jshapi.enums.TipoAliado;
 
 @Entity
 @Table(name="areaofertaeducativa")
-public class AreaOfertaEducativa {
+public class Areaofertaeducativa {
 
 	@Id
 	@GeneratedValue

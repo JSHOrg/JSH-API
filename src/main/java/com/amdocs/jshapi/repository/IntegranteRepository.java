@@ -16,7 +16,7 @@ import com.amdocs.jshapi.domain.Integrante;
 @RepositoryRestResource(path = "integrantes", collectionResourceRel = "integrantes")
 public interface IntegranteRepository extends PagingAndSortingRepository<Integrante, Long>  {
 
-	@Query(value = "\r\n" + 
+	 @Query(value = "\r\n" + 
 			"select a.* from  BancoAlimentos b\r\n" + 
 			"inner join integrante a\r\n" + 
 			"on b.idbancoalimentos = a.idbancoalimentos\r\n" + 
@@ -27,13 +27,17 @@ public interface IntegranteRepository extends PagingAndSortingRepository<Integra
 			"where u.Nombre =?#{ principal?.username }", nativeQuery = true)
 	public Page<Integrante> findIntegrantes(Pageable pageable);
 	
-	
-	@Query(value = "\r\n" + 
-			"\r\n" + 
-			"select i.* from integrante i \r\n" + 
-			"inner join grupo g\r\n" + 
-			"on i.idgrupo = g.idgrupo\r\n" + 
-			"where g.idgrupo = :idGrupo", nativeQuery = true)
-	public Page<Integrante> findIntegrantesByGrupo(@Param("idGrupo")  int idGrupo, Pageable pageable);
+	 @Query(value = "\r\n" + 
+				"\r\n" + 
+				"select i.* from integrante i \r\n" + 
+				"inner join grupo g\r\n" + 
+				"on i.idgrupo = g.idgrupo\r\n" + 
+				"where g.idgrupo = :idGrupo", nativeQuery = true)
+	public Page<Integrante> findIntegrantesByGrupo(@Param("idGrupo") Long idGrupo, Pageable pageable);
 
+	
+	 @Query(value = "select i.*, ci.* from integrante i inner join curso_integrante ci\r\n" + 
+			" on i.idintegrante = ci.idintegrante\r\n" + 
+			" where ci.idcurso = :idCurso" , nativeQuery = true)
+	public Page<Integrante> findIntegrantesByCurso(@Param("idCurso")  int idCurso, Pageable pageable);
 }

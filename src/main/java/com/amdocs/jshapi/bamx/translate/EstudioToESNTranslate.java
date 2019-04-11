@@ -51,8 +51,7 @@ public class EstudioToESNTranslate {
 		bmxesn.setCDescripcionUbicacion(datosGenerales.getDescripcionDeUbicacion());
 		bmxesn.setCP(datosGenerales.getCodigoPostal());
 		bmxesn.setStrEntreCalles(datosGenerales.getEntreVialidades());
-	//	bmxesn.setStrNoInterior(Integer.parseInt(representante.getNumeroInterior()) );
-		bmxesn.setStrNombreAsentamiento(datosGenerales.getNombreDeAsentamiento());
+ 		bmxesn.setStrNombreAsentamiento(datosGenerales.getNombreDeAsentamiento());
 		
 		
 		bmxesn.setCatESNTipoAsentamiento((translateTipoAsentamiento(datosGenerales)));
@@ -60,8 +59,8 @@ public class EstudioToESNTranslate {
 		bmxesn.setCatDirAsentamiento(translateDirAsentamiento(datosGenerales));
 		bmxesn.setCatDirEstado(translateCarDirEstado(datosGenerales));
 		bmxesn.setCatDirMunicipio(translateCatDirMunicipio(datosGenerales));
-		bmxesn.setCatPGralServiciosAgua(translateCatPGralServiciosAgua (condicionesEconomicas));
-		bmxesn.setCatPGralServiciosLuz(translateCatPGralServiciosLuz(condicionesEconomicas));
+		bmxesn.setCatPGralServiciosAgua(translateCatPGralServiciosAgua (servicios));
+		bmxesn.setCatPGralServiciosLuz(translateCatPGralServiciosLuz(servicios));
 		bmxesn.setCatPGralServiciosSanitarios(translateCatPGralServiciosSanitarios(servicios));
 		
 		bmxesn.setPDiagDiagnostico(translatePDiagDiagnostico()); // Revisar fuente de este campo
@@ -109,17 +108,17 @@ public class EstudioToESNTranslate {
 		return catDirMunicipio;
 	}
 	
-	public static CatPGralServiciosAgua translateCatPGralServiciosAgua (CondicionesEconomicas condicionesEconomicas)
+	public static CatPGralServiciosAgua translateCatPGralServiciosAgua (Servicios servicios)
 	{
 		CatPGralServiciosAgua catpGralServicioAgua = new CatPGralServiciosAgua();
-		catpGralServicioAgua.setCValor(condicionesEconomicas.getAgua());
+		catpGralServicioAgua.setCValor(servicios.getAgua());
 		return catpGralServicioAgua;
 	}
 	
-	public static CatPGralServiciosLuz translateCatPGralServiciosLuz (CondicionesEconomicas condicionesEconomicas)
+	public static CatPGralServiciosLuz translateCatPGralServiciosLuz (Servicios servicios)
 	{
 		CatPGralServiciosLuz catPgralServiciosLuz = new CatPGralServiciosLuz();
-		catPgralServiciosLuz.setCValor(condicionesEconomicas.getLuz());
+		catPgralServiciosLuz.setCValor(servicios.getLuz());
 		return catPgralServiciosLuz;
 	}
 	
@@ -129,6 +128,8 @@ public class EstudioToESNTranslate {
 		catpgralServiciosSanitarios.setCValor(servicios.getDrenaje());
 		return catpgralServiciosSanitarios;
 	}
+	
+	
 	
 	public static PDiagDiagnostico translatePDiagDiagnostico ()
 	{
