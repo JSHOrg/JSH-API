@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.amdocs.jshapi.bamx.ESNCompleto;
 import com.amdocs.jshapi.bamx.ESNEquipamientosEstudio;
 import com.amdocs.jshapi.bamx.RequestESNCompleto;
+import com.amdocs.jshapi.mappers.RequestESNMapper;
 import com.amdocs.jshapi.proxys.responses.ResponseBeneficiarios;
 import com.amdocs.jshapi.proxys.responses.ResponseESNCompleto;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,8 +44,11 @@ public class EstudioSocioNutricioProxy extends BaseProxy {
 		 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
+		RequestESNCompleto rsn = new RequestESNCompleto();
+		RequestESNMapper mapper  = new RequestESNMapper();
+		rsn = mapper.Deserialize( requestBody);
 		
-		HttpEntity<String> entity = new HttpEntity<String>(requestBody ,headers);
+		HttpEntity<RequestESNCompleto> entity = new HttpEntity<RequestESNCompleto>(rsn ,headers);
 		RestTemplate restTemplate = new  RestTemplate();
 		ResponseEntity<ResponseESNCompleto[]> response 
 			= restTemplate.postForEntity(uri, entity, ResponseESNCompleto[].class);
@@ -52,16 +56,7 @@ public class EstudioSocioNutricioProxy extends BaseProxy {
 		 ResponseESNCompleto[] respuesta = response.getBody();
 		 
 		 return respuesta;
-		/* String responseProxy = 
-				 respuesta[0].getResultado() + "  " + respuesta[0].getFolioFamiliar() 
-				 + respuesta[0].getError();
 		 
-		System.out.println(respuesta[0].getResultado() );
-		System.out.println(respuesta[0].getFolioFamiliar());
-
-		System.out.println(respuesta[0].getErrorAcceso() );
-		System.out.println(respuesta[0].getError());
-		return responseProxy; */
 
 	}
 	
