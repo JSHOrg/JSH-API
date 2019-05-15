@@ -36,17 +36,19 @@ public class EquipamientoTranslate {
 			System.out.println("Previo a obtener el equipamiento");
 			lista.add(translateRefrigerador(infraestructura));
 			lista.add(translateEstufa(infraestructura));
+			lista.add(translateVideoDVDBlueRay(infraestructura));
 			lista.add(translateLavadora(infraestructura));
 			lista.add(translateLicuadora(infraestructura));
-			lista.add(translateVideoDVDBlueRay(infraestructura));
+			lista.add(translateTelevision(infraestructura));			
 			lista.add(translateRadio(infraestructura));
 			lista.add(translateSala(infraestructura));
 			lista.add(translateComedor(infraestructura));
+			lista.add(translateAutomovil(infraestructura));
 			lista.add(translateCama(infraestructura));
 			lista.add(translateCelular(infraestructura));
+			lista.add(translateMotocicleta(infraestructura));
 			lista.add(translateComputadora(infraestructura));
 			lista.add(translateHorno(infraestructura));
-			lista.add(translateAutomovil(infraestructura));
 			lista.add(translateTelefono(infraestructura));
 			System.out.println("terminar de  obtener el equipamiento");
 		}catch(Exception ex)
@@ -203,6 +205,28 @@ public class EquipamientoTranslate {
 				infraestructura.getTelefono().iterator().next();
 		equipamiento.setITiene(source.getTiene()?1:0);
 		equipamiento.setISirve(source.getSirve()?1:0);
+		return equipamiento;
+	}
+	public static ESNEquipamientosEstudio translateMotocicleta (InfraestructuraDeVivienda infraestructura)
+	{
+		ESNEquipamientosEstudio equipamiento = getObjectEquipamieto(Motocicleta);	
+		com.amdocs.jshapi.estudios.Motocicleta   source = 
+				infraestructura.getMotocicleta().iterator().next();
+		equipamiento.setITiene(source.getTiene()?1:0);
+		equipamiento.setISirve(source.getSirve()?1:0);
+		return equipamiento;
+	}
+	
+	public static ESNEquipamientosEstudio translateTelevision (InfraestructuraDeVivienda infraestructura)
+	{
+		// La app no captura la television actualmente. 
+		ESNEquipamientosEstudio equipamiento = getObjectEquipamieto(Television);	
+		//com.amdocs.jshapi.estudios.Television   source = 
+		//		infraestructura.getTelevision().iterator().next();
+		//equipamiento.setITiene(source.getTiene()?1:0);
+		//equipamiento.setISirve(source.getSirve()?1:0);
+		equipamiento.setITiene(0);
+		equipamiento.setISirve(0);
 		return equipamiento;
 	}
 	

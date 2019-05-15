@@ -2,12 +2,34 @@ package com.amdocs.jshapi.test;
 
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.amdocs.jshapi.estudios.EstructuraFamiliar;
+import com.amdocs.jshapi.estudios.Integrante;
 import com.amdocs.jshapi.mappers.EstructuraFamiliarMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EstructuraFamiliarMapperTest {
 
-	 
+	@Test 
+	public void Serialize_Estuctura_Familar() throws JsonProcessingException
+	{
+		EstructuraFamiliar estfamObject = new EstructuraFamiliar();
+		List<Integrante> integrantes = new ArrayList<Integrante>();
+		Integrante intgrante1 = new Integrante();
+		intgrante1.setNombreS("Juan de las pelotas");
+		intgrante1.setPrimerApellido("Mi apellido");
+		integrantes.add(intgrante1);
+		
+		estfamObject.setIntegrantes(integrantes);
+		ObjectMapper objectmapper = new ObjectMapper();
+		String requestString = objectmapper.writeValueAsString(estfamObject);
+		System.out.println(requestString);
+		 assertEquals(1, 1);
+	}
 	
 	
 	@Test

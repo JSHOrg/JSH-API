@@ -50,6 +50,30 @@ public class BaseProxy {
 
 	    return result;
 	  }  
+	public static String encodeURIComponentOnlyValues(String s)
+	  {
+	    String result = null;
+
+	    try
+	    {
+	    	s = s.replace("\"elsa.dominguez@prosociedad.org\"", "'elsa.dominguez@prosociedad.org'");
+	    	s = s.replace("\"y9Z5\"", "'y9Z5'");
+	    	s = s.replace("\"4z8qt8SzrIEMIvOdYsoeWqYmbSY31QSHQL9IjBJkor0=\"", "'4z8qt8SzrIEMIvOdYsoeWqYmbSY31QSHQL9IjBJkor0='");
+	   
+	    			result = s.replace("{", "%7B")
+	    		  .replace("\"", "%22")
+	    		  .replace("}", "%7D");
+	    }
+
+	    // This exception should never occur.
+	    catch (Exception e)
+	    {
+	      result = s;
+	    }
+
+	    return result;
+	  }  
+
 
 	public List<Catalogo> getList (String EndPoint) throws JsonProcessingException 
 	{
@@ -58,6 +82,24 @@ public class BaseProxy {
 		urlget.append(accesoJsonParameter);
 		urlget.append(getUser());
 		
+		URI uri = URI.create(urlget.toString());
+		
+		RestTemplate restTemplate = new  RestTemplate();
+		Response response = restTemplate.getForObject(uri, Response.class );
+		
+		System.out.println( response.getError());
+		
+		return response.getCatalogo();
+	}
+	
+	public List<Catalogo> getListAsentamientos (String EndPoint) throws JsonProcessingException 
+	{
+		StringBuilder urlget = new StringBuilder(catalogosEndPoint);
+		urlget.append(EndPoint);
+		urlget.append(accesoJsonParameter);
+		urlget.append(getUserUnescaped ());
+		urlget.append("&idMunicipio=538");
+		System.out.println(urlget.toString());
 		URI uri = URI.create(urlget.toString());
 		
 		RestTemplate restTemplate = new  RestTemplate();
@@ -81,6 +123,21 @@ public class BaseProxy {
 		String requestString = objectmapper.writeValueAsString(userapp);
 		System.out.println(requestString);
 		return BamxProxy.encodeURIComponent(requestString);
+	}
+	
+	protected String getUserUnescaped () throws JsonProcessingException
+	{
+		user userapp = new user();
+		
+		userapp.setIdBanco(idbanco);
+		userapp.setPass(password);
+		userapp.setUserName(username);
+		userapp.setToken(token);
+		
+		ObjectMapper objectmapper = new ObjectMapper();
+		String requestString = objectmapper.writeValueAsString(userapp);
+		System.out.println(requestString);
+		return requestString;
 	}
 	
 	protected user getUserObject()

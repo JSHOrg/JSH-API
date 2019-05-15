@@ -20,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "Numero exterior",
 "Numero interior",
 "Nombre del titular",
-"Estatus Escolaridad"
+"Estatus Escolaridad",
+"tipoidentidad",
+"idDocumentoIdentidad"
 })
 public class Representante {
 
@@ -44,6 +46,11 @@ private String numeroInterior;
 private String nombreDelTitular;
 @JsonProperty("Estatus Escolaridad")
 private String estatusEscolaridad;
+@JsonProperty("tipoidentidad")
+private String tipoidentidad;
+@JsonProperty("idDocumentoIdentidad")
+private String idDocumentoIdentidad;
+
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -145,6 +152,30 @@ return estatusEscolaridad;
 @JsonProperty("Estatus Escolaridad")
 public void setEstatusEscolaridad(String estatusEscolaridad) {
 this.estatusEscolaridad = estatusEscolaridad;
+}
+
+@JsonProperty("tipoidentidad")
+public String getTipoIdentidad()
+{
+	return tipoidentidad;
+}
+
+@JsonProperty("tipoidentidad")
+public void SetTipoIdentidad(String tipoidentidad)
+{
+	this.tipoidentidad = tipoidentidad;
+}
+
+@JsonProperty("idDocumentoIdentidad")
+public String getIdDocumentoIdentidad ()
+{
+	return idDocumentoIdentidad;
+}
+
+@JsonProperty("idDocumentoIdentidad")
+public void getIdDocumentoIdentidad (String idDocumentoIdentidad)
+{
+	this.idDocumentoIdentidad = idDocumentoIdentidad;
 }
 
 @JsonAnyGetter

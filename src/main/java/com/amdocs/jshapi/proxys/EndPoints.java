@@ -26,10 +26,10 @@ public final class EndPoints {
 	public final static String catEstadoCivilEndPoint = "Cat_ESNEstadoCivil";
 	public final static String catParentescoEndPoint = "Cat_ESNParentesco";
 	public final static String catEscolaridadEndPoint = "Cat_ESNEscolaridad";
-//	final String catEtniaIndigena = "Cat_PGralEtniaIndigena";
-//	final String catCapacidadDiferente = "Cat_ESNCapacidadDiferente";
+	public final static String catEtniaIndigenaEndPoint = "Cat_PGralEtniaIndigena";
+	public final static String catCapacidadDiferenteEndPoint = "Cat_ESNCapacidadDiferente";
 	public final static String catCondicionSaludEndPoint ="Cat_ESNCondicionSalud";
-	//final String catAddicion = "Cat_ESNAdiccion";
+	public final static String catAddicion = "Cat_ESNAdiccion";
 	public final static String catOcupacionEndPoint = "Cat_ESNOcupacion";
 	public final static String catTipoempleoEndPoint = "Cat_ESNTipoEmpleo";
 	public final static String catDerechoHabienciaEndPoint = "Cat_ESNDerechoHabiencia";
@@ -40,4 +40,5 @@ public final class EndPoints {
 	public final static String catTipoEgresoEndPoint = "Cat_ESNTipoEgreso";
 	public final static String catEquipamientoEndPoint = "Cat_ESNEquipamiento";
 	public final static String catTipoIngresoEndPoint = "Cat_ESNTipoIngreso";
+	public final static String catDirAsentamientoEndPoint = "CatDirAsentamiento";
 }

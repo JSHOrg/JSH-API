@@ -41,7 +41,6 @@ public class EstudioToESNTranslate {
 	{
 		esn bmxesn = new esn();
 		DatosGenerales datosGenerales = estudio.getEmbedded().getDatosGenerales();
-		CondicionesEconomicas condicionesEconomicas = estudio.getEmbedded().getCondicionesEconomicas();
 		Servicios servicios = estudio.getEmbedded().getServicios();
 		Representante representante = estudio.getEmbedded().getRepresentante();
 		
@@ -64,7 +63,7 @@ public class EstudioToESNTranslate {
 		bmxesn.setCatPGralServiciosSanitarios(translateCatPGralServiciosSanitarios(servicios));
 		
 		bmxesn.setPDiagDiagnostico(translatePDiagDiagnostico()); // Revisar fuente de este campo
-		bmxesn.setPDiagGrupo(translatePDiagGrupo()); // Revisar fuente de este campo
+		bmxesn.setPDiagGrupo(translatePDiagGrupo(datosGenerales)); // Revisar fuente de este campo
 		
 		return bmxesn;
 	}
@@ -134,14 +133,14 @@ public class EstudioToESNTranslate {
 	public static PDiagDiagnostico translatePDiagDiagnostico ()
 	{
 		PDiagDiagnostico pdiagDiagnostico = new PDiagDiagnostico();
-		pdiagDiagnostico.setCNombre("No se cual es la fuente de este");
+		pdiagDiagnostico.setCNombre("VOLUNTARIADO");
 		return pdiagDiagnostico;
 	}
 	
-	public static PDiagGrupo translatePDiagGrupo()
+	public static PDiagGrupo translatePDiagGrupo(DatosGenerales datosGenerales)
 	{
 		PDiagGrupo pdiagGrupo = new PDiagGrupo ();
-		pdiagGrupo.setCValor("VOLUNTARIADO");
+		pdiagGrupo.setCValor(datosGenerales.getLocalidad());
 		return pdiagGrupo;
 	}
 	

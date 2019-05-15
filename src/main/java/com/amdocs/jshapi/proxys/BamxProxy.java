@@ -8,6 +8,8 @@ import com.amdocs.jshapi.proxys.responses.Catalogo;
 import com.amdocs.jshapi.proxys.responses.Response;
 import com.amdocs.jshapi.proxys.responses.ResponseBeneficiarios;
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import org.codehaus.jackson.JsonParseException;
 import org.springframework.web.client.RestTemplate;
 import static com.amdocs.jshapi.proxys.EndPoints.*;
 
@@ -221,5 +223,15 @@ public class BamxProxy extends BaseProxy {
 	public List<Catalogo> getListComunidades() throws JsonProcessingException
 	{
 		return super.getList(listaComunidadesEndPoint);
+	}
+	
+	public List<Catalogo> getDirAsentamientos () throws JsonProcessingException
+	{
+		return super.getListAsentamientos(catDirAsentamientoEndPoint);
+	}
+	
+	public List<Catalogo> getAdicciones () throws JsonProcessingException
+	{
+		return super.getList(catAddicion);
 	}
 }

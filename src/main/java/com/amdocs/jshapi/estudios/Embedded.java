@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "Representante ",
 "Datos generales",
 "Estructura familiar",
+"Estructura familiar Detalles",
 "Condiciones economicas",
 "Infraestructura de vivienda"
 })
@@ -35,6 +36,8 @@ private Representante representante;
 private DatosGenerales datosGenerales;
 @JsonProperty("Estructura familiar")
 private EstructuraFamiliar estructuraFamiliar;
+@JsonProperty("Estructura familiar Detalles")
+private EstructuraFamiliarDetalles estructuraFamiliarDetalles;
 @JsonProperty("Condiciones economicas")
 private CondicionesEconomicas condicionesEconomicas;
 @JsonProperty("Infraestructura de vivienda")
@@ -100,6 +103,16 @@ return estructuraFamiliar;
 @JsonProperty("Estructura familiar")
 public void setEstructuraFamiliar(EstructuraFamiliar estructuraFamiliar) {
 this.estructuraFamiliar = estructuraFamiliar;
+}
+
+@JsonProperty("Estructura familiar Detalles")
+public EstructuraFamiliarDetalles getEstructuraFamiliarDetalles() {
+	return estructuraFamiliarDetalles;
+}
+
+@JsonProperty("Estructura familiar Detalles")
+public void setEstructuraFamiliarDetalles(EstructuraFamiliarDetalles estructuraFamiliarDetalles) {
+	this.estructuraFamiliarDetalles = estructuraFamiliarDetalles;
 }
 
 @JsonProperty("Condiciones economicas")

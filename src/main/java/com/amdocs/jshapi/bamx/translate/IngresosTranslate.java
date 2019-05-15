@@ -32,8 +32,8 @@ public class IngresosTranslate {
 		listaIngresos.add(createIngresoAdultosMayores(condiciones));
 		listaIngresos.add(createIngresoBecas(condiciones));
 		listaIngresos.add(createIngresoOtros(condiciones));
-		listaIngresos.add(createIngresoPension(condiciones));
-		//listaIngresos.add(createIngresoEnvioExtranjer(condiciones)); //No aparece cantidad de envios del extranjero
+		listaIngresos.add(createIngresoPension(condiciones));		
+		listaIngresos.add(createIngresoEnvioExtranjero(condiciones)); //No aparece cantidad de envios del extranjero
 		return listaIngresos;
 	}
 	
@@ -80,8 +80,9 @@ public class IngresosTranslate {
 	
 	private static ESNIngresoSemanal createIngresoEnvioExtranjero(CondicionesEconomicas condiciones)
 	{
+		// No existe esta pregunta en el cuestionario del app. 
 		ESNIngresoSemanal ingreso  = createIngresoSemanal(EnvioExtranjero);
-		ingreso .setRCantidad(parseInt(condiciones.getAlguienEnElHogarRecibeDineroProvenienteDeOtrosPaises()));
+		ingreso .setRCantidad(0);
 		return ingreso;
 	}
 	private static ESNIngresoSemanal createIngresoOtros(CondicionesEconomicas condiciones)

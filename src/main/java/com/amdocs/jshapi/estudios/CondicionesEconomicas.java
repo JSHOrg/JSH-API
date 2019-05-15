@@ -77,7 +77,7 @@ private String adultosMayores;
 @JsonProperty("Atencion medica")
 private String atencionMedica;
 @JsonProperty("Frecuencia del apoyo")
-private Boolean frecuenciaDelApoyo;
+private String frecuenciaDelApoyo;
 @JsonProperty("Quien lo proporciona")
 private String quienLoProporciona;
 @JsonProperty("Aportacion semanal Otros")
@@ -274,12 +274,12 @@ this.atencionMedica = atencionMedica;
 }
 
 @JsonProperty("Frecuencia del apoyo")
-public Boolean getFrecuenciaDelApoyo() {
+public String getFrecuenciaDelApoyo() {
 return frecuenciaDelApoyo;
 }
 
 @JsonProperty("Frecuencia del apoyo")
-public void setFrecuenciaDelApoyo(Boolean frecuenciaDelApoyo) {
+public void setFrecuenciaDelApoyo(String frecuenciaDelApoyo) {
 this.frecuenciaDelApoyo = frecuenciaDelApoyo;
 }
 

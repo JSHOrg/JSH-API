@@ -2,10 +2,18 @@ package com.amdocs.jshapi.bamx.translate;
 
 import com.amdocs.jshapi.bamx.CatDirEstado;
 import com.amdocs.jshapi.bamx.CatESNAdiccion;
+import com.amdocs.jshapi.bamx.CatESNCapacidadDiferente;
+import com.amdocs.jshapi.bamx.CatESNCondicionSalud;
+import com.amdocs.jshapi.bamx.CatESNDerechoHabiencia;
+import com.amdocs.jshapi.bamx.CatESNDocIdentidad;
 import com.amdocs.jshapi.bamx.CatESNEscolaridad;
 import com.amdocs.jshapi.bamx.CatESNEstadoCivil;
+import com.amdocs.jshapi.bamx.CatESNMotivoDerechoHabiencia;
+import com.amdocs.jshapi.bamx.CatESNOcupacion;
 import com.amdocs.jshapi.bamx.CatESNParentesco;
 import com.amdocs.jshapi.bamx.CatESNSexo;
+import com.amdocs.jshapi.bamx.CatESNTipoEmpleo;
+import com.amdocs.jshapi.bamx.CatPGralEtniaIndigena;
 import com.amdocs.jshapi.bamx.ESNBeneficiario;
 import com.amdocs.jshapi.bamx.ESNIngresoSemanal;
 import com.amdocs.jshapi.estudios.Integrante;
@@ -28,24 +36,72 @@ public class ESNBeneficiarioTranslate {
 		return esnBeneficiario ;
 	}
 	
-	public static ESNBeneficiario  TranslateBeneficiario ( Integrante integrante )
+	public static ESNBeneficiario  TranslateBeneficiario 
+		( Integrante integrante, 
+				Integrante integranteDetalle )
 	{
 		
 		ESNBeneficiario esnBeneficiario = new ESNBeneficiario();
-		//esnBeneficiario.setAsisteEscuela( integrante.getAsisteALaEscuela() ); //Revisar valor de la fuente
 		
+		esnBeneficiario.setIMC(0); // Actualmente no se captura el indice de masa corporal
+		esnBeneficiario.setStrEmisorCI(""); // No se captura tampoco el emisor de la carta de identidad
 		
 		esnBeneficiario.setCNombre(integrante.getNombreS());
-		//esnBeneficiario.setCatESNAdiccion();  // Obligatorio ? 
-		esnBeneficiario.setCatESNSexo(translateSexo (integrante.getSexo()));
 		esnBeneficiario.setCApellidoPaterno(integrante.getPrimerApellido());		
 		esnBeneficiario.setCApellidoMaterno(integrante.getSegundoApellido());
+		esnBeneficiario.setDtFechaNacimiento(integrante.getFechaDeNacimiento());
+		esnBeneficiario.setCatESNSexo(translateSexo (integrante.getSexo()));
 		esnBeneficiario.setCatESNEstadoCivil(translateEstadoCivil(integrante.getEstadoCivil()));
 		esnBeneficiario.setCatESNParentesco(translateParentesco(integrante.getParentesco()));
-		esnBeneficiario.setCatDirEstado(translateStringToDirEstado(integrante.getEntidadDeNacimiento()));
-		esnBeneficiario.setDtFechaNacimiento(integrante.getFechaDeNacimiento());
 		esnBeneficiario.setCatESNEscolaridad(translateEscolaridad(integrante.getNivel()));
-		//esnBeneficiario.setGradoEscolar(translateGradoEscolar(integrante.getGrado()));
+		esnBeneficiario.setGradoEscolar(translateGradoEscolar(integrante.getGrado()));
+		esnBeneficiario.setCatDirEstado(translateStringToDirEstado(integrante.getEntidadDeNacimiento()));
+		System.out.println("Asiste a la escuela");
+		System.out.println(integrante.getAsisteALaEscuela());
+		esnBeneficiario.setAsisteEscuela(translateAsisteAlaEscuela(integrante.getAsisteALaEscuela()));
+
+		esnBeneficiario.setCatESNOcupacion(translateOcupacion(integranteDetalle.getOcupacion()));
+		esnBeneficiario.setCatESNTipoEmpleo(translateTipoEmpleo(integranteDetalle.getTipoEmpleo()));
+		esnBeneficiario.setCatESNAdiccion(translateAddiccion(integranteDetalle.getAdicciones()));
+		esnBeneficiario.setCatESNCondicionSalud(translateCondicionSalud(integranteDetalle.getCondicionesSalud()));
+		esnBeneficiario.setCatESNCapacidadDiferente(translateCapacidadesDiferentes(integranteDetalle.getCapacidadesdiferentes()));
+		esnBeneficiario.setCatESNMotivoDerechoHabiencia(transalteMotivoderechohabiencia(integranteDetalle.getMotivoderechohabiencia()));
+		esnBeneficiario.setCatESNDerechoHabiencia(translateDerechohabiencia(integranteDetalle.getDerechohabiencia()));
+		esnBeneficiario.setCatPGralEtniaIndigena(translateEtniaIndigena(integranteDetalle.getEtniaIndigena()));
+		esnBeneficiario.setPeso(getIntValueFromStringField(integranteDetalle.getPeso()));
+		esnBeneficiario.setTalla(getIntValueFromStringField(integranteDetalle.getTalla()));
+		esnBeneficiario.setJubiladoPensionado(translateJubiladoPensionado(integranteDetalle.getJubilacionoPensionado()));
+		
+		
+		
+		//esnBeneficiario.setPLaboralA(pLaboralA);
+		int noPrestaciones = 0;
+		System.out.println("obtener prestaciones por integrante");
+		if(integrante.getPrestaciones() != null)
+		{
+			noPrestaciones = integrante.getPrestaciones().size();
+			System.out.println(noPrestaciones );
+		}
+		int[] arrayPrestaciones = new int[9];
+		 for (int i = 0; i < 9; i++)
+		 {
+			 if(noPrestaciones>=(i+1))
+				 arrayPrestaciones [i] = 1;
+			 else 
+				 arrayPrestaciones [i] = 0;
+		 }
+		 
+		 esnBeneficiario.setPLaboralA(arrayPrestaciones[0]);
+		 esnBeneficiario.setPLaboralB(arrayPrestaciones[1]);
+		 esnBeneficiario.setPLaboralC(arrayPrestaciones[2]);
+		 esnBeneficiario.setPLaboralD(arrayPrestaciones[3]);
+		 esnBeneficiario.setPLaboralE(arrayPrestaciones[4]);
+		 esnBeneficiario.setPLaboralF(arrayPrestaciones[5]);
+		 esnBeneficiario.setPLaboralG(arrayPrestaciones[6]);
+		 esnBeneficiario.setPLaboralH(arrayPrestaciones[7]);
+		 esnBeneficiario.setPLaboralI(arrayPrestaciones[8]);
+		 
+			
 		return esnBeneficiario;
 		
 	}
@@ -87,7 +143,70 @@ public class ESNBeneficiarioTranslate {
 		catEsnEscolaridad.setCValor( Nivel);
 		return catEsnEscolaridad;
 	}
+	
+	private static CatESNOcupacion translateOcupacion (String Ocupacion)
+	{
+		CatESNOcupacion catEsnOcupacion = new CatESNOcupacion();
+		catEsnOcupacion.setCValor(Ocupacion);
+		return catEsnOcupacion;
+	}
+	
+	private static CatESNTipoEmpleo translateTipoEmpleo (String TipoEmpleo)
+	{
+		CatESNTipoEmpleo catEsntipoempleo = new CatESNTipoEmpleo();
+		catEsntipoempleo.setCValor(TipoEmpleo);
+		return catEsntipoempleo;
+	}
+	
+	private static CatESNAdiccion translateAddiccion(String adiccion) {
+		CatESNAdiccion catesnAdiccion = new CatESNAdiccion();
+		catesnAdiccion.setCValor(adiccion);
+		return catesnAdiccion;
+	}
+	
+	private static CatESNCondicionSalud translateCondicionSalud (String condicionSalud) {
+		CatESNCondicionSalud catesnCondicionSalud = new CatESNCondicionSalud();
+		catesnCondicionSalud.setCValor(condicionSalud);
+		return catesnCondicionSalud;
+	}
 	 
+	private static CatESNCapacidadDiferente translateCapacidadesDiferentes(String capacidadesDiferentes) {
+		CatESNCapacidadDiferente catesnCapacidadDiferente = new CatESNCapacidadDiferente();
+		catesnCapacidadDiferente.setCValor(capacidadesDiferentes);
+		return catesnCapacidadDiferente;
+	}
+	
+	private static CatESNMotivoDerechoHabiencia transalteMotivoderechohabiencia (String motivoderechohabiencia) {
+		CatESNMotivoDerechoHabiencia catesnmotivoderechohabiencia = new CatESNMotivoDerechoHabiencia();
+		catesnmotivoderechohabiencia.setCValor(motivoderechohabiencia);
+		return catesnmotivoderechohabiencia;
+	}
+	private static CatESNDerechoHabiencia translateDerechohabiencia (String DerechoHabiencia) {
+		CatESNDerechoHabiencia catesnDerechohabiencia = new  CatESNDerechoHabiencia ();
+		catesnDerechohabiencia.setCValor(DerechoHabiencia);
+		return catesnDerechohabiencia;
+	}
+	
+	private static CatPGralEtniaIndigena translateEtniaIndigena (String EtniaIndigena) {
+		CatPGralEtniaIndigena catEtniaIndigena = new CatPGralEtniaIndigena();
+		catEtniaIndigena.setCValor(EtniaIndigena);
+		return catEtniaIndigena;
+	}
+	
+	private static int translateAsisteAlaEscuela (String asistealaescuela)
+	{
+		if(asistealaescuela.toLowerCase() == "si")
+			return 1;
+		else return 0;		
+	}
+	
+	private static int translateJubiladoPensionado (String jubiladoPensionado)
+	{
+		if(jubiladoPensionado.toLowerCase() == "si")
+			return 1;
+		else return 0;	
+	}
+	
 	private static int translateGradoEscolar (String grado)
 	{
 		switch(grado)
@@ -116,6 +235,22 @@ public class ESNBeneficiarioTranslate {
 		
 	}
 	
+	public static int getIntValueFromStringField (String value)
+	{
+		 if(tryParseInt (value))
+			 return Integer.parseInt(value);
+		 else 
+			 return 0;
+	}
+	
+	public static boolean tryParseInt(String value) {  
+	     try {  
+	         Integer.parseInt(value);  
+	         return true;  
+	      } catch (NumberFormatException e) {  
+	         return false;  
+	      }  
+	}
 	 
 }
 

@@ -59,7 +59,7 @@ public class CatalogosController {
 		return bamxProxy.getBanoExcusado();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,  value = "BanoDuracionMeses")
+	@RequestMapping(method = RequestMethod.GET,  value = "DuracionMeses")
 	public List<Catalogo> getListaDuracionMeses() throws JsonProcessingException 
 	{
 		BamxProxy bamxProxy = new BamxProxy();
@@ -218,5 +218,19 @@ public class CatalogosController {
 	{
 		BamxProxy bamxProxy = new BamxProxy();
 		return bamxProxy.getListTipoVivienda();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,  value = "DirAsentamiento")
+	public List<Catalogo> getDirAsentamiento() throws JsonProcessingException 
+	{
+		BamxProxy bamxProxy = new BamxProxy();
+		return bamxProxy.getDirAsentamientos();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,  value = "Adicciones")
+	public List<Catalogo> getAdicciones() throws JsonProcessingException 
+	{
+		BamxProxy bamxProxy = new BamxProxy();
+		return bamxProxy.getAdicciones();
 	}
 }

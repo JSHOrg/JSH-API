@@ -12,11 +12,33 @@ public class EgresosTranslate {
 
 
 	final static String Alimentacion = "Alimentación";
+	final static String Vivienda = "Vivienda";
+	final static String Luz = "Luz";
+	final static String Gas ="Gas";
+	final static String Agua = "Agua";
+	final static String Telefono = "Teléfono";
+	final static String Transporte = "Transporte";
+	final static String AtencionMedica ="Atención médica";
+	final static String OtrosGastos = "Otros gastos";
+	final static String Celular = "Celular";
+	final static String Educacion = "Educación";
+	
 	
 	public static List<ESNEgresoSemanal> TranslateEgresos (CondicionesEconomicas condiciones)
 	{
 		List<ESNEgresoSemanal> lista = new ArrayList<>();
 		lista.add(createEgresoAlimentacion(condiciones));
+		lista.add(createEgresoVivienda(condiciones));
+		lista.add(createEgresoLuz(condiciones));
+		lista.add(createEgresoGas(condiciones));
+		lista.add(createEgresoAgua(condiciones));
+		lista.add(createEgresoTelefono(condiciones));
+		lista.add(createEgresoTransporte(condiciones));
+		lista.add(createEgresoAtencionMedica(condiciones));
+		lista.add(createEgresoOtrosGastos(condiciones));
+		lista.add(createEgresoCelular(condiciones));
+		lista.add(createEgresoEducacion(condiciones));
+		
 		return lista;
 	}
 	
@@ -26,6 +48,78 @@ public class EgresosTranslate {
 		egreso.setRCantidad(parseInt(condiciones.getAlimentacion()));
 		return egreso;
 	}
+	
+	private static ESNEgresoSemanal createEgresoVivienda (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Vivienda);
+		egreso.setRCantidad(parseInt(condiciones.getVivienda()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoLuz (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Luz);
+		egreso.setRCantidad(parseInt(condiciones.getLuz()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoGas (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Gas);
+		egreso.setRCantidad(parseInt(condiciones.getGas()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoAgua (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Agua);
+		egreso.setRCantidad(parseInt(condiciones.getAgua()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoTelefono (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Telefono);
+		egreso.setRCantidad(parseInt(condiciones.getTelefono()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoAtencionMedica (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(AtencionMedica);
+		egreso.setRCantidad(parseInt(condiciones.getAtencionMedica()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoCelular (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Celular);
+		egreso.setRCantidad(parseInt(condiciones.getCelular()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoEducacion (CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Educacion);
+		egreso.setRCantidad(parseInt(condiciones.getEducacion()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoOtrosGastos(CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(OtrosGastos);
+		egreso.setRCantidad(parseInt(condiciones.getCondicionesEconomicasOtros()));
+		return egreso;
+	}
+	
+	private static ESNEgresoSemanal createEgresoTransporte(CondicionesEconomicas condiciones)
+	{
+		ESNEgresoSemanal egreso = createEgresoSemanal(Transporte);
+		egreso.setRCantidad(parseInt(condiciones.getTransporte()));
+		return egreso;
+	}
+	
+	
 	
 	private static ESNEgresoSemanal createEgresoSemanal (String input)
 	{

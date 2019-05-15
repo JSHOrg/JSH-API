@@ -24,7 +24,7 @@ public class ESNEstudioCompletoTest {
 		ESNEquipamientosEstudio e = new ESNEquipamientosEstudio();
 		CatESNEquipamiento catESNEquipamiento = new CatESNEquipamiento();
 		catESNEquipamiento.setCValor("Refrigerador");
-		
+		esn.setCDescripcionUbicacion("");
 		e.setCatESNEquipamiento(catESNEquipamiento);
 		e.setISirve(1);
 		e.setITiene(0);

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "Lavadora",
 "Tenencia",
 "Licuadora",
+"Television",
 "Telefono",
 "Automovil",
 "Computadora",
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "VHS, DVD, Blu Ray",
 "Cuartos para dormir ",
 "Mayor parte de muros",
+"Mayor parte de piso",
 "Mayor parte de techo"
 })
 public class InfraestructuraDeVivienda {
@@ -59,6 +61,8 @@ private List<Lavadora> lavadora = null;
 private String tenencia;
 @JsonProperty("Licuadora")
 private List<Licuadora> licuadora = null;
+@JsonProperty("Television")
+private List<Television> television = null;
 @JsonProperty("Telefono")
 private List<Telefono> telefono = null;
 @JsonProperty("Automovil")
@@ -75,8 +79,7 @@ private List<Refrigerador> refrigerador = null;
 private String tipoDeCasa;
 @JsonProperty("No. de cuartos ")
 private String noDeCuartos;
-@JsonProperty("Bano / escusado")
-private String banoEscusado;
+ 
 @JsonProperty("Caracteristicas")
 private String caracteristicas;
 @JsonProperty("VHS, DVD, Blu Ray")
@@ -85,6 +88,8 @@ private List<VHSDVDBluRay> vHSDVDBluRay = null;
 private String cuartosParaDormir;
 @JsonProperty("Mayor parte de muros")
 private String mayorParteDeMuros;
+@JsonProperty("Mayor parte de piso")
+private String mayorParteDePisos;
 @JsonProperty("Mayor parte de techo")
 private String mayorParteDeTecho;
 @JsonIgnore
@@ -168,6 +173,16 @@ return lavadora;
 @JsonProperty("Lavadora")
 public void setLavadora(List<Lavadora> lavadora) {
 this.lavadora = lavadora;
+}
+
+@JsonProperty("Television")
+public List<Television> getTelevision() {
+return television;
+}
+
+@JsonProperty("Television")
+public void setTelevision(List<Television> television) {
+this.television = television;
 }
 
 @JsonProperty("Tenencia")
@@ -269,16 +284,7 @@ return noDeCuartos;
 public void setNoDeCuartos(String noDeCuartos) {
 this.noDeCuartos = noDeCuartos;
 }
-
-@JsonProperty("Bano / escusado")
-public String getBanoEscusado() {
-return banoEscusado;
-}
-
-@JsonProperty("Bano / escusado")
-public void setBanoEscusado(String banoEscusado) {
-this.banoEscusado = banoEscusado;
-}
+ 
 
 @JsonProperty("Caracteristicas")
 public String getCaracteristicas() {
@@ -318,6 +324,16 @@ return mayorParteDeMuros;
 @JsonProperty("Mayor parte de muros")
 public void setMayorParteDeMuros(String mayorParteDeMuros) {
 this.mayorParteDeMuros = mayorParteDeMuros;
+}
+
+@JsonProperty("Mayor parte de piso")
+public String getMayorParteDePiso() {
+	return mayorParteDePisos;
+}
+
+@JsonProperty("Mayor parte de piso")
+public void setMayorParteDePiso(String mayorParteDePisos) {
+	this.mayorParteDePisos = mayorParteDePisos;
 }
 
 @JsonProperty("Mayor parte de techo")

@@ -1,6 +1,7 @@
 package com.amdocs.jshapi.estudios;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+"id",
 "CURP",
 "Sexo",
 "Grado",
@@ -22,10 +24,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "Segundo apellido",
 "Fecha de nacimiento",
 "Entidad de nacimiento",
-"Asiste a la escuela"
+"Asiste a la escuela",
+"Prestaciones",
+"Ocupación",
+"Tipo de empleo",
+"Derechohabiencia",
+"Motivo derechohabiencia",
+"Capacidades diferentes",
+"Condiciones de salud",
+"Adicciones",
+"Etnia indígena",
+"Peso",
+"Talla",
+"Jubilación o pensionado"
 })
 public class Integrante {
-
+@JsonProperty("id")
+private int id;
 @JsonProperty("CURP")
 private String cURP;
 @JsonProperty("Sexo")
@@ -48,10 +63,47 @@ private String segundoApellido;
 private String fechaDeNacimiento;
 @JsonProperty("Entidad de nacimiento")
 private String entidadDeNacimiento;
-@JsonProperty("Asiste a la escuela\u2026")
+@JsonProperty("Asiste a la escuela")
 private String asisteALaEscuela;
+@JsonProperty("Prestaciones")
+private List<String> prestaciones = null;
+@JsonProperty("Ocupación")
+private String ocupacion;
+@JsonProperty("Tipo de empleo")
+private String tipoempleo;
+@JsonProperty("Derechohabiencia")
+private String derechohabiencia;
+@JsonProperty("Motivo derechohabiencia")
+private String motivoderechohabiencia;
+@JsonProperty("Capacidades diferentes")
+private String capacidadesdiferentes;
+@JsonProperty("Condiciones de salud")
+private String condicionesSalud;
+@JsonProperty("Adicciones")
+private String adicciones;
+@JsonProperty("Etnia indígena")
+private String etniaIndigena;
+@JsonProperty ("Peso")
+private String peso;
+@JsonProperty("Talla")
+private String talla;
+@JsonProperty("Jubilación o pensionado")
+private String jubilacionopensionado;
+
+
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+@JsonProperty("id")
+public int getId() {
+	return id;
+}
+
+@JsonProperty("id")
+public void setId(int id)
+{
+	this.id = id;
+}
 
 @JsonProperty("CURP")
 public String getCURP() {
@@ -171,6 +223,144 @@ return asisteALaEscuela;
 @JsonProperty("Asiste a la escuela")
 public void setAsisteALaEscuela(String asisteALaEscuela) {
 this.asisteALaEscuela = asisteALaEscuela;
+}
+
+
+@JsonProperty("Prestaciones")
+public List<String> getPrestaciones() {
+return prestaciones;
+}
+
+@JsonProperty("Prestaciones")
+public void setPrestaciones(List<String> prestaciones) {
+this.prestaciones = prestaciones;
+}
+
+@JsonProperty("Ocupación")
+public String getOcupacion () {
+	return ocupacion;
+}
+@JsonProperty("Ocupación")
+public void setOcupacion(String ocupacion)
+{
+	this.ocupacion = ocupacion;
+}
+
+@JsonProperty("Tipo de empleo")
+public String getTipoEmpleo()
+{
+	return tipoempleo;
+}
+
+@JsonProperty("Tipo de empleo")
+public void setTipoEmpleo(String tipoempleo)
+{
+	this.tipoempleo = tipoempleo;
+}
+
+
+@JsonProperty("Derechohabiencia")
+public String getDerechohabiencia () {
+	return derechohabiencia;
+}
+
+@JsonProperty("Derechohabiencia")
+public void setDerechohabiencia (String derechohabiencia)
+{
+	this.derechohabiencia = derechohabiencia;
+}
+
+@JsonProperty("Motivo derechohabiencia")
+public String getMotivoderechohabiencia()
+{
+	return motivoderechohabiencia;
+}
+@JsonProperty("Motivo derechohabiencia")
+public void setMotivoderechohabiencia(String motivoderechohabiencia)
+{
+	this.motivoderechohabiencia= motivoderechohabiencia;
+}
+ 
+@JsonProperty("Capacidades diferentes")
+public String getCapacidadesdiferentes()
+{
+	return capacidadesdiferentes;
+}
+
+@JsonProperty("Capacidades diferentes")
+public void setCapacidadesdiferentes(String capacidadesdiferentes)
+{
+	this.capacidadesdiferentes = capacidadesdiferentes;
+}
+
+@JsonProperty("Condiciones de salud")
+public String getCondicionesSalud()
+{
+	return this.condicionesSalud;
+}
+
+@JsonProperty("Condiciones de salud")
+public void setCondicionesSalud(String condicionesSalud)
+{
+	this.condicionesSalud = condicionesSalud;
+}
+
+@JsonProperty("Adicciones")
+public String getAdicciones()
+{
+	return adicciones;
+}
+
+@JsonProperty("Adicciones")
+public void setAdicciones(String adicciones) {
+	this.adicciones = adicciones;
+}
+
+@JsonProperty("Etnia indígena")
+public String getEtniaIndigena()
+{
+	return etniaIndigena;
+}
+
+@JsonProperty("Etnia indígena")
+public void setEtniaIndigena(String etniaIndigena)
+{
+	this.etniaIndigena = etniaIndigena;
+}
+
+@JsonProperty("Jubilación o pensionado")
+public String getJubilacionoPensionado()
+{
+	return this.jubilacionopensionado;
+}
+@JsonProperty("Jubilación o pensionado")
+public void setJubilacionoPensionado(String jubilacionoPensionado)
+{
+	jubilacionopensionado = jubilacionoPensionado;
+}
+
+@JsonProperty("Peso")
+public String getPeso()
+{
+	return peso;
+}
+
+@JsonProperty("Peso")
+public void setPeso(String peso)
+{
+	this.peso = peso;
+}
+
+@JsonProperty("Talla")
+public String getTalla()
+{
+	return talla;
+}
+
+@JsonProperty("Talla")
+public void setTalla(String talla)
+{
+	this.talla = talla;
 }
 
 @JsonAnyGetter
